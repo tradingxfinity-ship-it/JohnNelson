@@ -76,7 +76,21 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p>San Antonio, Texas</p>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            {site.brokerage.trecNotices.map((n) => (
+              <li key={n.href}>
+                <a
+                  href={n.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${n.label} (opens in a new tab)`}
+                  className="underline underline-offset-4 hover:text-white"
+                >
+                  {n.short}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </Container>
     </footer>

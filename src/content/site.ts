@@ -163,6 +163,15 @@ export const site = {
     license: "600636",
     /** The team's MLS home search site */
     searchUrl: "https://www.realestateintx.com/",
+    /**
+     * Notices Texas (TREC) requires agent websites to link in the footer.
+     * Replace the brokerage services link with the brokerage's filled-in IABS
+     * form (a PDF from Real Broker) once you have it, e.g. /docs/iabs.pdf.
+     */
+    trecNotices: [
+      { label: "Texas Real Estate Commission Information About Brokerage Services", short: "Information About Brokerage Services", href: "https://www.trec.texas.gov/forms/information-about-brokerage-services" },
+      { label: "Texas Real Estate Commission Consumer Protection Notice", short: "TREC Consumer Protection Notice", href: "https://www.trec.texas.gov/forms/consumer-protection-notice" },
+    ],
   },
 
   images: {
