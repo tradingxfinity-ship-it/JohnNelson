@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { AreaMap } from "@/components/AreaMap";
 import { Photo } from "@/components/Photo";
 import { SoldCarousel } from "@/components/SoldCarousel";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
@@ -181,8 +182,8 @@ export default function AboutPage() {
               Helping military families make their next move.
             </h2>
             <p className="mt-4 leading-relaxed">
-              Irma and John work with service members, veterans, and their families moving to, from, and within the
-              San Antonio area, whether they’re buying, selling, or renting.
+              Irma and John work with service members, veterans, and their families moving to, from, and within the San
+              Antonio area, whether they’re buying, selling, or renting.
             </p>
             <ul className="mt-6 divide-y divide-line border-y border-line">
               {military.map((m) => (
@@ -200,36 +201,58 @@ export default function AboutPage() {
       </Section>
 
       {/* Where we work */}
-      <Section>
-        <Container className="grid gap-12 lg:grid-cols-[4fr_7fr] lg:gap-20">
+      <Section className="border-t border-line">
+        <Container className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:items-center lg:gap-16">
           <div>
             <Eyebrow>Where we work</Eyebrow>
             <h2 className="text-[1.75rem] font-medium leading-tight sm:text-4xl">San Antonio and the Hill Country.</h2>
-            <p className="mt-5 max-w-sm leading-relaxed">
-              From city neighborhoods to lake and Hill Country homes, Irma and John help clients across the region,
-              in {site.languages.join(" and ")}.
+            <p className="mt-4 leading-relaxed">
+              From city neighborhoods to lake and Hill Country homes, Irma and John help clients across the region.
             </p>
+
+            <dl className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">
+              {[
+                { value: String(site.serviceAreas.length), label: "Service areas" },
+                { value: String(portfolio.length), label: "Homes in our portfolio" },
+                { value: String(site.languages.length), label: site.languages.join(" & ") },
+              ].map((s) => (
+                <div key={s.label} className="flex flex-col-reverse rounded-md border border-line px-3 py-3 sm:px-4">
+                  <dt className="mt-0.5 text-xs leading-snug sm:text-[13px]">{s.label}</dt>
+                  <dd className="text-2xl font-medium tracking-[-0.03em] text-navy sm:text-3xl">{s.value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <h3 className="mt-8 text-sm font-medium text-navy">Service areas</h3>
+            <ul className="mt-3 flex flex-wrap gap-1.5">
+              {site.serviceAreas.map((a) => (
+                <li key={a} className="rounded-full bg-ivory px-3 py-1 text-[13px] text-navy">
+                  {a}
+                </li>
+              ))}
+            </ul>
+            <ArrowLink href="/portfolio" className="mt-8 text-[15px]">
+              Browse homes by area
+            </ArrowLink>
           </div>
-          <div className="grid gap-10 sm:grid-cols-2">
-            <div>
-              <h3 className="text-sm font-medium text-navy">Service areas</h3>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {site.serviceAreas.map((a) => (
-                  <li key={a} className="rounded-full border border-line px-3.5 py-1.5 text-sm text-navy">
-                    {a}
-                  </li>
-                ))}
-              </ul>
+
+          <div className="relative">
+            <div className="relative isolate h-[360px] overflow-hidden rounded-lg rounded-tr-[clamp(64px,14vw,180px)] border border-line sm:h-[520px]">
+              <AreaMap reserveBottomLeft={[290, 0]} />
             </div>
-            <div>
-              <h3 className="text-sm font-medium text-navy">Homes in our portfolio</h3>
-              <ul className="mt-4 divide-y divide-line border-y border-line">
-                {byCity.map(([city, n]) => (
-                  <li key={city} className="flex items-baseline justify-between py-3">
-                    <span className="text-navy">{city}</span>
-                    <span className="text-sm tabular-nums">
-                      {n} {n === 1 ? "home" : "homes"}
-                    </span>
+            {/* Homes sold by area: laid over the map on larger screens, below it on phones */}
+            <div className="mt-3 rounded-md border border-line bg-white p-4 sm:absolute sm:bottom-5 sm:left-5 sm:z-[500] sm:mt-0 sm:w-[280px] sm:border-0 sm:bg-white/95 sm:p-5 sm:shadow-sm sm:backdrop-blur-sm">
+              <p className="text-sm font-medium text-navy">Homes in our portfolio</p>
+              <ul className="mt-3 space-y-2.5">
+                {byCity.slice(0, 5).map(([city, n]) => (
+                  <li key={city}>
+                    <div className="flex items-baseline justify-between text-[13px]">
+                      <span className="text-navy">{city}</span>
+                      <span className="tabular-nums">{n}</span>
+                    </div>
+                    <div className="mt-1 h-1 rounded-full bg-line">
+                      <div className="h-1 rounded-full bg-brass" style={{ width: `${(n / byCity[0][1]) * 100}%` }} />
+                    </div>
                   </li>
                 ))}
               </ul>

@@ -8,7 +8,12 @@ import { salePins } from "@/content/sales";
 const COLORS = { sold: "#14283F", forSale: "#B88A47" };
 
 /** Leaflet map of sale pins. Loaded only in the browser (see SalesMap). */
-export default function SalesMapClient() {
+export default function SalesMapClient({
+  reserveBottomLeft,
+}: {
+  /** Space (px) to keep clear of pins in the bottom-left corner, e.g. for a card laid over the map */
+  reserveBottomLeft?: [number, number];
+} = {}) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -50,10 +55,13 @@ export default function SalesMapClient() {
       bounds.extend([pin.lat, pin.lng]);
     }
 
-    map.fitBounds(bounds, { padding: [32, 32], maxZoom: 11 });
+    // Only reserve the corner when the map is wide enough to spare it
+    const [reserveX, reserveY] = reserveBottomLeft && ref.current.clientWidth > 560 ? reserveBottomLeft : [0, 0];
+    map.fitBounds(bounds, { paddingTopLeft: [32 + reserveX, 32], paddingBottomRight: [32, 32 + reserveY], maxZoom: 11 });
     return () => {
       map.remove();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <div ref={ref} className="sales-map h-full w-full" />;
