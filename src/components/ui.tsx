@@ -31,8 +31,8 @@ const buttonBase =
   "inline-flex min-h-12 items-center justify-center rounded-md px-5 text-[15px] font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
 
 export const buttonStyles = {
-  primary: `${buttonBase} bg-navy text-white hover:bg-navy-hover`,
-  secondary: `${buttonBase} border border-navy bg-white text-navy hover:bg-navy hover:text-white`,
+  primary: `${buttonBase} bg-navy text-white hover:bg-navy-hover hover:text-gold-light`,
+  secondary: `${buttonBase} border border-navy bg-white text-navy hover:bg-navy hover:text-gold-light`,
   inverse: `${buttonBase} bg-white text-navy hover:bg-cloud`,
 };
 

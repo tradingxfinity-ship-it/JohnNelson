@@ -104,7 +104,7 @@ export function SoldCarousel({ homes }: { homes: PortfolioHome[] }) {
           type="button"
           onClick={() => scrollByCards(1)}
           disabled={atEnd}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-navy bg-navy text-white transition-colors hover:bg-navy-hover disabled:opacity-40"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-navy bg-navy text-white transition-colors hover:bg-navy-hover hover:text-gold-light disabled:opacity-40 disabled:hover:text-white"
         >
           <span className="sr-only">Next homes</span>
           <span aria-hidden>→</span>
