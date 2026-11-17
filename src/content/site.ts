@@ -152,6 +152,13 @@ export const site = {
       { src: "/images/two-story-home-porch.webp", alt: "Two-story home with a covered front porch", width: 1536, height: 1080 },
       { src: "/images/living-room-arched-door.webp", alt: "Bright living room with an arched door and fireplace", width: 768, height: 576 },
     ] as NonNullable<SiteImage>[],
+    /** Darkened background photo behind the homepage contact form. */
+    contact: {
+      src: "/images/sold/san-antonio-78248/01.webp",
+      alt: "",
+      width: 1152,
+      height: 864,
+    } as SiteImage,
     /** Portrait of Irma and John beside “Meet the team” on the homepage. */
     team: {
       src: "/images/irma-john-portrait.jpg",
