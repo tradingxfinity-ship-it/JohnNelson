@@ -3,6 +3,7 @@ import { Instrument_Sans } from "next/font/google";
 import { AlbumViewer } from "@/components/AlbumViewer";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </main>
         <Footer />
         <AlbumViewer />
+        <ScrollReveal />
       </body>
     </html>
   );
