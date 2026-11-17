@@ -36,6 +36,14 @@ export function InquiryForm({ defaultType }: { defaultType?: InquiryType }) {
 
   useEffect(() => setMinDate(todayInSanAntonio()), []);
 
+  // The homepage search sends visitors here with ?area=…; start the form with that area filled in
+  useEffect(() => {
+    const area = new URLSearchParams(window.location.search).get("area")?.trim().slice(0, 120);
+    if (area && (defaultType === "buy" || defaultType === "rent")) {
+      setValues((v) => (v.preferredAreas ? v : { ...v, preferredAreas: area }));
+    }
+  }, [defaultType]);
+
   const type = values.inquiryType as InquiryType | "";
   const fields = type ? SERVICE_FIELDS[type] : [];
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HeroCarousel } from "@/components/HeroCarousel";
+import { HeroSearch } from "@/components/HeroSearch";
 import { InquirySection } from "@/components/InquirySection";
 import { Listings } from "@/components/Listings";
 import { SalesMap } from "@/components/SalesMap";
@@ -67,16 +68,11 @@ export default function Home() {
             </div>
             <div>
               <p className="text-lg leading-relaxed">{site.hero.body}</p>
-              <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                <ButtonLink href="/buy" variant="secondary">
-                  I’m buying
-                </ButtonLink>
-                <ButtonLink href="/sell" variant="secondary">
-                  I’m selling
-                </ButtonLink>
-                <ButtonLink href="/rent" variant="secondary">
-                  I’m renting
-                </ButtonLink>
+              <HeroSearch />
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                <ButtonLink href="/buy">I’m buying</ButtonLink>
+                <ButtonLink href="/sell">I’m selling</ButtonLink>
+                <ButtonLink href="/rent">I’m renting</ButtonLink>
               </div>
             </div>
           </div>
