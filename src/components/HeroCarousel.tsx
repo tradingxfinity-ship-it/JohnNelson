@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { soldAlbums } from "@/content/soldAlbums";
+import { openSoldAlbum } from "./AlbumViewer";
 
 const INTERVAL_MS = 4500;
 const MOVE_MS = 1100;
@@ -18,11 +19,6 @@ const slides = soldAlbums.map((a) => ({
   sold: a.sold,
   count: a.photos.length,
 }));
-
-/** Opens a sold home's album in the Recently sold gallery. */
-export function openSoldAlbum(slug: string) {
-  window.dispatchEvent(new CustomEvent("open-sold-album", { detail: slug }));
-}
 
 const mod = (a: number, n: number) => ((a % n) + n) % n;
 

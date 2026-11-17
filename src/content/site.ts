@@ -197,6 +197,7 @@ export const navLinks = [
   { href: "/buy", label: "Buy" },
   { href: "/sell", label: "Sell" },
   { href: "/rent", label: "Rent" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/about", label: "About" },
 ];
 

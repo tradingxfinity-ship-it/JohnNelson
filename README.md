@@ -1,6 +1,6 @@
 # Get It Sold Realty website
 
-Next.js 15 (App Router), TypeScript, and Tailwind CSS v4. Pages: `/`, `/buy`, `/sell`, `/rent`, `/about`.
+Next.js 15 (App Router), TypeScript, and Tailwind CSS v4. Pages: `/`, `/buy`, `/sell`, `/rent`, `/portfolio`, `/about`.
 
 ```bash
 npm install
@@ -50,6 +50,10 @@ Until a photo is set, a neutral line-drawing placeholder holds its place.
 The homepage map (`src/components/SalesMap.tsx`) reads its pins from `src/content/sales.ts`: the 82 sales with locations on the Zillow profile map (its most recent 100) and the 3 current listings, with coordinates rounded to about 1 km so past clients' homes aren't pinpointed. Zillow's own map can't be embedded, so add new sales to that file (keep the rounding). For the full sales history, export it from the MLS and add the rows the same way.
 
 Map tiles come from OpenStreetMap's free tile server, which is fine for a small site. If traffic grows, switch the URL in `SalesMapClient.tsx` to a hosted provider (MapTiler, Stadia Maps, or CARTO with an API key).
+
+## Portfolio
+
+`/portfolio` shows 57 sold homes from the pins on the team's Zillow map, newest first, with one cover photo each (768px WebP in `public/images/portfolio/`) and filter buttons by area. Data lives in `src/content/portfolio.ts`; homes are labeled by city and ZIP, and older sale dates are approximate years because Zillow only shows “Sold 6 years ago”. Homes that also have a full album (`album` field) open the shared photo viewer (`src/components/AlbumViewer.tsx`, mounted once in the root layout).
 
 ## Recently sold albums
 
