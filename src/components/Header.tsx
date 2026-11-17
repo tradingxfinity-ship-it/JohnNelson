@@ -54,7 +54,7 @@ export function Header() {
                   aria-current={isActive(link.href) ? "page" : undefined}
                   className={`relative py-2 text-[15px] font-medium transition-colors hover:text-navy ${
                     isActive(link.href)
-                      ? "text-navy after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-brass"
+                      ? "text-navy after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-gold"
                       : "text-slate"
                   }`}
                 >

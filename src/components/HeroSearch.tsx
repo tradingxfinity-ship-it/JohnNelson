@@ -48,7 +48,7 @@ export function HeroSearch() {
         placeholder="City or ZIP code"
         autoComplete="off"
         maxLength={120}
-        className="min-w-0 flex-1 bg-transparent px-3 text-[15px] text-navy placeholder:text-slate/70 focus:outline-none"
+        className="w-0 min-w-0 flex-1 bg-transparent px-3 text-[15px] text-navy placeholder:text-slate/70 focus:outline-none"
       />
       <button
         type="submit"

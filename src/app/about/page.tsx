@@ -84,7 +84,7 @@ export default function AboutPage() {
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
               {["Broker/owner team", `Se habla español`, "San Antonio, Texas"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
-                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-brass" />
+                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gold" />
                   {t}
                 </li>
               ))}
@@ -137,7 +137,7 @@ export default function AboutPage() {
           <ol className="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2">
             {principles.map((p, i) => (
               <li key={p.title} className="bg-white p-7 lg:p-8">
-                <span className="text-sm font-medium text-brass">0{i + 1}</span>
+                <span className="text-sm font-medium text-gold-deep">0{i + 1}</span>
                 <h3 className="mt-3 text-xl font-medium">{p.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed">{p.body}</p>
               </li>
@@ -165,14 +165,14 @@ export default function AboutPage() {
       </Section>
 
       {/* Military families */}
-      <Section className="bg-ivory">
+      <Section className="bg-cloud">
         <Container className="grid gap-12 lg:grid-cols-[5fr_6fr] lg:items-center lg:gap-16">
           <Photo
             image={militaryImage}
             fallbackAlt="A San Antonio home"
             shape="arch"
             caption="Relocating to San Antonio"
-            captionOn="ivory"
+            captionOn="cloud"
             sizes="(min-width: 1024px) 480px, 100vw"
             className="aspect-[4/3] w-full"
           />
@@ -226,7 +226,7 @@ export default function AboutPage() {
             <h3 className="mt-8 text-sm font-medium text-navy">Service areas</h3>
             <ul className="mt-3 flex flex-wrap gap-1.5">
               {site.serviceAreas.map((a) => (
-                <li key={a} className="rounded-full bg-ivory px-3 py-1 text-[13px] text-navy">
+                <li key={a} className="rounded-full bg-cloud px-3 py-1 text-[13px] text-navy">
                   {a}
                 </li>
               ))}
@@ -251,7 +251,7 @@ export default function AboutPage() {
                       <span className="tabular-nums">{n}</span>
                     </div>
                     <div className="mt-1 h-1 rounded-full bg-line">
-                      <div className="h-1 rounded-full bg-brass" style={{ width: `${(n / byCity[0][1]) * 100}%` }} />
+                      <div className="h-1 rounded-full bg-gold" style={{ width: `${(n / byCity[0][1]) * 100}%` }} />
                     </div>
                   </li>
                 ))}

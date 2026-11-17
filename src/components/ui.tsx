@@ -17,23 +17,23 @@ export function Section({
   );
 }
 
-/** Small brass label with a short rule, used above section headings. */
+/** Small gold label with a short rule, used above section headings. */
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
     <p className="mb-4 flex items-center gap-3 text-sm font-medium text-slate">
-      <span aria-hidden className="h-px w-8 bg-brass" />
+      <span aria-hidden className="h-px w-8 bg-gold" />
       {children}
     </p>
   );
 }
 
 const buttonBase =
-  "inline-flex min-h-12 items-center justify-center rounded-md px-5 text-[15px] font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass";
+  "inline-flex min-h-12 items-center justify-center rounded-md px-5 text-[15px] font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
 
 export const buttonStyles = {
   primary: `${buttonBase} bg-navy text-white hover:bg-navy-hover`,
   secondary: `${buttonBase} border border-navy bg-white text-navy hover:bg-navy hover:text-white`,
-  inverse: `${buttonBase} bg-white text-navy hover:bg-ivory`,
+  inverse: `${buttonBase} bg-white text-navy hover:bg-cloud`,
 };
 
 export function ButtonLink({

@@ -82,18 +82,18 @@ export async function POST(req: NextRequest) {
     `Submitted: ${submittedAt} (San Antonio time)`,
     "Reply to this email to respond directly to the visitor.",
   ].join("\n");
-  const html = `<div style="font-family:Arial,sans-serif;color:#14283F;max-width:600px">
+  const html = `<div style="font-family:Arial,sans-serif;color:#1C2B4A;max-width:600px">
 <h2 style="margin:0 0 16px">New ${typeLabel.toLowerCase()} inquiry</h2>
 <table cellpadding="8" style="border-collapse:collapse;width:100%;font-size:14px">
-<tr><td style="border-bottom:1px solid #E2E7EC;color:#526174;width:40%">Inquiry type</td><td style="border-bottom:1px solid #E2E7EC">${typeLabel}</td></tr>
+<tr><td style="border-bottom:1px solid #E3E7ED;color:#4B5874;width:40%">Inquiry type</td><td style="border-bottom:1px solid #E3E7ED">${typeLabel}</td></tr>
 ${rows
   .map(
     ([label, value]) =>
-      `<tr><td style="border-bottom:1px solid #E2E7EC;color:#526174;vertical-align:top">${escapeHtml(label)}</td><td style="border-bottom:1px solid #E2E7EC;white-space:pre-wrap">${escapeHtml(value)}</td></tr>`,
+      `<tr><td style="border-bottom:1px solid #E3E7ED;color:#4B5874;vertical-align:top">${escapeHtml(label)}</td><td style="border-bottom:1px solid #E3E7ED;white-space:pre-wrap">${escapeHtml(value)}</td></tr>`,
   )
   .join("\n")}
 </table>
-<p style="font-size:13px;color:#526174">Submitted ${submittedAt} (San Antonio time). Reply to this email to respond directly to the visitor.</p>
+<p style="font-size:13px;color:#4B5874">Submitted ${submittedAt} (San Antonio time). Reply to this email to respond directly to the visitor.</p>
 </div>`;
 
   try {

@@ -22,7 +22,7 @@ export default function PortfolioPage() {
         </Container>
       </section>
 
-      <Section className="bg-ivory">
+      <Section className="bg-cloud">
         <Container className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
           <div className="max-w-xl">
             <h2 className="text-3xl font-medium sm:text-4xl">Thinking about selling?</h2>

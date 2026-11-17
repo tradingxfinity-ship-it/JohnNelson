@@ -147,7 +147,7 @@ export function HeroCarousel() {
                     ? `View ${s.count} photos of the ${s.title.toLowerCase()} in ${s.city}`
                     : `Show ${s.title.toLowerCase()} in ${s.city}`
                 }
-                className="absolute top-0 h-full overflow-hidden bg-ivory focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white"
+                className="absolute top-0 h-full overflow-hidden bg-cloud focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white"
                 style={{
                   left,
                   width,
@@ -193,7 +193,7 @@ export function HeroCarousel() {
               <button
                 type="button"
                 onClick={() => go(-1)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md hover:bg-ivory"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md hover:bg-cloud"
               >
                 <span className="sr-only">Previous home</span>
                 <span aria-hidden>←</span>
@@ -204,7 +204,7 @@ export function HeroCarousel() {
               <button
                 type="button"
                 onClick={() => go(1)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md hover:bg-ivory"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md hover:bg-cloud"
               >
                 <span className="sr-only">Next home</span>
                 <span aria-hidden>→</span>
@@ -214,7 +214,7 @@ export function HeroCarousel() {
                   type="button"
                   onClick={() => setPaused((p) => !p)}
                   aria-pressed={paused}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-md hover:bg-ivory"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-md hover:bg-cloud"
                 >
                   <span className="sr-only">{paused ? "Play slideshow" : "Pause slideshow"}</span>
                   {paused ? (

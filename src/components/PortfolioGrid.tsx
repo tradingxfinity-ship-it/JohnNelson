@@ -91,7 +91,7 @@ function HomeCard({ home, priority, onOpen }: { home: PortfolioHome; priority: b
 
   const body = (
     <>
-      <span className="relative block aspect-[4/3] overflow-hidden rounded-lg bg-ivory">
+      <span className="relative block aspect-[4/3] overflow-hidden rounded-lg bg-cloud">
         <Image
           src={home.src}
           alt=""

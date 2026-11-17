@@ -213,7 +213,7 @@ export function AlbumViewer() {
                     type="button"
                     data-tile={i}
                     onClick={() => openPhoto(i)}
-                    className="group relative aspect-[4/3] overflow-hidden rounded-md bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass sm:aspect-auto sm:h-full"
+                    className="group relative aspect-[4/3] overflow-hidden rounded-md bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:aspect-auto sm:h-full"
                   >
                     <span className="sr-only">
                       Open photo {i + 1} of {count}
@@ -358,7 +358,7 @@ export function AlbumViewer() {
                     aria-current={i === index ? "true" : undefined}
                     className={`relative h-12 w-16 shrink-0 overflow-hidden rounded-md transition-opacity sm:h-14 sm:w-20 ${
                       i === index
-                        ? "opacity-100 ring-2 ring-brass ring-offset-2 ring-offset-navy"
+                        ? "opacity-100 ring-2 ring-gold ring-offset-2 ring-offset-navy"
                         : "opacity-50 hover:opacity-100"
                     }`}
                   >

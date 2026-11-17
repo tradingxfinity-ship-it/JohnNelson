@@ -30,7 +30,7 @@ export function SoldGallery() {
                 aria-haspopup="dialog"
               >
                 <span
-                  className={`relative block overflow-hidden rounded-lg bg-ivory ${
+                  className={`relative block overflow-hidden rounded-lg bg-cloud ${
                     i === 0
                       ? "aspect-[4/3] rounded-tl-[clamp(64px,14vw,180px)] lg:aspect-auto lg:min-h-[320px] lg:flex-1"
                       : "aspect-[4/3]"

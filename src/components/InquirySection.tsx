@@ -26,7 +26,7 @@ export function InquirySection({ defaultType }: { defaultType?: InquiryType }) {
       <Container className="grid gap-10 lg:grid-cols-[5fr_7fr] lg:items-start lg:gap-x-20">
         <div className="lg:sticky lg:top-28">
           <p className="mb-4 flex items-center gap-3 text-sm font-medium text-white/80">
-            <span aria-hidden className="h-px w-8 bg-brass" />
+            <span aria-hidden className="h-px w-8 bg-gold-light" />
             Contact
           </p>
           <h2 className="text-3xl font-medium text-white sm:text-4xl">Tell us about your next move.</h2>

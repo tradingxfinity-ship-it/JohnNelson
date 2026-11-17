@@ -41,13 +41,13 @@ export function ServicePage({
         </Container>
       </section>
 
-      <Section className="border-t border-line bg-ivory">
+      <Section className="border-t border-line bg-cloud">
         <Container>
           <h2 className="max-w-xl text-3xl font-medium">What to expect</h2>
           <ol className="mt-12 grid gap-10 md:grid-cols-3">
             {steps.map((step, i) => (
-              <li key={step.title} className="border-t border-brass pt-6">
-                <span className="text-sm font-medium text-brass">0{i + 1}</span>
+              <li key={step.title} className="border-t border-gold pt-6">
+                <span className="text-sm font-medium text-gold-deep">0{i + 1}</span>
                 <h3 className="mt-3 text-xl font-medium">{step.title}</h3>
                 <p className="mt-3 leading-relaxed">{step.body}</p>
               </li>

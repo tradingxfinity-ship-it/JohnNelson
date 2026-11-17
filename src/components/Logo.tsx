@@ -21,7 +21,7 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
             <span className={`text-[17px] font-semibold tracking-[-0.02em] ${inverse ? "text-white" : "text-navy"}`}>
               Get It Sold
             </span>
-            <span className={`mt-1 text-[11px] font-medium uppercase tracking-[0.18em] ${inverse ? "text-white/70" : "text-brass"}`}>
+            <span className={`mt-1 text-[11px] font-medium uppercase tracking-[0.18em] ${inverse ? "text-gold-light" : "text-gold-deep"}`}>
               Realty
             </span>
           </span>

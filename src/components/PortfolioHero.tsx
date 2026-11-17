@@ -98,7 +98,7 @@ export function PortfolioHero() {
         <div className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
           <div>
             <p className="flex items-center gap-3 text-sm font-medium text-white/85">
-              <span aria-hidden className="h-px w-8 bg-brass" />
+              <span aria-hidden className="h-px w-8 bg-gold-light" />
               {portfolio.length} homes across {communities} communities
             </p>
             <h1 className="mt-3 text-[3.5rem] font-semibold leading-[0.9] tracking-[-0.045em] text-white sm:text-[5.5rem] lg:text-[7rem]">

@@ -150,7 +150,7 @@ export default function Home() {
       <SoldGallery />
 
       {/* Military families and veterans */}
-      <Section className="bg-ivory">
+      <Section className="bg-cloud">
         <Container className="grid gap-12 lg:grid-cols-[6fr_5fr] lg:items-center lg:gap-16">
           <div>
             <Eyebrow>Military families and veterans</Eyebrow>
@@ -178,7 +178,7 @@ export default function Home() {
             fallbackAlt="A San Antonio home"
             shape="arch"
             caption="Relocating to San Antonio"
-            captionOn="ivory"
+            captionOn="cloud"
             sizes="(min-width: 1024px) 520px, 100vw"
             className="aspect-[4/3] w-full"
           />

@@ -61,7 +61,7 @@ export function SoldCarousel({ homes }: { homes: PortfolioHome[] }) {
                 aria-label={`${homeTitle(h)}, sold ${h.sold}. View ${album?.photos.length ?? 1} photos`}
                 className="group block w-full text-left"
               >
-                <span className="relative block aspect-[4/3] overflow-hidden rounded-lg bg-ivory">
+                <span className="relative block aspect-[4/3] overflow-hidden rounded-lg bg-cloud">
                   <Image
                     src={h.src}
                     alt=""

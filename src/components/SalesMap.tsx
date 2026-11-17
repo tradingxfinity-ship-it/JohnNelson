@@ -7,7 +7,7 @@ import { Container, Eyebrow, Section } from "./ui";
 
 const MapView = dynamic(() => import("./SalesMapClient"), {
   ssr: false,
-  loading: () => <div className="h-full w-full bg-ivory" />,
+  loading: () => <div className="h-full w-full bg-cloud" />,
 });
 
 /** “Homes we’ve sold” section: a map of recent sales and current listings. */
@@ -31,7 +31,7 @@ export function SalesMap() {
               Sold
             </li>
             <li className="flex items-center gap-3">
-              <span aria-hidden className="h-3.5 w-3.5 rounded-full border-2 border-white bg-brass outline outline-1 outline-line" />
+              <span aria-hidden className="h-3.5 w-3.5 rounded-full border-2 border-white bg-gold outline outline-1 outline-line" />
               For sale
             </li>
           </ul>
