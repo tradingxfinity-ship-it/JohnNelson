@@ -117,7 +117,7 @@ export default function AboutPage() {
                 } ${i >= 2 ? "border-t lg:border-t-0" : ""} ${i === 2 ? "lg:border-l lg:pl-10" : ""}`}
               >
                 <dt className="text-[15px] text-white/70">{s.label}</dt>
-                <dd className="text-4xl font-medium tracking-[-0.03em] text-white lg:text-5xl">{s.value}</dd>
+                <dd className="text-4xl font-medium tracking-[-0.03em] text-gold-light lg:text-5xl">{s.value}</dd>
               </div>
             ))}
           </dl>
