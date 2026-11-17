@@ -26,11 +26,11 @@ Form options (budget ranges, timelines, property types) are in `src/lib/inquiry.
 
 | Item | Where it goes |
 | --- | --- |
-| High-resolution portrait of Irma and John (1200px+ wide) | The current `irma-john-nelson.jpg` is 240×240, and is no longer used; the 800px portrait `irma-john-portrait.jpg` is the main photo on Home (Meet the team) and About |
+| Larger portrait of Irma and John (1200px+ wide) | `irma-john-portrait.jpg` (set as `images.team`) is 800px wide, so it can look slightly soft on large high-resolution screens |
 | Zillow testimonials (optional) | `zillow.testimonials`. Use only exact quotes the client supplies |
 | Logo file (optional) | `logo`. A text wordmark is used until then |
 
-Images in use: `images.teamPortrait` (home + About), and `images.buy` / `sell` / `rent`. The other photos in `public/images` are available to swap in.
+Images in use: `images.team` (the portrait of Irma and John, on Home and About), `images.contact` (behind the contact form), and `images.buy` / `sell` / `rent`. The other photos in `public/images` are available to swap in.
 
 Example image entry (use the photo's real pixel size; Next.js resizes and serves optimized versions):
 

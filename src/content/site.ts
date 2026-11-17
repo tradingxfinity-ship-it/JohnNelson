@@ -161,13 +161,6 @@ export const site = {
       width: 800,
       height: 639,
     } as SiteImage,
-    /** Original portrait of Irma and John, shown small and round (see TeamByline). */
-    teamPortrait: {
-      src: "/images/irma-john-nelson.jpg",
-      alt: "Irma and John Nelson",
-      width: 240,
-      height: 240,
-    } as SiteImage,
     /** Supporting property photos for the service pages. */
     buy: {
       src: "/images/stone-home-exterior.webp",
