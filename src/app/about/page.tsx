@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { AreaMap } from "@/components/AreaMap";
 import { Photo } from "@/components/Photo";
+import { Reviews } from "@/components/Reviews";
 import { SoldCarousel } from "@/components/SoldCarousel";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
 import { portfolio } from "@/content/portfolio";
-import { totalSold } from "@/content/sales";
 import { CONTACT_HREF, site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -261,38 +261,7 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Reviews */}
-      <section className="border-t border-line py-14 lg:py-16">
-        <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-5">
-            <p className="text-5xl font-medium tracking-[-0.03em] text-navy">{site.zillow.rating}</p>
-            <div>
-              <p className="flex gap-0.5 text-brass" aria-hidden>
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <svg key={i} width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.8l-5.4 2.9 1.2-5.9L1.4 7.7l6-.7z" />
-                  </svg>
-                ))}
-              </p>
-              <p className="mt-1 text-[15px]">
-                {site.zillow.reviewCount} reviews on Zillow · {totalSold} sales listed
-              </p>
-            </div>
-          </div>
-          {site.zillow.profileUrl && (
-            <a
-              href={site.zillow.profileUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-medium text-navy underline-offset-4 hover:underline"
-            >
-              Read reviews on Zillow
-              <span aria-hidden>↗</span>
-              <span className="sr-only">(opens in a new tab)</span>
-            </a>
-          )}
-        </Container>
-      </section>
+      <Reviews />
 
       {/* Call to action */}
       <section className="relative isolate overflow-hidden bg-navy py-20 lg:py-26">
