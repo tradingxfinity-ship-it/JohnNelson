@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
-import { TeamPortrait } from "@/components/TeamPortrait";
+import { TeamByline } from "@/components/TeamByline";
 import { ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
 import { CONTACT_HREF, site } from "@/content/site";
 
@@ -22,6 +22,7 @@ export default function AboutPage() {
             <h1 className="text-4xl font-medium leading-[1.08] sm:text-5xl">
               Meet Irma and John Nelson, the team behind Get It Sold Realty.
             </h1>
+            <TeamByline className="mt-8" />
             <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed">
               <p>
                 Irma and John Nelson are a real estate couple based in San Antonio. Through Get It Sold
@@ -38,7 +39,15 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <TeamPortrait priority />
+          <Photo
+            image={site.images.aboutHero}
+            fallbackAlt=""
+            shape="archRight"
+            caption="Get It Sold Realty"
+            priority
+            sizes="(min-width: 1248px) 480px, (min-width: 1024px) 40vw, 100vw"
+            className="aspect-[4/3] w-full lg:aspect-[4/5]"
+          />
         </Container>
       </section>
 

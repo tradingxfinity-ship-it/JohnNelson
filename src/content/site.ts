@@ -150,7 +150,21 @@ export const site = {
       { src: "/images/two-story-home-porch.webp", alt: "Two-story home with a covered front porch", width: 1536, height: 1080 },
       { src: "/images/living-room-arched-door.webp", alt: "Bright living room with an arched door and fireplace", width: 768, height: 576 },
     ] as NonNullable<SiteImage>[],
-    /** Original portrait of Irma and John, shown at a small size to stay sharp. */
+    /** Tall photo beside “Meet the team” on the homepage. */
+    team: {
+      src: "/images/sold/san-marcos-78666/04.webp",
+      alt: "Living room with a stone fireplace and beamed ceiling in a home sold by the team",
+      width: 1152,
+      height: 864,
+    } as SiteImage,
+    /** Tall photo beside the About page introduction. */
+    aboutHero: {
+      src: "/images/sold/san-marcos-78666/03.webp",
+      alt: "Bright living room with a vaulted, beamed ceiling in a home sold by the team",
+      width: 1152,
+      height: 864,
+    } as SiteImage,
+    /** Original portrait of Irma and John, shown small and round (see TeamByline). */
     teamPortrait: {
       src: "/images/irma-john-nelson.jpg",
       alt: "Irma and John Nelson",

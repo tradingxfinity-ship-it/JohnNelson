@@ -6,7 +6,7 @@ import { SalesMap } from "@/components/SalesMap";
 import { SoldGallery } from "@/components/SoldGallery";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
-import { TeamPortrait } from "@/components/TeamPortrait";
+import { TeamByline } from "@/components/TeamByline";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
 import { CONTACT_HREF, site } from "@/content/site";
 
@@ -165,12 +165,20 @@ export default function Home() {
 
       {/* Meet Irma and John */}
       <Section>
-        <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <TeamPortrait />
+        <Container className="grid items-center gap-12 lg:grid-cols-[5fr_6fr] lg:gap-20">
+          <Photo
+            image={site.images.team}
+            fallbackAlt=""
+            shape="arch"
+            caption="19 years in San Antonio"
+            sizes="(min-width: 1248px) 520px, (min-width: 1024px) 42vw, 100vw"
+            className="aspect-[4/3] w-full lg:aspect-[4/5]"
+          />
           <div>
             <Eyebrow>Meet the team</Eyebrow>
-            <h2 className="text-3xl font-medium sm:text-4xl">A real estate couple who know San Antonio.</h2>
-            <p className="mt-5 text-lg leading-relaxed">
+            <h2 className="text-3xl font-medium leading-tight sm:text-[2.75rem]">A real estate couple who know San Antonio.</h2>
+            <TeamByline className="mt-8" />
+            <p className="mt-8 text-lg leading-relaxed">
               For 19 years, Irma and John Nelson have helped people across San Antonio buy, sell, and rent. They keep
               communication honest and stay hands-on from the first conversation to moving day, so you always know
               where things stand.

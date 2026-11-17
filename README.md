@@ -26,7 +26,7 @@ Form options (budget ranges, timelines, property types) are in `src/lib/inquiry.
 
 | Item | Where it goes |
 | --- | --- |
-| High-resolution portrait of Irma and John (1200px+ wide) | The current `irma-john-nelson.jpg` is 240×240, so it's shown small in a portrait panel on Home and About |
+| High-resolution portrait of Irma and John (1200px+ wide) | The current `irma-john-nelson.jpg` is 240×240, so it's shown as a small round byline next to their names on Home and About |
 | Zillow testimonials (optional) | `zillow.testimonials`. Use only exact quotes the client supplies |
 | Logo file (optional) | `logo`. A text wordmark is used until then |
 
