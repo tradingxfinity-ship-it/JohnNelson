@@ -6,7 +6,6 @@ import { SalesMap } from "@/components/SalesMap";
 import { SoldGallery } from "@/components/SoldGallery";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
-import { TeamByline } from "@/components/TeamByline";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
 import { CONTACT_HREF, site } from "@/content/site";
 
@@ -91,32 +90,58 @@ export default function Home() {
       {/* Services */}
       <Section>
         <Container className="grid gap-12 lg:grid-cols-[6fr_5fr] lg:gap-16">
-          <div className="order-last grid grid-cols-2 gap-4 lg:order-none lg:gap-5">
+          <div className="order-last grid grid-cols-2 gap-3 lg:order-none lg:gap-4">
             {site.images.services.map((img, i) => (
               <Photo
                 key={img.src}
                 image={img}
                 fallbackAlt=""
                 shape={i === 0 ? "arch" : "rounded"}
-                sizes="(min-width: 1024px) 340px, 50vw"
-                className="aspect-[3/4] w-full"
+                sizes="(min-width: 1024px) 320px, 50vw"
+                className="aspect-square w-full"
               />
             ))}
           </div>
           <div className="flex flex-col justify-center">
             <Eyebrow>Our services</Eyebrow>
-            <h2 className="text-3xl font-medium sm:text-4xl">How can we help you move?</h2>
-            <ul className="mt-8 border-t border-line">
+            <h2 className="text-[1.75rem] font-medium leading-tight sm:text-3xl">How can we help you move?</h2>
+            <ul className="mt-6 border-t border-line">
               {services.map((s) => (
-                <li key={s.href} className="border-b border-line py-6">
-                  <h3 className="text-2xl font-normal">{s.title}</h3>
-                  <p className="mt-2 leading-relaxed">{s.body}</p>
-                  <ArrowLink href={s.href} className="mt-4 text-[15px]">
+                <li key={s.href} className="border-b border-line py-5">
+                  <h3 className="text-xl font-medium">{s.title}</h3>
+                  <p className="mt-1.5 text-[15px] leading-relaxed">{s.body}</p>
+                  <ArrowLink href={s.href} className="mt-3 text-sm">
                     {s.link}
                   </ArrowLink>
                 </li>
               ))}
             </ul>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Meet Irma and John */}
+      <Section>
+        <Container className="grid items-center gap-12 lg:grid-cols-[6fr_5fr] lg:gap-20">
+          <Photo
+            image={site.images.team}
+            fallbackAlt=""
+            shape="arch"
+            caption="Irma and John Nelson"
+            sizes="(min-width: 1248px) 560px, (min-width: 1024px) 45vw, 100vw"
+            className="aspect-[5/4] w-full"
+          />
+          <div>
+            <Eyebrow>Meet the team</Eyebrow>
+            <h2 className="text-3xl font-medium leading-tight sm:text-[2.75rem]">A real estate couple who know San Antonio.</h2>
+            <p className="mt-6 text-lg leading-relaxed">
+              For 19 years, Irma and John Nelson have helped people across San Antonio buy, sell, and rent. They keep
+              communication honest and stay hands-on from the first conversation to moving day, so you always know
+              where things stand.
+            </p>
+            <ArrowLink href="/about" className="mt-8">
+              Meet Irma and John
+            </ArrowLink>
           </div>
         </Container>
       </Section>
@@ -160,33 +185,6 @@ export default function Home() {
             sizes="(min-width: 1024px) 620px, 100vw"
             className="aspect-[4/3] w-full lg:aspect-[4/5]"
           />
-        </Container>
-      </Section>
-
-      {/* Meet Irma and John */}
-      <Section>
-        <Container className="grid items-center gap-12 lg:grid-cols-[5fr_6fr] lg:gap-20">
-          <Photo
-            image={site.images.team}
-            fallbackAlt=""
-            shape="arch"
-            caption="19 years in San Antonio"
-            sizes="(min-width: 1248px) 520px, (min-width: 1024px) 42vw, 100vw"
-            className="aspect-[4/3] w-full lg:aspect-[4/5]"
-          />
-          <div>
-            <Eyebrow>Meet the team</Eyebrow>
-            <h2 className="text-3xl font-medium leading-tight sm:text-[2.75rem]">A real estate couple who know San Antonio.</h2>
-            <TeamByline className="mt-8" />
-            <p className="mt-8 text-lg leading-relaxed">
-              For 19 years, Irma and John Nelson have helped people across San Antonio buy, sell, and rent. They keep
-              communication honest and stay hands-on from the first conversation to moving day, so you always know
-              where things stand.
-            </p>
-            <ArrowLink href="/about" className="mt-8">
-              Meet Irma and John
-            </ArrowLink>
-          </div>
         </Container>
       </Section>
 

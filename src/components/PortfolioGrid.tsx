@@ -67,6 +67,7 @@ function homeAlbum(h: PortfolioHome): ViewerAlbum | undefined {
   if (!h.photos?.length) return undefined;
   return {
     label: `${homeTitle(h)}: photo album`,
+    layout: "gallery",
     photos: h.photos.map((p) => ({ ...p, title: homeTitle(h), subtitle: homeSubtitle(h) })),
   };
 }
@@ -128,7 +129,7 @@ function HomeCard({ home, priority, onOpen }: { home: PortfolioHome; priority: b
   return (
     <button
       type="button"
-      onClick={() => (album ? openPhotoViewer(album.label, album.photos) : onOpen())}
+      onClick={() => (album ? openPhotoViewer(album.label, album.photos, 0, "gallery") : onOpen())}
       aria-haspopup="dialog"
       aria-label={album ? `${label}. View ${album.photos.length} photos` : `${label}. View photo`}
       className="group block w-full cursor-pointer text-left"

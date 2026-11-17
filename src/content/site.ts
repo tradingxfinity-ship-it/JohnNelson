@@ -137,6 +137,8 @@ export const site = {
     services: [
       { src: "/images/dining-room-green-wall.webp", alt: "Dining room with a green paneled wall and wood table", width: 768, height: 576 },
       { src: "/images/vintage-tile-bathroom.webp", alt: "Bathroom with vintage green tile and arched mirrors", width: 768, height: 576 },
+      { src: "/images/living-room-beamed-ceiling.webp", alt: "Living room with a beamed vaulted ceiling", width: 768, height: 576 },
+      { src: "/images/kitchen-tile-floor.webp", alt: "Bright kitchen with white cabinets and tile floor", width: 768, height: 576 },
     ] as NonNullable<SiteImage>[],
     /** Arch-topped photo in the military families section. */
     military: {
@@ -150,12 +152,12 @@ export const site = {
       { src: "/images/two-story-home-porch.webp", alt: "Two-story home with a covered front porch", width: 1536, height: 1080 },
       { src: "/images/living-room-arched-door.webp", alt: "Bright living room with an arched door and fireplace", width: 768, height: 576 },
     ] as NonNullable<SiteImage>[],
-    /** Tall photo beside “Meet the team” on the homepage. */
+    /** Portrait of Irma and John beside “Meet the team” on the homepage. */
     team: {
-      src: "/images/sold/san-marcos-78666/04.webp",
-      alt: "Living room with a stone fireplace and beamed ceiling in a home sold by the team",
-      width: 1152,
-      height: 864,
+      src: "/images/irma-john-portrait.jpg",
+      alt: "Irma and John Nelson",
+      width: 800,
+      height: 639,
     } as SiteImage,
     /** Tall photo beside the About page introduction. */
     aboutHero: {

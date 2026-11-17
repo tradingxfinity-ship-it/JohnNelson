@@ -14,15 +14,41 @@ export type ViewerPhoto = {
   fullAlbum?: ViewerAlbum;
 };
 
-export type ViewerAlbum = { label: string; photos: ViewerPhoto[] };
+/** "gallery" opens on a scrolling mosaic of every photo; "single" opens on one photo at a time. */
+export type ViewerLayout = "gallery" | "single";
+
+export type ViewerAlbum = { label: string; photos: ViewerPhoto[]; layout?: ViewerLayout };
 
 type ViewerSet = ViewerAlbum & { start: number };
+
+// Repeating row shapes for the gallery mosaic, as column widths
+const ROW_PATTERNS = [
+  [2, 1],
+  [1, 1, 1],
+  [1, 2],
+  [1, 1],
+];
+
+/** Splits photos into mosaic rows; a short last row shares the width evenly. */
+function mosaicRows<T>(items: T[]): { cols: number[]; items: { item: T; index: number }[] }[] {
+  const rows = [];
+  let i = 0;
+  let p = 0;
+  while (i < items.length) {
+    const pattern = ROW_PATTERNS[p % ROW_PATTERNS.length];
+    const slice = items.slice(i, i + pattern.length).map((item, k) => ({ item, index: i + k }));
+    rows.push({ cols: slice.length === pattern.length ? pattern : slice.map(() => 1), items: slice });
+    i += pattern.length;
+    p++;
+  }
+  return rows;
+}
 
 const OPEN_EVENT = "open-photo-viewer";
 
 /** Opens any set of photos in the site-wide viewer, starting at `start`. */
-export function openPhotoViewer(label: string, photos: ViewerPhoto[], start = 0) {
-  window.dispatchEvent(new CustomEvent<ViewerSet>(OPEN_EVENT, { detail: { label, photos, start } }));
+export function openPhotoViewer(label: string, photos: ViewerPhoto[], start = 0, layout: ViewerLayout = "single") {
+  window.dispatchEvent(new CustomEvent<ViewerSet>(OPEN_EVENT, { detail: { label, photos, start, layout } }));
 }
 
 /** A sold album from soldAlbums.ts, ready for the viewer. */
@@ -32,6 +58,7 @@ export function soldAlbumSet(slug: string): ViewerSet | null {
   return {
     label: `${album.title}, ${album.place}: photo album`,
     start: 0,
+    layout: "gallery",
     photos: album.photos.map((p) => ({
       ...p,
       title: album.title,
@@ -43,13 +70,16 @@ export function soldAlbumSet(slug: string): ViewerSet | null {
 /** Opens a sold home's full photo album in the site-wide viewer. */
 export function openSoldAlbum(slug: string) {
   const set = soldAlbumSet(slug);
-  if (set) openPhotoViewer(set.label, set.photos);
+  if (set) openPhotoViewer(set.label, set.photos, 0, "gallery");
 }
 
 /** Full-screen photo viewer. Mounted once in the root layout. */
 export function AlbumViewer() {
   const [set, setSet] = useState<ViewerSet | null>(null);
   const [index, setIndex] = useState(0);
+  const [mode, setMode] = useState<ViewerLayout>("single");
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const galleryScroll = useRef(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
   const thumbsRef = useRef<HTMLDivElement>(null);
@@ -67,6 +97,8 @@ export function AlbumViewer() {
       if (!detail?.photos.length) return;
       openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       setSet(detail);
+      setMode(detail.layout ?? "single");
+      galleryScroll.current = 0;
       setIndex(Math.min(Math.max(detail.start, 0), detail.photos.length - 1));
     };
     window.addEventListener(OPEN_EVENT, onOpen);
@@ -84,7 +116,22 @@ export function AlbumViewer() {
       ?.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
   }, [index, set]);
 
+  // Coming back to the gallery: restore its scroll position and focus the photo just viewed
+  useEffect(() => {
+    if (mode !== "gallery" || !galleryRef.current) return;
+    galleryRef.current.scrollTop = galleryScroll.current;
+    galleryRef.current.querySelector<HTMLElement>(`[data-tile="${index}"]`)?.focus({ preventScroll: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode]);
+
+  const openPhoto = (i: number) => {
+    galleryScroll.current = galleryRef.current?.scrollTop ?? 0;
+    setIndex(i);
+    setMode("single");
+  };
+
   const onKeyDown = (e: React.KeyboardEvent) => {
+    if (mode !== "single") return;
     if (e.key === "ArrowRight") {
       e.preventDefault();
       go(1);
@@ -100,8 +147,10 @@ export function AlbumViewer() {
   const showAlbumLink = fullAlbum && set?.photos !== fullAlbum.photos && fullAlbum.photos.length > 1;
   const openFullAlbum = () => {
     if (!fullAlbum) return;
-    setSet({ ...fullAlbum, start: 0 });
+    setSet({ ...fullAlbum, start: 0, layout: "gallery" });
+    galleryScroll.current = 0;
     setIndex(0);
+    setMode("gallery");
   };
 
   return (
@@ -115,7 +164,76 @@ export function AlbumViewer() {
       onKeyDown={onKeyDown}
       className="m-0 h-dvh max-h-none w-screen max-w-none bg-navy p-0 text-white backdrop:bg-navy/90"
     >
-      {set && photo && (
+      {set && photo && mode === "gallery" && (
+        <div ref={galleryRef} className="h-full overflow-y-auto">
+          <div className="sticky top-0 z-10 bg-navy/95 backdrop-blur-sm">
+            <div className="mx-auto flex max-w-[1248px] items-center justify-between gap-4 px-5 py-4 sm:px-8">
+              <div className="min-w-0">
+                <p className="truncate text-base font-medium sm:text-lg">{set.photos[0].title}</p>
+                <p className="truncate text-sm text-white/70">{set.photos[0].subtitle}</p>
+              </div>
+              <div className="flex shrink-0 items-center gap-3 sm:gap-4">
+                <p className="text-sm text-white/80">{count} photos</p>
+                <button
+                  type="button"
+                  onClick={close}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/25 hover:bg-white/10"
+                  autoFocus
+                >
+                  <span className="sr-only">Close photos</span>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    aria-hidden
+                  >
+                    <path d="M5 5l10 10M15 5L5 15" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <ul
+            className="mx-auto flex max-w-[1248px] flex-col gap-2 px-5 pb-10 sm:gap-3 sm:px-8"
+            aria-label="All photos"
+          >
+            {mosaicRows(set.photos).map((row, r) => (
+              <li
+                key={r}
+                className="grid grid-cols-1 gap-2 sm:h-[clamp(200px,26vw,360px)] sm:grid-cols-[var(--cols)] sm:gap-3"
+                style={{ "--cols": row.cols.map((c) => `${c}fr`).join(" ") } as React.CSSProperties}
+              >
+                {row.items.map(({ item, index: i }) => (
+                  <button
+                    key={item.src}
+                    type="button"
+                    data-tile={i}
+                    onClick={() => openPhoto(i)}
+                    className="group relative aspect-[4/3] overflow-hidden rounded-md bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass sm:aspect-auto sm:h-full"
+                  >
+                    <span className="sr-only">
+                      Open photo {i + 1} of {count}
+                    </span>
+                    <Image
+                      src={item.src}
+                      alt=""
+                      fill
+                      sizes={`(min-width: 640px) ${Math.round((100 * row.cols[row.items.findIndex((x) => x.index === i)]) / row.cols.reduce((a, b) => a + b, 0))}vw, 100vw`}
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                    />
+                  </button>
+                ))}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {set && photo && mode === "single" && (
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-8">
             <div className="min-w-0">
@@ -123,6 +241,18 @@ export function AlbumViewer() {
               <p className="truncate text-sm text-white/70">{photo.subtitle}</p>
             </div>
             <div className="flex shrink-0 items-center gap-3 sm:gap-4">
+              {set.layout === "gallery" && (
+                <button
+                  type="button"
+                  onClick={() => setMode("gallery")}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-md border border-white/25 px-3 text-sm font-medium hover:bg-white/10 sm:px-4"
+                >
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden>
+                    <path d="M0 0h6v6H0zM8 0h6v6H8zM0 8h6v6H0zM8 8h6v6H8z" />
+                  </svg>
+                  <span className="sr-only sm:not-sr-only">All photos</span>
+                </button>
+              )}
               {showAlbumLink && fullAlbum && (
                 <button
                   type="button"
@@ -142,7 +272,15 @@ export function AlbumViewer() {
                 autoFocus
               >
                 <span className="sr-only">Close photos</span>
-                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  aria-hidden
+                >
                   <path d="M5 5l10 10M15 5L5 15" />
                 </svg>
               </button>
