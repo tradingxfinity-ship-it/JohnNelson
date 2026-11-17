@@ -44,3 +44,6 @@ next-env.d.ts
 
 # local tooling
 .claude/
+
+# Zillow collection progress (contains street addresses; keep out of the public repo)
+.portfolio-cache/

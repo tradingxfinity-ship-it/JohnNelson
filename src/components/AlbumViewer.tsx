@@ -10,11 +10,13 @@ export type ViewerPhoto = {
   height: number;
   title: string;
   subtitle: string;
-  /** Slug of a full album in soldAlbums.ts, offered as “View all photos” */
-  album?: string;
+  /** This home's full album, offered as “View all N photos” while browsing other photos */
+  fullAlbum?: ViewerAlbum;
 };
 
-type ViewerSet = { label: string; photos: ViewerPhoto[]; start: number };
+export type ViewerAlbum = { label: string; photos: ViewerPhoto[] };
+
+type ViewerSet = ViewerAlbum & { start: number };
 
 const OPEN_EVENT = "open-photo-viewer";
 
@@ -23,7 +25,8 @@ export function openPhotoViewer(label: string, photos: ViewerPhoto[], start = 0)
   window.dispatchEvent(new CustomEvent<ViewerSet>(OPEN_EVENT, { detail: { label, photos, start } }));
 }
 
-function albumSet(slug: string): ViewerSet | null {
+/** A sold album from soldAlbums.ts, ready for the viewer. */
+export function soldAlbumSet(slug: string): ViewerSet | null {
   const album = soldAlbums.find((a) => a.slug === slug);
   if (!album) return null;
   return {
@@ -39,7 +42,7 @@ function albumSet(slug: string): ViewerSet | null {
 
 /** Opens a sold home's full photo album in the site-wide viewer. */
 export function openSoldAlbum(slug: string) {
-  const set = albumSet(slug);
+  const set = soldAlbumSet(slug);
   if (set) openPhotoViewer(set.label, set.photos);
 }
 
@@ -93,8 +96,13 @@ export function AlbumViewer() {
 
   const photo = set?.photos[index];
   // From a portfolio photo, offer that home's full album
-  const fullAlbum = photo?.album ? soldAlbums.find((a) => a.slug === photo.album) : undefined;
-  const showAlbumLink = fullAlbum && count !== fullAlbum.photos.length;
+  const fullAlbum = photo?.fullAlbum;
+  const showAlbumLink = fullAlbum && set?.photos !== fullAlbum.photos && fullAlbum.photos.length > 1;
+  const openFullAlbum = () => {
+    if (!fullAlbum) return;
+    setSet({ ...fullAlbum, start: 0 });
+    setIndex(0);
+  };
 
   return (
     <dialog
@@ -115,16 +123,10 @@ export function AlbumViewer() {
               <p className="truncate text-sm text-white/70">{photo.subtitle}</p>
             </div>
             <div className="flex shrink-0 items-center gap-3 sm:gap-4">
-              {showAlbumLink && (
+              {showAlbumLink && fullAlbum && (
                 <button
                   type="button"
-                  onClick={() => {
-                    const next = albumSet(fullAlbum.slug);
-                    if (next) {
-                      setSet(next);
-                      setIndex(0);
-                    }
-                  }}
+                  onClick={openFullAlbum}
                   className="hidden min-h-11 items-center rounded-md border border-white/25 px-4 text-sm font-medium hover:bg-white/10 sm:inline-flex"
                 >
                   View all {fullAlbum.photos.length} photos
@@ -190,16 +192,10 @@ export function AlbumViewer() {
                 </button>
               </>
             )}
-            {showAlbumLink && (
+            {showAlbumLink && fullAlbum && (
               <button
                 type="button"
-                onClick={() => {
-                  const next = albumSet(fullAlbum.slug);
-                  if (next) {
-                    setSet(next);
-                    setIndex(0);
-                  }
-                }}
+                onClick={openFullAlbum}
                 className="absolute bottom-4 left-1/2 inline-flex min-h-11 -translate-x-1/2 items-center rounded-md bg-white px-4 text-sm font-medium text-navy sm:hidden"
               >
                 View all {fullAlbum.photos.length} photos
@@ -207,22 +203,33 @@ export function AlbumViewer() {
             )}
           </div>
 
-          <div ref={thumbsRef} className="flex gap-2 overflow-x-auto px-5 py-4 sm:px-8" aria-label="Photos">
-            {set.photos.map((p, i) => (
-              <button
-                key={p.src}
-                type="button"
-                data-index={i}
-                onClick={() => setIndex(i)}
-                aria-current={i === index ? "true" : undefined}
-                className={`relative h-14 w-20 shrink-0 overflow-hidden rounded-sm border-2 sm:h-16 sm:w-24 ${
-                  i === index ? "border-brass" : "border-transparent opacity-60 hover:opacity-100"
-                }`}
-              >
-                <span className="sr-only">Show photo {i + 1}</span>
-                <Image src={p.src} alt="" fill sizes="96px" className="object-cover" />
-              </button>
-            ))}
+          {/* Thumbnails stay inside the page width and fade out at the edges when they overflow */}
+          <div className="mx-auto w-full max-w-[1248px] px-5 pb-5 pt-4 sm:px-8">
+            <div
+              ref={thumbsRef}
+              className="overflow-x-auto [mask-image:linear-gradient(to_right,transparent,black_32px,black_calc(100%-32px),transparent)] [scrollbar-width:none]"
+              aria-label="Photos"
+            >
+              <div className="mx-auto flex w-max gap-2 px-8 py-1">
+                {set.photos.map((p, i) => (
+                  <button
+                    key={p.src}
+                    type="button"
+                    data-index={i}
+                    onClick={() => setIndex(i)}
+                    aria-current={i === index ? "true" : undefined}
+                    className={`relative h-12 w-16 shrink-0 overflow-hidden rounded-md transition-opacity sm:h-14 sm:w-20 ${
+                      i === index
+                        ? "opacity-100 ring-2 ring-brass ring-offset-2 ring-offset-navy"
+                        : "opacity-50 hover:opacity-100"
+                    }`}
+                  >
+                    <span className="sr-only">Show photo {i + 1}</span>
+                    <Image src={p.src} alt="" fill sizes="80px" className="object-cover" />
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       )}

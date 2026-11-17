@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { portfolio, type PortfolioHome } from "@/content/portfolio";
-import { soldAlbums } from "@/content/soldAlbums";
-import { openPhotoViewer, openSoldAlbum, type ViewerPhoto } from "./AlbumViewer";
+import { openPhotoViewer, soldAlbumSet, type ViewerAlbum, type ViewerPhoto } from "./AlbumViewer";
 
 const ALL = "All areas";
 
@@ -59,6 +58,18 @@ export function PortfolioGrid() {
 }
 
 const isLand = (h: PortfolioHome) => h.details.includes("Land");
+const homeTitle = (h: PortfolioHome) => `${isLand(h) ? "Land" : "Home"} in ${h.city}, TX ${h.zip}`;
+const homeSubtitle = (h: PortfolioHome) => `Sold ${h.sold} · ${h.details.join(" · ")}`;
+
+/** A home's full album, from soldAlbums.ts or its own photos, ready for the viewer. */
+function homeAlbum(h: PortfolioHome): ViewerAlbum | undefined {
+  if (h.album) return soldAlbumSet(h.album) ?? undefined;
+  if (!h.photos?.length) return undefined;
+  return {
+    label: `${homeTitle(h)}: photo album`,
+    photos: h.photos.map((p) => ({ ...p, title: homeTitle(h), subtitle: homeSubtitle(h) })),
+  };
+}
 
 /** Opens the viewer on the current list of homes, starting at the clicked one. */
 function openHomes(homes: PortfolioHome[], start: number, area: string) {
@@ -66,16 +77,16 @@ function openHomes(homes: PortfolioHome[], start: number, area: string) {
     src: h.src,
     width: h.width,
     height: h.height,
-    title: `${isLand(h) ? "Land" : "Home"} in ${h.city}, TX ${h.zip}`,
-    subtitle: `Sold ${h.sold} · ${h.details.join(" · ")}`,
-    album: h.album,
+    title: homeTitle(h),
+    subtitle: homeSubtitle(h),
+    fullAlbum: homeAlbum(h),
   }));
   openPhotoViewer(`Portfolio${area === ALL ? "" : `: ${area}`}`, photos, start);
 }
 
 function HomeCard({ home, priority, onOpen }: { home: PortfolioHome; priority: boolean; onOpen: () => void }) {
-  const album = home.album ? soldAlbums.find((a) => a.slug === home.album) : undefined;
-  const label = `${isLand(home) ? "Land" : "Home"} in ${home.city}, TX ${home.zip}, sold ${home.sold}`;
+  const album = homeAlbum(home);
+  const label = `${homeTitle(home)}, sold ${home.sold}`;
 
   const body = (
     <>
@@ -117,7 +128,7 @@ function HomeCard({ home, priority, onOpen }: { home: PortfolioHome; priority: b
   return (
     <button
       type="button"
-      onClick={() => (album ? openSoldAlbum(album.slug) : onOpen())}
+      onClick={() => (album ? openPhotoViewer(album.label, album.photos) : onOpen())}
       aria-haspopup="dialog"
       aria-label={album ? `${label}. View ${album.photos.length} photos` : `${label}. View photo`}
       className="group block w-full cursor-pointer text-left"
