@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { InquirySection } from "@/components/InquirySection";
 import { Listings } from "@/components/Listings";
 import { SalesMap } from "@/components/SalesMap";
+import { SoldGallery } from "@/components/SoldGallery";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { TeamPortrait } from "@/components/TeamPortrait";
@@ -151,6 +152,8 @@ export default function Home() {
       <Listings />
 
       <SalesMap />
+
+      <SoldGallery />
 
       {/* Military families and veterans */}
       <Section className="bg-ivory">

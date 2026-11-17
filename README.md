@@ -51,6 +51,10 @@ The homepage map (`src/components/SalesMap.tsx`) reads its pins from `src/conten
 
 Map tiles come from OpenStreetMap's free tile server, which is fine for a small site. If traffic grows, switch the URL in `SalesMapClient.tsx` to a hosted provider (MapTiler, Stadia Maps, or CARTO with an API key).
 
+## Recently sold albums
+
+The homepage “Recently sold” section (`src/components/SoldGallery.tsx`) shows the photo albums of the five sold homes on the Zillow profile (104 photos, 1152px WebP, in `public/images/sold/<slug>/`). Clicking a home opens a full-screen viewer with arrow-key, swipe, and thumbnail navigation. Homes are labeled by city and ZIP code, not street address. To add a home, put its photos in a new folder as `01.webp`, `02.webp`, … and add an entry to `src/content/soldAlbums.ts`.
+
 ## Inquiry email setup
 
 The form posts to `/api/inquiry`, which validates on the server and sends one email per inquiry over SMTP:

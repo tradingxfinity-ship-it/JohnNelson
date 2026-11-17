@@ -88,3 +88,8 @@ h4 {
 .sales-map .leaflet-tile-pane {
   filter: grayscale(1) brightness(1.04) contrast(0.92);
 }
+
+/* Keep the page still while a photo album is open */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
