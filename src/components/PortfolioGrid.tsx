@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import { portfolio, type PortfolioHome } from "@/content/portfolio";
 import { soldAlbums } from "@/content/soldAlbums";
-import { openSoldAlbum } from "./AlbumViewer";
+import { openPhotoViewer, openSoldAlbum, type ViewerPhoto } from "./AlbumViewer";
 
 const ALL = "All areas";
 
@@ -44,7 +44,7 @@ export function PortfolioGrid() {
       <ul className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {homes.map((h, i) => (
           <li key={h.src}>
-            <HomeCard home={h} priority={i < 3} />
+            <HomeCard home={h} priority={i < 3} onOpen={() => openHomes(homes, i, area)} />
           </li>
         ))}
       </ul>
@@ -52,16 +52,31 @@ export function PortfolioGrid() {
   );
 }
 
-function HomeCard({ home, priority }: { home: PortfolioHome; priority: boolean }) {
+const isLand = (h: PortfolioHome) => h.details.includes("Land");
+
+/** Opens the viewer on the current list of homes, starting at the clicked one. */
+function openHomes(homes: PortfolioHome[], start: number, area: string) {
+  const photos: ViewerPhoto[] = homes.map((h) => ({
+    src: h.src,
+    width: h.width,
+    height: h.height,
+    title: `${isLand(h) ? "Land" : "Home"} in ${h.city}, TX ${h.zip}`,
+    subtitle: `Sold ${h.sold} · ${h.details.join(" · ")}`,
+    album: h.album,
+  }));
+  openPhotoViewer(`Portfolio${area === ALL ? "" : `: ${area}`}`, photos, start);
+}
+
+function HomeCard({ home, priority, onOpen }: { home: PortfolioHome; priority: boolean; onOpen: () => void }) {
   const album = home.album ? soldAlbums.find((a) => a.slug === home.album) : undefined;
-  const label = `${home.details.includes("Land") ? "Land" : "Home"} in ${home.city}, TX ${home.zip}, sold ${home.sold}`;
+  const label = `${isLand(home) ? "Land" : "Home"} in ${home.city}, TX ${home.zip}, sold ${home.sold}`;
 
   const body = (
     <>
       <span className="relative block aspect-[4/3] overflow-hidden rounded-lg bg-ivory">
         <Image
           src={home.src}
-          alt={album ? "" : label}
+          alt=""
           fill
           sizes="(min-width: 1248px) 400px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           priority={priority}
@@ -73,18 +88,14 @@ function HomeCard({ home, priority }: { home: PortfolioHome; priority: boolean }
       </span>
       <span className="mt-4 flex items-start justify-between gap-4">
         <span className="min-w-0">
-          <span
-            className={`block text-lg font-medium text-navy ${album ? "underline-offset-4 group-hover:underline group-focus-visible:underline" : ""}`}
-          >
+          <span className="block text-lg font-medium text-navy underline-offset-4 group-hover:underline group-focus-visible:underline">
             {home.city}
           </span>
           <span className="mt-0.5 block text-sm">TX {home.zip}</span>
         </span>
-        {album && (
-          <span className="shrink-0 pt-1 text-sm font-medium text-navy">
-            {album.photos.length} photos <span aria-hidden>→</span>
-          </span>
-        )}
+        <span className="shrink-0 pt-1 text-sm font-medium text-navy">
+          {album ? `${album.photos.length} photos` : "View"} <span aria-hidden>→</span>
+        </span>
       </span>
       <span className="mt-3 flex flex-wrap items-center gap-3 border-t border-line pt-3 text-sm">
         {home.details.map((d, j) => (
@@ -97,14 +108,13 @@ function HomeCard({ home, priority }: { home: PortfolioHome; priority: boolean }
     </>
   );
 
-  if (!album) return <div>{body}</div>;
   return (
     <button
       type="button"
-      onClick={() => openSoldAlbum(album.slug)}
+      onClick={() => (album ? openSoldAlbum(album.slug) : onOpen())}
       aria-haspopup="dialog"
-      aria-label={`${label}. View ${album.photos.length} photos`}
-      className="group block w-full text-left"
+      aria-label={album ? `${label}. View ${album.photos.length} photos` : `${label}. View photo`}
+      className="group block w-full cursor-pointer text-left"
     >
       {body}
     </button>

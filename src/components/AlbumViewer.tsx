@@ -2,42 +2,76 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { soldAlbums, type SoldAlbum } from "@/content/soldAlbums";
+import { soldAlbums } from "@/content/soldAlbums";
 
-/** Opens a sold home's photo album in the site-wide viewer. */
-export function openSoldAlbum(slug: string) {
-  window.dispatchEvent(new CustomEvent("open-sold-album", { detail: slug }));
+export type ViewerPhoto = {
+  src: string;
+  width: number;
+  height: number;
+  title: string;
+  subtitle: string;
+  /** Slug of a full album in soldAlbums.ts, offered as “View all photos” */
+  album?: string;
+};
+
+type ViewerSet = { label: string; photos: ViewerPhoto[]; start: number };
+
+const OPEN_EVENT = "open-photo-viewer";
+
+/** Opens any set of photos in the site-wide viewer, starting at `start`. */
+export function openPhotoViewer(label: string, photos: ViewerPhoto[], start = 0) {
+  window.dispatchEvent(new CustomEvent<ViewerSet>(OPEN_EVENT, { detail: { label, photos, start } }));
 }
 
-/** Full-screen photo viewer for sold home albums. Mounted once in the root layout. */
+function albumSet(slug: string): ViewerSet | null {
+  const album = soldAlbums.find((a) => a.slug === slug);
+  if (!album) return null;
+  return {
+    label: `${album.title}, ${album.place}: photo album`,
+    start: 0,
+    photos: album.photos.map((p) => ({
+      ...p,
+      title: album.title,
+      subtitle: `${album.place} · Sold ${album.sold}`,
+    })),
+  };
+}
+
+/** Opens a sold home's full photo album in the site-wide viewer. */
+export function openSoldAlbum(slug: string) {
+  const set = albumSet(slug);
+  if (set) openPhotoViewer(set.label, set.photos);
+}
+
+/** Full-screen photo viewer. Mounted once in the root layout. */
 export function AlbumViewer() {
-  const [album, setAlbum] = useState<SoldAlbum | null>(null);
+  const [set, setSet] = useState<ViewerSet | null>(null);
   const [index, setIndex] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const openerRef = useRef<HTMLButtonElement | null>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
   const thumbsRef = useRef<HTMLDivElement>(null);
+  const touchX = useRef<number | null>(null);
 
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (album && dialog && !dialog.open) dialog.showModal();
-  }, [album]);
+    if (set && dialog && !dialog.open) dialog.showModal();
+  }, [set]);
 
-  const close = useCallback(() => dialogRef.current?.close(), []);
-
-  // Any page can open an album by slug (see openSoldAlbum)
+  // Any page can open photos (see openPhotoViewer and openSoldAlbum)
   useEffect(() => {
     const onOpen = (e: Event) => {
-      const found = soldAlbums.find((a) => a.slug === (e as CustomEvent<string>).detail);
-      if (!found) return;
-      openerRef.current = document.activeElement instanceof HTMLButtonElement ? document.activeElement : null;
-      setAlbum(found);
-      setIndex(0);
+      const detail = (e as CustomEvent<ViewerSet>).detail;
+      if (!detail?.photos.length) return;
+      openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      setSet(detail);
+      setIndex(Math.min(Math.max(detail.start, 0), detail.photos.length - 1));
     };
-    window.addEventListener("open-sold-album", onOpen);
-    return () => window.removeEventListener("open-sold-album", onOpen);
+    window.addEventListener(OPEN_EVENT, onOpen);
+    return () => window.removeEventListener(OPEN_EVENT, onOpen);
   }, []);
 
-  const count = album?.photos.length ?? 0;
+  const close = useCallback(() => dialogRef.current?.close(), []);
+  const count = set?.photos.length ?? 0;
   const go = useCallback((delta: number) => setIndex((i) => (count ? (i + delta + count) % count : 0)), [count]);
 
   // Keep the active thumbnail in view
@@ -45,7 +79,7 @@ export function AlbumViewer() {
     thumbsRef.current
       ?.querySelector<HTMLElement>(`[data-index="${index}"]`)
       ?.scrollIntoView({ block: "nearest", inline: "center", behavior: "auto" });
-  }, [index]);
+  }, [index, set]);
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowRight") {
@@ -57,32 +91,45 @@ export function AlbumViewer() {
     }
   };
 
-  // Swipe on touch screens
-  const touchX = useRef<number | null>(null);
-
-  const photo = album?.photos[index];
+  const photo = set?.photos[index];
+  // From a portfolio photo, offer that home's full album
+  const fullAlbum = photo?.album ? soldAlbums.find((a) => a.slug === photo.album) : undefined;
+  const showAlbumLink = fullAlbum && count !== fullAlbum.photos.length;
 
   return (
     <dialog
       ref={dialogRef}
-      aria-label={album ? `${album.title}, ${album.place}: photo album` : "Photo album"}
+      aria-label={set?.label ?? "Photo viewer"}
       onClose={() => {
-        setAlbum(null);
+        setSet(null);
         openerRef.current?.focus();
       }}
       onKeyDown={onKeyDown}
       className="m-0 h-dvh max-h-none w-screen max-w-none bg-navy p-0 text-white backdrop:bg-navy/90"
     >
-      {album && photo && (
+      {set && photo && (
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between gap-4 px-5 py-4 sm:px-8">
             <div className="min-w-0">
-              <p className="truncate text-base font-medium sm:text-lg">{album.title}</p>
-              <p className="truncate text-sm text-white/70">
-                {album.place} · Sold {album.sold}
-              </p>
+              <p className="truncate text-base font-medium sm:text-lg">{photo.title}</p>
+              <p className="truncate text-sm text-white/70">{photo.subtitle}</p>
             </div>
-            <div className="flex shrink-0 items-center gap-4">
+            <div className="flex shrink-0 items-center gap-3 sm:gap-4">
+              {showAlbumLink && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const next = albumSet(fullAlbum.slug);
+                    if (next) {
+                      setSet(next);
+                      setIndex(0);
+                    }
+                  }}
+                  className="hidden min-h-11 items-center rounded-md border border-white/25 px-4 text-sm font-medium hover:bg-white/10 sm:inline-flex"
+                >
+                  View all {fullAlbum.photos.length} photos
+                </button>
+              )}
               <p className="text-sm tabular-nums text-white/80" aria-live="polite">
                 {index + 1} / {count}
               </p>
@@ -92,16 +139,8 @@ export function AlbumViewer() {
                 className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/25 hover:bg-white/10"
                 autoFocus
               >
-                <span className="sr-only">Close album</span>
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  aria-hidden
-                >
+                <span className="sr-only">Close photos</span>
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden>
                   <path d="M5 5l10 10M15 5L5 15" />
                 </svg>
               </button>
@@ -121,40 +160,55 @@ export function AlbumViewer() {
             <Image
               key={photo.src}
               src={photo.src}
-              alt={`${album.title}, photo ${index + 1} of ${count}`}
+              alt={`${photo.title}, ${photo.subtitle}. Photo ${index + 1} of ${count}`}
               fill
               sizes="100vw"
               priority
               className="object-contain"
             />
-            <button
-              type="button"
-              onClick={() => go(-1)}
-              className="absolute left-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-navy/70 hover:bg-navy sm:left-6"
-            >
-              <span className="sr-only">Previous photo</span>
-              <span aria-hidden className="text-xl">
-                ←
-              </span>
-            </button>
-            <button
-              type="button"
-              onClick={() => go(1)}
-              className="absolute right-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-navy/70 hover:bg-navy sm:right-6"
-            >
-              <span className="sr-only">Next photo</span>
-              <span aria-hidden className="text-xl">
-                →
-              </span>
-            </button>
+            {count > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => go(-1)}
+                  className="absolute left-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-navy/70 hover:bg-navy sm:left-6"
+                >
+                  <span className="sr-only">Previous photo</span>
+                  <span aria-hidden className="text-xl">
+                    ←
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => go(1)}
+                  className="absolute right-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-navy/70 hover:bg-navy sm:right-6"
+                >
+                  <span className="sr-only">Next photo</span>
+                  <span aria-hidden className="text-xl">
+                    →
+                  </span>
+                </button>
+              </>
+            )}
+            {showAlbumLink && (
+              <button
+                type="button"
+                onClick={() => {
+                  const next = albumSet(fullAlbum.slug);
+                  if (next) {
+                    setSet(next);
+                    setIndex(0);
+                  }
+                }}
+                className="absolute bottom-4 left-1/2 inline-flex min-h-11 -translate-x-1/2 items-center rounded-md bg-white px-4 text-sm font-medium text-navy sm:hidden"
+              >
+                View all {fullAlbum.photos.length} photos
+              </button>
+            )}
           </div>
 
-          <div
-            ref={thumbsRef}
-            className="flex gap-2 overflow-x-auto px-5 py-4 sm:px-8"
-            aria-label="Photos in this album"
-          >
-            {album.photos.map((p, i) => (
+          <div ref={thumbsRef} className="flex gap-2 overflow-x-auto px-5 py-4 sm:px-8" aria-label="Photos">
+            {set.photos.map((p, i) => (
               <button
                 key={p.src}
                 type="button"

@@ -53,7 +53,7 @@ Map tiles come from OpenStreetMap's free tile server, which is fine for a small 
 
 ## Portfolio
 
-`/portfolio` shows 57 sold homes from the pins on the team's Zillow map, newest first, with one cover photo each (768px WebP in `public/images/portfolio/`) and filter buttons by area. Data lives in `src/content/portfolio.ts`; homes are labeled by city and ZIP, and older sale dates are approximate years because Zillow only shows “Sold 6 years ago”. Homes that also have a full album (`album` field) open the shared photo viewer (`src/components/AlbumViewer.tsx`, mounted once in the root layout).
+`/portfolio` shows 57 sold homes from the pins on the team's Zillow map, newest first, with one cover photo each (up to 1152px WebP in `public/images/portfolio/`) and filter buttons by area. Data lives in `src/content/portfolio.ts`; homes are labeled by city and ZIP, and older sale dates are approximate years because Zillow only shows “Sold 6 years ago”. Every card opens the shared photo viewer, where visitors can arrow through the portfolio; homes that also have a full album (`album` field) open that album (`src/components/AlbumViewer.tsx`, mounted once in the root layout).
 
 ## Recently sold albums
 
