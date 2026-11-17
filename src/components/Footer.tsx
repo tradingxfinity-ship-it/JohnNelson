@@ -13,6 +13,12 @@ export function Footer() {
             <p className="mt-5 max-w-xs text-[15px] leading-relaxed">
               Irma and John Nelson help people buy, sell, and rent homes across San Antonio.
             </p>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/60">
+              {site.brokerage.team} · {site.brokerage.name}
+              <br />
+              {site.brokerage.agent}, {site.brokerage.agentTitle} ·{" "}
+              <span className="whitespace-nowrap">TX License #{site.brokerage.license}</span>
+            </p>
           </div>
 
           <nav aria-label="Footer">
@@ -25,6 +31,17 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href={site.brokerage.searchUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white hover:underline underline-offset-4"
+                >
+                  Search all MLS listings <span aria-hidden>↗</span>
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+              </li>
             </ul>
           </nav>
 

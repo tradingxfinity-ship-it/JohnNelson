@@ -154,6 +154,17 @@ export const site = {
     addressLines: ["14439 NW Military Hwy, Suite 108-478", "San Antonio, TX 78231"],
   },
 
+  /** Brokerage and license details, from realestateintx.com. Shown in the footer. */
+  brokerage: {
+    team: "The Nelson Team",
+    name: "Real Broker, LLC",
+    agent: "John Nelson",
+    agentTitle: "Broker Associate",
+    license: "600636",
+    /** The team's MLS home search site */
+    searchUrl: "https://www.realestateintx.com/",
+  },
+
   images: {
     /** Interior photos beside the “How can we help you move?” list. */
     services: [
