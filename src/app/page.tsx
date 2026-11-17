@@ -150,25 +150,25 @@ export default function Home() {
 
       {/* Military families and veterans */}
       <Section className="bg-ivory">
-        <Container className="grid gap-12 lg:grid-cols-[5fr_6fr] lg:items-center lg:gap-20">
+        <Container className="grid gap-12 lg:grid-cols-[6fr_5fr] lg:items-center lg:gap-16">
           <div>
             <Eyebrow>Military families and veterans</Eyebrow>
-            <h2 className="text-3xl font-medium leading-tight sm:text-4xl">
+            <h2 className="text-[1.75rem] font-medium leading-tight sm:text-3xl">
               Real estate guidance for military families and veterans.
             </h2>
-            <p className="mt-5 text-lg leading-relaxed">
+            <p className="mt-4 leading-relaxed">
               San Antonio is home to a large military community. Irma and John help service members, veterans, and
               their families buy, sell, or rent with a clear plan for the move ahead.
             </p>
-            <ul className="mt-8 divide-y divide-line border-y border-line">
+            <ul className="mt-6 divide-y divide-line border-y border-line">
               {militaryPoints.map((p) => (
-                <li key={p.title} className="py-5">
-                  <h3 className="text-lg font-medium">{p.title}</h3>
-                  <p className="mt-1 leading-relaxed">{p.body}</p>
+                <li key={p.title} className="py-4">
+                  <h3 className="text-base font-medium">{p.title}</h3>
+                  <p className="mt-1 text-[15px] leading-relaxed">{p.body}</p>
                 </li>
               ))}
             </ul>
-            <ArrowLink href={CONTACT_HREF} className="mt-8">
+            <ArrowLink href={CONTACT_HREF} className="mt-6 text-[15px]">
               Tell us about your move
             </ArrowLink>
           </div>
@@ -178,8 +178,8 @@ export default function Home() {
             shape="arch"
             caption="Relocating to San Antonio"
             captionOn="ivory"
-            sizes="(min-width: 1024px) 620px, 100vw"
-            className="aspect-[4/3] w-full lg:aspect-[4/5]"
+            sizes="(min-width: 1024px) 520px, 100vw"
+            className="aspect-[4/3] w-full"
           />
         </Container>
       </Section>
