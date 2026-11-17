@@ -38,6 +38,28 @@ export const site = {
     reviewCount: "101",
     /** Team’s Zillow profile. Shows the “Read reviews on Zillow” link when set. */
     profileUrl: "https://www.zillow.com/profile/getitsoldsa" as string | null,
+    /** Reviews by type of help, from the Zillow profile's review filters (November 2026). */
+    breakdown: [
+      { label: "Helped them sell", count: 54 },
+      { label: "Helped them buy", count: 38 },
+      { label: "Helped them buy and sell", count: 8 },
+      { label: "Helped them rent", count: 1 },
+    ],
+    /** What clients rate agents on in Zillow reviews. */
+    ratedOn: ["Local knowledge", "Process expertise", "Responsiveness", "Negotiation skills"],
+    /** The most recent reviews: rating, date, and the help described on Zillow (no review text). */
+    recentReviews: [
+      { date: "Mar 2023", rating: 5, kind: "Sold", description: "Sold a home in 2023" },
+      { date: "Apr 2022", rating: 5, kind: "Rented", description: "Rented a single-family home in Maverick Creek, San Antonio" },
+      { date: "Oct 2021", rating: 5, kind: "Bought", description: "Bought a home in 2021 in 78253" },
+      { date: "Oct 2021", rating: 5, kind: "Bought", description: "Bought a single-family home in San Antonio" },
+      { date: "May 2021", rating: 5, kind: "Sold", description: "Sold a single-family home in Schertz" },
+      { date: "Apr 2021", rating: 5, kind: "Sold", description: "Sold a single-family home in San Antonio" },
+      { date: "Mar 2021", rating: 5, kind: "Sold", description: "Sold a single-family home in San Antonio" },
+      { date: "Feb 2021", rating: 5, kind: "Bought", description: "Bought a single-family home in San Antonio" },
+      { date: "Feb 2021", rating: 5, kind: "Bought", description: "Bought a single-family home in San Antonio" },
+      { date: "Feb 2021", rating: 5, kind: "Sold", description: "Sold a single-family home in San Antonio" },
+    ],
     /**
      * Only add testimonials the client has supplied word for word.
      * Example: { quote: "…", name: "First L.", context: "Sold in 2025" }

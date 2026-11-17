@@ -6,6 +6,7 @@ import { Listings } from "@/components/Listings";
 import { SalesMap } from "@/components/SalesMap";
 import { SoldGallery } from "@/components/SoldGallery";
 import { Photo } from "@/components/Photo";
+import { Reviews } from "@/components/Reviews";
 import { StatsStrip } from "@/components/StatsStrip";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
 import { CONTACT_HREF, site } from "@/content/site";
@@ -184,71 +185,9 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Zillow reviews */}
-      <Section className="border-t border-line pt-16 lg:pt-20">
-        <Container>
-          <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
-            <div>
-              <Eyebrow>Client reviews</Eyebrow>
-              <h2 className="text-3xl font-medium sm:text-4xl">What clients say on Zillow.</h2>
-            </div>
-            <dl className="flex gap-12">
-              <div className="flex flex-col-reverse">
-                <dt className="mt-1 text-[15px]">on Zillow</dt>
-                <dd className="flex items-baseline gap-2 text-5xl font-medium tracking-[-0.03em] text-navy">
-                  {site.zillow.rating}
-                  <Stars />
-                </dd>
-              </div>
-              <div className="flex flex-col-reverse border-l border-line pl-12">
-                <dt className="mt-1 text-[15px]">reviews</dt>
-                <dd className="text-5xl font-medium tracking-[-0.03em] text-navy">{site.zillow.reviewCount}</dd>
-              </div>
-            </dl>
-          </div>
-
-          {site.zillow.testimonials.length > 0 && (
-            <ul className="mt-12 grid gap-6 md:grid-cols-3">
-              {site.zillow.testimonials.map((t) => (
-                <li key={t.name + t.quote.slice(0, 20)} className="rounded-md border border-line p-8">
-                  <blockquote className="leading-relaxed text-navy">“{t.quote}”</blockquote>
-                  <p className="mt-6 text-sm">
-                    {t.name}
-                    {t.context ? ` · ${t.context}` : ""}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          )}
-
-          {site.zillow.profileUrl && (
-            <a
-              href={site.zillow.profileUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex items-center gap-2 font-medium text-navy underline-offset-4 hover:underline"
-            >
-              Read reviews on Zillow
-              <span aria-hidden>↗</span>
-              <span className="sr-only">(opens in a new tab)</span>
-            </a>
-          )}
-        </Container>
-      </Section>
+      <Reviews />
 
       <InquirySection />
     </>
-  );
-}
-
-function Stars() {
-  return (
-    <span className="flex gap-0.5 text-brass" aria-hidden>
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-          <path d="M10 1.5l2.6 5.5 6 .7-4.4 4.1 1.2 5.9L10 14.8l-5.4 2.9 1.2-5.9L1.4 7.7l6-.7z" />
-        </svg>
-      ))}
-    </span>
   );
 }
