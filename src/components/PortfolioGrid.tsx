@@ -57,12 +57,12 @@ export function PortfolioGrid() {
   );
 }
 
-const isLand = (h: PortfolioHome) => h.details.includes("Land");
-const homeTitle = (h: PortfolioHome) => `${isLand(h) ? "Land" : "Home"} in ${h.city}, TX ${h.zip}`;
+export const isLand = (h: PortfolioHome) => h.details.includes("Land");
+export const homeTitle = (h: PortfolioHome) => `${isLand(h) ? "Land" : "Home"} in ${h.city}, TX ${h.zip}`;
 const homeSubtitle = (h: PortfolioHome) => `Sold ${h.sold} · ${h.details.join(" · ")}`;
 
 /** A home's full album, from soldAlbums.ts or its own photos, ready for the viewer. */
-function homeAlbum(h: PortfolioHome): ViewerAlbum | undefined {
+export function homeAlbum(h: PortfolioHome): ViewerAlbum | undefined {
   if (h.album) return soldAlbumSet(h.album) ?? undefined;
   if (!h.photos?.length) return undefined;
   return {

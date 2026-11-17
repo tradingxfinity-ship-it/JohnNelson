@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Photo } from "@/components/Photo";
+import { SoldCarousel } from "@/components/SoldCarousel";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
 import { portfolio } from "@/content/portfolio";
 import { totalSold } from "@/content/sales";
@@ -52,13 +52,13 @@ export default function AboutPage() {
   const byCity = [...portfolio.reduce((m, h) => m.set(h.city, (m.get(h.city) ?? 0) + 1), new Map<string, number>())]
     .sort((a, b) => b[1] - a[1])
     .slice(0, 6);
-  // Three home exteriors for the mosaic: preferred ZIPs first, then any other album home (no land)
+  // Homes with full albums (no land) for the carousel, a few strong exteriors first
   const albumHomes = portfolio.filter((h) => (h.album || h.photos?.length) && !h.details.includes("Land"));
   const preferred = ["78258", "78248", "78213"];
-  const mosaic = [
+  const carouselHomes = [
     ...preferred.map((zip) => albumHomes.find((h) => h.zip === zip)).filter((h) => h !== undefined),
     ...albumHomes.filter((h) => !preferred.includes(h.zip)),
-  ].slice(0, 3);
+  ];
 
   return (
     <>
@@ -157,29 +157,8 @@ export default function AboutPage() {
               See all {portfolio.length} homes in our portfolio
             </ArrowLink>
           </div>
-          <div className="mt-10 grid gap-3 sm:grid-cols-[2fr_1fr] sm:grid-rows-2 lg:gap-4">
-            {mosaic.map((h, i) => (
-              <Link
-                key={h.src}
-                href="/portfolio"
-                className={`group relative block overflow-hidden rounded-lg bg-ivory ${
-                  i === 0
-                    ? "aspect-[4/3] rounded-tl-[clamp(64px,14vw,180px)] sm:row-span-2 sm:aspect-auto sm:min-h-[460px]"
-                    : "aspect-[4/3] sm:aspect-auto sm:min-h-[220px]"
-                }`}
-              >
-                <Image
-                  src={h.src}
-                  alt={`Home sold in ${h.city}, TX ${h.zip}`}
-                  fill
-                  sizes={i === 0 ? "(min-width: 640px) 66vw, 100vw" : "(min-width: 640px) 33vw, 100vw"}
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                />
-                <span className="absolute bottom-0 left-0 rounded-tr-lg bg-white px-4 pb-1.5 pt-3 text-xs font-medium uppercase tracking-[0.12em] text-navy">
-                  {h.city} · Sold {h.sold}
-                </span>
-              </Link>
-            ))}
+          <div className="mt-10">
+            <SoldCarousel homes={carouselHomes} />
           </div>
         </Container>
       </Section>
