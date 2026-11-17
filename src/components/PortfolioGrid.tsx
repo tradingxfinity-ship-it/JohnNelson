@@ -21,25 +21,31 @@ export function PortfolioGrid() {
 
   return (
     <>
-      <div role="group" aria-label="Filter by area" className="flex flex-wrap gap-2">
-        {areas.map((a) => (
-          <button
-            key={a}
-            type="button"
-            onClick={() => setArea(a)}
-            aria-pressed={area === a}
-            className={`min-h-10 rounded-full border px-4 text-sm font-medium transition-colors ${
-              area === a ? "border-navy bg-navy text-white" : "border-line text-navy hover:border-navy"
-            }`}
-          >
-            {a}
-          </button>
-        ))}
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+        <div
+          role="group"
+          aria-label="Filter by area"
+          className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0"
+        >
+          {areas.map((a) => (
+            <button
+              key={a}
+              type="button"
+              onClick={() => setArea(a)}
+              aria-pressed={area === a}
+              className={`min-h-10 shrink-0 whitespace-nowrap rounded-full border px-4 text-sm font-medium transition-colors ${
+                area === a ? "border-navy bg-navy text-white" : "border-line text-navy hover:border-navy"
+              }`}
+            >
+              {a}
+            </button>
+          ))}
+        </div>
+        <p className="shrink-0 text-sm" aria-live="polite">
+          Showing {homes.length} {homes.length === 1 ? "home" : "homes"}
+          {area === ALL ? "" : ` in ${area}`}
+        </p>
       </div>
-      <p className="mt-6 text-sm" aria-live="polite">
-        Showing {homes.length} {homes.length === 1 ? "home" : "homes"}
-        {area === ALL ? "" : ` in ${area}`}
-      </p>
 
       <ul className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {homes.map((h, i) => (

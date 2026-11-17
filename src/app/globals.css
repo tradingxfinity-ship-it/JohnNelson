@@ -17,34 +17,37 @@
   --radius-md: 6px;
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
+/* Base styles sit in the base layer so utility classes (e.g. text-white) can override them */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-body {
-  background: var(--color-white);
-  color: var(--color-slate);
-  font-family: var(--font-sans);
-}
+  body {
+    background: var(--color-white);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+  }
 
-h1,
-h2,
-h3,
-h4 {
-  color: var(--color-navy);
-  letter-spacing: -0.02em;
-  text-wrap: balance;
-}
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-navy);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
 
-/* Section anchors clear the sticky header */
-[id] {
-  scroll-margin-top: 88px;
-}
+  /* Section anchors clear the sticky header */
+  [id] {
+    scroll-margin-top: 88px;
+  }
 
-:focus-visible {
-  outline: 2px solid var(--color-brass);
-  outline-offset: 2px;
+  :focus-visible {
+    outline: 2px solid var(--color-brass);
+    outline-offset: 2px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

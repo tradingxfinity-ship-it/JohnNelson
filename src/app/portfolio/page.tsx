@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PortfolioGrid } from "@/components/PortfolioGrid";
+import { PortfolioHero } from "@/components/PortfolioHero";
 import { ButtonLink, Container, Section } from "@/components/ui";
 import { CONTACT_HREF } from "@/content/site";
 
@@ -13,10 +14,10 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   return (
     <>
-      <section className="pb-20 pt-10 lg:pb-26 lg:pt-14">
+      <PortfolioHero />
+
+      <section className="pb-20 pt-8 lg:pb-26 lg:pt-10">
         <Container>
-          {/* Visually hidden page heading for screen readers and search engines */}
-          <h1 className="sr-only">Portfolio of homes sold by Irma and John Nelson</h1>
           <PortfolioGrid />
         </Container>
       </section>
