@@ -36,14 +36,89 @@ export const site = {
   zillow: {
     rating: "5.0",
     reviewCount: "101",
-    /** Paste the team’s Zillow profile URL here to show the “Read reviews on Zillow” link. */
-    profileUrl: null as string | null,
+    /** Team’s Zillow profile. Shows the “Read reviews on Zillow” link when set. */
+    profileUrl: "https://www.zillow.com/profile/getitsoldsa" as string | null,
     /**
      * Only add testimonials the client has supplied word for word.
      * Example: { quote: "…", name: "First L.", context: "Sold in 2025" }
      */
     testimonials: [] as { quote: string; name: string; context?: string }[],
   },
+
+  /** Communities listed as service areas on the team’s Zillow profile. */
+  serviceAreas: [
+    "San Antonio",
+    "Stone Oak",
+    "Alamo Heights",
+    "Shavano Park",
+    "Castle Hills",
+    "Helotes",
+    "Boerne",
+    "Schertz",
+    "Cibolo",
+    "Seguin",
+    "Lytle",
+  ],
+
+  languages: ["English", "Spanish"],
+
+  /**
+   * Current listings, from the team’s Zillow profile (November 2026).
+   * Update or remove these as homes sell. An empty list hides the section.
+   */
+  listingsAsOf: "November 2026",
+  listings: [
+    {
+      address: "12107 Carson Cove",
+      city: "San Antonio, TX 78253",
+      price: "$332,500",
+      type: "House",
+      details: ["3 bd", "2 ba", "2,142 sqft"],
+      highlight: "Private backyard",
+      image: {
+        src: "/images/carson-cove.webp",
+        alt: "Brick single-story home with an arched entry and two-car garage at 12107 Carson Cove",
+        width: 1536,
+        height: 1080,
+      },
+    },
+    {
+      address: "2210 Knights Wood",
+      city: "San Antonio, TX 78231",
+      price: "$285,000",
+      type: "House",
+      details: ["2 bd", "1 ba", "1,097 sqft"],
+      highlight: "Cozy fireplace",
+      image: {
+        src: "/images/knights-wood.webp",
+        alt: "White cottage-style home with a metal roof under a large oak at 2210 Knights Wood",
+        width: 1535,
+        height: 1024,
+      },
+    },
+    {
+      address: "1645 Whispering Hills, Lot 67",
+      city: "Canyon Lake, TX 78133",
+      price: "$69,000",
+      type: "Lot",
+      details: ["Land"],
+      highlight: "Scenic Hill Country views",
+      image: {
+        src: "/images/whispering-hills-lot.webp",
+        alt: "Wooded Hill Country lot with cedar trees and tall grass at 1645 Whispering Hills",
+        width: 1080,
+        height: 1152,
+      },
+    },
+  ] as {
+    address: string;
+    city: string;
+    price: string;
+    type: string;
+    details: string[];
+    highlight: string;
+    image: NonNullable<SiteImage>;
+  }[],
 
   contact: {
     phoneDisplay: "(210) 870-7340",
@@ -54,7 +129,7 @@ export const site = {
 
   images: {
     /**
-     * Large homepage hero image. Uses a San Antonio home for now because the supplied portrait
+     * Large homepage hero image (8315 Ozark, San Marcos, sold by the team). Uses a home because the supplied portrait
      * is only 240px wide. Swap in a high-resolution portrait of Irma and John (1200px+) when available.
      */
     hero: {
@@ -71,7 +146,7 @@ export const site = {
       { src: "/images/stone-home-exterior.webp", alt: "Stone two-story home under shade trees", width: 1535, height: 1025 },
     ] as NonNullable<SiteImage>[],
     /** Caption tab on the hero photo. */
-    heroCaption: "Hill Country ranch · San Antonio",
+    heroCaption: "Sold · San Marcos",
     /** Interior photos beside the “How can we help you move?” list. */
     services: [
       { src: "/images/dining-room-green-wall.webp", alt: "Dining room with a green paneled wall and wood table", width: 768, height: 576 },

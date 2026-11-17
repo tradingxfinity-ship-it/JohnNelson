@@ -15,6 +15,8 @@ Almost everything you'd want to change lives in **`src/content/site.ts`**:
 
 - Hero heading and intro, the three stats (290+, $100M+, 19)
 - Zillow rating, review count, profile URL, and optional testimonials
+- Current listings (`listings`, shown on the homepage; update as homes sell, or empty the list to hide the section)
+- Service areas and languages (About page and footer)
 - Phone, email, and address
 - Image slots (team portrait, team photo, Buy/Sell/Rent property photos, optional logo)
 
@@ -25,7 +27,6 @@ Form options (budget ranges, timelines, property types) are in `src/lib/inquiry.
 | Item | Where it goes |
 | --- | --- |
 | High-resolution portrait of Irma and John (1200px+ wide) | The current `irma-john-nelson.jpg` is 240×240, so it's shown small in a portrait panel and a home photo fills the hero. With a larger file, point `images.hero` at it to put the couple in the homepage hero |
-| Zillow profile URL | `zillow.profileUrl`. The “Read reviews on Zillow” link appears once this is set |
 | Zillow testimonials (optional) | `zillow.testimonials`. Use only exact quotes the client supplies |
 | Logo file (optional) | `logo`. A text wordmark is used until then |
 

@@ -32,6 +32,10 @@ export default function AboutPage() {
                 Clients work directly with Irma and John, who keep communication honest and stay hands-on through
                 every step of the move.
               </p>
+              <p>
+                John is the team’s broker and owner. The team works with buyers and sellers, offers property management
+                and notary services, and speaks {site.languages.join(" and ")}.
+              </p>
             </div>
           </div>
           <TeamPortrait priority />
@@ -56,6 +60,25 @@ export default function AboutPage() {
               Whether you’re buying, selling, or renting, you’ll get the same direct communication and hands-on guidance.
             </p>
           </div>
+        </Container>
+      </Section>
+
+      <Section className="pb-0 lg:pb-0">
+        <Container className="grid gap-10 lg:grid-cols-[5fr_7fr] lg:gap-20">
+          <div>
+            <Eyebrow>Service areas</Eyebrow>
+            <h2 className="text-3xl font-medium leading-tight sm:text-4xl">Where we work.</h2>
+            <p className="mt-5 text-lg leading-relaxed">
+              Irma and John help clients across San Antonio and the surrounding communities.
+            </p>
+          </div>
+          <ul className="grid grid-cols-2 border-t border-line sm:grid-cols-3">
+            {site.serviceAreas.map((area) => (
+              <li key={area} className="border-b border-line py-4 text-lg text-navy">
+                {area}
+              </li>
+            ))}
+          </ul>
         </Container>
       </Section>
 

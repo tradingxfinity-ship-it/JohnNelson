@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { InquirySection } from "@/components/InquirySection";
+import { Listings } from "@/components/Listings";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { TeamPortrait } from "@/components/TeamPortrait";
@@ -145,6 +146,8 @@ export default function Home() {
           </div>
         </Container>
       </Section>
+
+      <Listings />
 
       {/* Military families and veterans */}
       <Section className="bg-ivory">

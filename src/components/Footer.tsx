@@ -50,6 +50,7 @@ export function Footer() {
                   ))}
                 </address>
               </li>
+              <li>We speak {site.languages.join(" and ")}.</li>
             </ul>
           </div>
         </div>
