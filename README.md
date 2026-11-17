@@ -53,7 +53,7 @@ Map tiles come from OpenStreetMap's free tile server, which is fine for a small 
 
 ## Recently sold albums
 
-The homepage hero rotates through the cover photo of each sold album (`src/components/HeroCarousel.tsx`), cross-fading every 6 seconds. It pauses on hover or focus and with its pause button, and stays still for visitors who prefer reduced motion. Clicking the main photo opens that home's album.
+The homepage hero turns like a carousel through the cover photo of each sold album (`src/components/HeroCarousel.tsx`): every 4.5 seconds the main photo shrinks into a pill and slides left while the next pill grows into its place. It pauses on hover or focus and with its pause button, and stays still for visitors who prefer reduced motion. Clicking the main photo opens that home's album.
 
 The homepage “Recently sold” section (`src/components/SoldGallery.tsx`) shows the photo albums of the five sold homes on the Zillow profile (104 photos, 1152px WebP, in `public/images/sold/<slug>/`). Clicking a home opens a full-screen viewer with arrow-key, swipe, and thumbnail navigation. Homes are labeled by city and ZIP code, not street address. To add a home, put its photos in a new folder as `01.webp`, `02.webp`, … and add an entry to `src/content/soldAlbums.ts`.
 
