@@ -35,9 +35,9 @@ export function Listings() {
                 <div className="mt-5 flex items-start justify-between gap-4">
                   <div className="min-w-0">
                     <h3 className="text-xl font-medium">
-                      {listingsUrl ? (
+                      {listing.url ?? listingsUrl ? (
                         <a
-                          href={listingsUrl}
+                          href={listing.url ?? listingsUrl ?? undefined}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="underline-offset-4 after:absolute after:inset-0 group-hover:underline focus-visible:underline"

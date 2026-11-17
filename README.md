@@ -45,6 +45,12 @@ hero: {
 
 Until a photo is set, a neutral line-drawing placeholder holds its place.
 
+## Sales map
+
+The homepage map (`src/components/SalesMap.tsx`) reads its pins from `src/content/sales.ts`: 12 recent sales and the 3 current listings from the Zillow profile, with coordinates rounded to about 1 km so past clients' homes aren't pinpointed. Zillow's own map can't be embedded, so add new sales to that file (keep the rounding). For the full sales history, export it from the MLS and add the rows the same way.
+
+Map tiles come from OpenStreetMap's free tile server, which is fine for a small site. If traffic grows, switch the URL in `SalesMapClient.tsx` to a hosted provider (MapTiler, Stadia Maps, or CARTO with an API key).
+
 ## Inquiry email setup
 
 The form posts to `/api/inquiry`, which validates on the server and sends one email per inquiry over SMTP:

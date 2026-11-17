@@ -70,6 +70,7 @@ export const site = {
   listings: [
     {
       address: "12107 Carson Cove",
+      url: "https://www.zillow.com/homedetails/12107-Carson-Cv-San-Antonio-TX-78253/83994143_zpid/",
       city: "San Antonio, TX 78253",
       price: "$332,500",
       type: "House",
@@ -84,6 +85,7 @@ export const site = {
     },
     {
       address: "2210 Knights Wood",
+      url: "https://www.zillow.com/homedetails/2210-Knights-Wood-San-Antonio-TX-78231/26431190_zpid/",
       city: "San Antonio, TX 78231",
       price: "$285,000",
       type: "House",
@@ -98,6 +100,7 @@ export const site = {
     },
     {
       address: "1645 Whispering Hills, Lot 67",
+      url: "https://www.zillow.com/homedetails/1645-Whispering-Hills-Dr-67-Canyon-Lake-TX-78133/344625656_zpid/",
       city: "Canyon Lake, TX 78133",
       price: "$69,000",
       type: "Lot",
@@ -112,6 +115,8 @@ export const site = {
     },
   ] as {
     address: string;
+    /** Listing page on Zillow */
+    url?: string;
     city: string;
     price: string;
     type: string;
