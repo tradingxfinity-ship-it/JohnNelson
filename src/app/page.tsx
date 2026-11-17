@@ -118,14 +118,14 @@ export default function Home() {
 
       {/* Meet Irma and John */}
       <Section>
-        <Container className="grid items-center gap-12 lg:grid-cols-[6fr_5fr] lg:gap-20">
+        <Container className="grid items-center gap-12 lg:grid-cols-[5fr_6fr] lg:gap-20">
           <Photo
             image={site.images.team}
             fallbackAlt=""
-            shape="arch"
+            shape="archRight"
             caption="Irma and John Nelson"
             sizes="(min-width: 1248px) 560px, (min-width: 1024px) 45vw, 100vw"
-            className="aspect-[5/4] w-full"
+            className="aspect-[5/4] w-full lg:order-last"
           />
           <div>
             <Eyebrow>Meet the team</Eyebrow>
