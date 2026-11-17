@@ -133,25 +133,6 @@ export const site = {
   },
 
   images: {
-    /**
-     * Large homepage hero image (8315 Ozark, San Marcos, sold by the team). Uses a home because the supplied portrait
-     * is only 240px wide. Swap in a high-resolution portrait of Irma and John (1200px+) when available.
-     */
-    hero: {
-      src: "/images/ranch-home-front-porch.webp",
-      alt: "Single-story Hill Country home with a stone walkway and front porch under live oaks",
-      width: 1536,
-      height: 1024,
-    } as SiteImage,
-    /** Narrow pill-shaped photos flanking the hero image: two on each side. Shown on larger screens. */
-    heroGallery: [
-      { src: "/images/dining-room-pendant.webp", alt: "Dining room with a pendant light and farmhouse table", width: 768, height: 576 },
-      { src: "/images/living-room-stone-fireplace.webp", alt: "Living room with a stone fireplace and beamed ceiling", width: 768, height: 576 },
-      { src: "/images/back-deck-patio.webp", alt: "Covered back deck with outdoor seating and dining", width: 768, height: 576 },
-      { src: "/images/stone-home-exterior.webp", alt: "Stone two-story home under shade trees", width: 1535, height: 1025 },
-    ] as NonNullable<SiteImage>[],
-    /** Caption tab on the hero photo. */
-    heroCaption: "Sold · San Marcos",
     /** Interior photos beside the “How can we help you move?” list. */
     services: [
       { src: "/images/dining-room-green-wall.webp", alt: "Dining room with a green paneled wall and wood table", width: 768, height: 576 },

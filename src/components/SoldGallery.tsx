@@ -26,6 +26,19 @@ export function SoldGallery() {
 
   const close = useCallback(() => dialogRef.current?.close(), []);
 
+  // The hero carousel asks to open an album by slug (see openSoldAlbum)
+  useEffect(() => {
+    const onOpen = (e: Event) => {
+      const found = soldAlbums.find((a) => a.slug === (e as CustomEvent<string>).detail);
+      if (!found) return;
+      openerRef.current = document.activeElement instanceof HTMLButtonElement ? document.activeElement : null;
+      setAlbum(found);
+      setIndex(0);
+    };
+    window.addEventListener("open-sold-album", onOpen);
+    return () => window.removeEventListener("open-sold-album", onOpen);
+  }, []);
+
   const count = album?.photos.length ?? 0;
   const go = useCallback((delta: number) => setIndex((i) => (count ? (i + delta + count) % count : 0)), [count]);
 

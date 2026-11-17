@@ -26,11 +26,11 @@ Form options (budget ranges, timelines, property types) are in `src/lib/inquiry.
 
 | Item | Where it goes |
 | --- | --- |
-| High-resolution portrait of Irma and John (1200px+ wide) | The current `irma-john-nelson.jpg` is 240×240, so it's shown small in a portrait panel and a home photo fills the hero. With a larger file, point `images.hero` at it to put the couple in the homepage hero |
+| High-resolution portrait of Irma and John (1200px+ wide) | The current `irma-john-nelson.jpg` is 240×240, so it's shown small in a portrait panel on Home and About |
 | Zillow testimonials (optional) | `zillow.testimonials`. Use only exact quotes the client supplies |
 | Logo file (optional) | `logo`. A text wordmark is used until then |
 
-Images in use: `images.hero` (homepage), `images.teamPortrait` (home + About), and `images.buy` / `sell` / `rent`. The other photos in `public/images` are available to swap in.
+Images in use: `images.teamPortrait` (home + About), and `images.buy` / `sell` / `rent`. The other photos in `public/images` are available to swap in.
 
 Example image entry (use the photo's real pixel size; Next.js resizes and serves optimized versions):
 
@@ -52,6 +52,8 @@ The homepage map (`src/components/SalesMap.tsx`) reads its pins from `src/conten
 Map tiles come from OpenStreetMap's free tile server, which is fine for a small site. If traffic grows, switch the URL in `SalesMapClient.tsx` to a hosted provider (MapTiler, Stadia Maps, or CARTO with an API key).
 
 ## Recently sold albums
+
+The homepage hero rotates through the cover photo of each sold album (`src/components/HeroCarousel.tsx`), cross-fading every 6 seconds. It pauses on hover or focus and with its pause button, and stays still for visitors who prefer reduced motion. Clicking the main photo opens that home's album.
 
 The homepage “Recently sold” section (`src/components/SoldGallery.tsx`) shows the photo albums of the five sold homes on the Zillow profile (104 photos, 1152px WebP, in `public/images/sold/<slug>/`). Clicking a home opens a full-screen viewer with arrow-key, swipe, and thumbnail navigation. Homes are labeled by city and ZIP code, not street address. To add a home, put its photos in a new folder as `01.webp`, `02.webp`, … and add an entry to `src/content/soldAlbums.ts`.
 

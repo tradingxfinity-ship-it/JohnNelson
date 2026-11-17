@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { InquirySection } from "@/components/InquirySection";
 import { Listings } from "@/components/Listings";
 import { SalesMap } from "@/components/SalesMap";
@@ -81,36 +82,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12 flex h-[clamp(260px,40vw,520px)] gap-3 lg:mt-16 lg:gap-4">
-            {site.images.heroGallery.slice(0, 2).map((img, i) => (
-              <Photo
-                key={img.src}
-                image={img}
-                fallbackAlt=""
-                shape="pill"
-                sizes="700px"
-                className={`h-full w-[clamp(44px,5.5vw,80px)] shrink-0 ${i === 0 ? "hidden lg:block" : "hidden md:block"}`}
-              />
-            ))}
-            <Photo
-              image={site.images.hero}
-              fallbackAlt="A San Antonio home"
-              caption={site.images.heroCaption}
-              sizes="(min-width: 1248px) 900px, 100vw"
-              priority
-              className="h-full min-w-0 flex-1"
-            />
-            {site.images.heroGallery.slice(2, 4).map((img, i) => (
-              <Photo
-                key={img.src}
-                image={img}
-                fallbackAlt=""
-                shape="pill"
-                sizes="700px"
-                className={`h-full w-[clamp(44px,5.5vw,80px)] shrink-0 ${i === 1 ? "hidden lg:block" : "hidden md:block"}`}
-              />
-            ))}
-          </div>
+          <HeroCarousel />
         </Container>
       </section>
 
