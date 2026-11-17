@@ -147,11 +147,6 @@ export const site = {
       width: 1536,
       height: 1080,
     } as SiteImage,
-    /** Photo row on the About page. */
-    aboutGallery: [
-      { src: "/images/two-story-home-porch.webp", alt: "Two-story home with a covered front porch", width: 1536, height: 1080 },
-      { src: "/images/living-room-arched-door.webp", alt: "Bright living room with an arched door and fireplace", width: 768, height: 576 },
-    ] as NonNullable<SiteImage>[],
     /** Darkened background photo behind the homepage contact form. */
     contact: {
       src: "/images/sold/san-antonio-78248/01.webp",
@@ -165,13 +160,6 @@ export const site = {
       alt: "Irma and John Nelson",
       width: 800,
       height: 639,
-    } as SiteImage,
-    /** Tall photo beside the About page introduction. */
-    aboutHero: {
-      src: "/images/sold/san-marcos-78666/03.webp",
-      alt: "Bright living room with a vaulted, beamed ceiling in a home sold by the team",
-      width: 1152,
-      height: 864,
     } as SiteImage,
     /** Original portrait of Irma and John, shown small and round (see TeamByline). */
     teamPortrait: {
