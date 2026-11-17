@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
 import { TeamPortrait } from "@/components/TeamPortrait";
 import { ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
@@ -57,6 +58,21 @@ export default function AboutPage() {
           </div>
         </Container>
       </Section>
+
+      <section className="pt-20 lg:pt-26">
+        <Container className="grid gap-4 sm:grid-cols-[2fr_1fr] lg:gap-6">
+          {site.images.aboutGallery.map((img, i) => (
+            <Photo
+              key={img.src}
+              image={img}
+              fallbackAlt=""
+              shape="arch"
+              sizes={i === 0 ? "(min-width: 1248px) 800px, (min-width: 640px) 66vw, 100vw" : "(min-width: 1248px) 400px, (min-width: 640px) 33vw, 100vw"}
+              className="aspect-[4/3] w-full sm:aspect-auto sm:h-[clamp(280px,36vw,460px)]"
+            />
+          ))}
+        </Container>
+      </section>
 
       <Section>
         <Container className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">

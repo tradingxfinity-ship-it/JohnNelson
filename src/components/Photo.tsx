@@ -1,35 +1,52 @@
 import Image from "next/image";
 import type { SiteImage } from "@/content/site";
 
+const shapes = {
+  rounded: "rounded-lg",
+  /** Large curve on the top-left corner */
+  arch: "rounded-lg rounded-tl-[clamp(64px,14vw,180px)]",
+  /** Large curve on the top-right corner */
+  archRight: "rounded-lg rounded-tr-[clamp(64px,14vw,180px)]",
+  pill: "rounded-full",
+};
+
 /**
  * Renders a supplied photo, or a quiet placeholder of the same shape until the
- * real asset is added in src/content/site.ts.
+ * real asset is added in src/content/site.ts. An optional caption sits in a
+ * white tab joined to the bottom-left corner.
  */
 export function Photo({
   image,
   fallbackAlt,
   sizes,
   priority = false,
+  shape = "rounded",
+  caption,
+  captionOn = "white",
   className = "",
 }: {
   image: SiteImage;
   fallbackAlt: string;
   sizes: string;
   priority?: boolean;
+  shape?: keyof typeof shapes;
+  caption?: string;
+  /** Match the caption tab to the section background so it reads as a cutout. */
+  captionOn?: "white" | "ivory";
   className?: string;
 }) {
+  const captionTab = caption ? (
+    <span className={`absolute bottom-0 left-0 rounded-tr-lg px-4 pb-1.5 pt-3 ${captionOn === "ivory" ? "bg-ivory" : "bg-white"} text-xs font-medium uppercase tracking-[0.12em] text-navy sm:px-5 sm:pt-3.5 sm:text-[13px]`}>
+      {caption}
+    </span>
+  ) : null;
+
   if (image) {
     return (
-      <div className={`relative overflow-hidden rounded-md bg-ivory ${className}`}>
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          sizes={sizes}
-          priority={priority}
-          className="object-cover"
-        />
-      </div>
+      <figure className={`relative overflow-hidden bg-ivory ${shapes[shape]} ${className}`}>
+        <Image src={image.src} alt={image.alt} fill sizes={sizes} priority={priority} className="object-cover" />
+        {captionTab}
+      </figure>
     );
   }
 
@@ -38,9 +55,10 @@ export function Photo({
       role="img"
       aria-label={fallbackAlt}
       data-placeholder="photo"
-      className={`relative flex items-center justify-center overflow-hidden rounded-md border border-line bg-ivory ${className}`}
+      className={`relative flex items-center justify-center overflow-hidden border border-line bg-ivory ${shapes[shape]} ${className}`}
     >
       <HomeIllustration />
+      {captionTab}
     </div>
   );
 }

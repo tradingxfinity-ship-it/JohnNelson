@@ -54,32 +54,60 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="pb-16 pt-10 lg:pb-24 lg:pt-16">
-        <Container className="grid items-center gap-10 lg:grid-cols-[6fr_5fr] lg:gap-16">
-          <div>
-            <Eyebrow>Get It Sold Realty · San Antonio, Texas</Eyebrow>
-            <h1 className="text-[2.75rem] font-semibold leading-[1.04] tracking-[-0.035em] sm:text-6xl lg:text-[4.25rem]">
-              {site.hero.heading}
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl sm:leading-relaxed">{site.hero.body}</p>
-            <div className="mt-9 grid gap-3 sm:max-w-xl sm:grid-cols-3">
-              <ButtonLink href="/buy" variant="secondary">
-                I’m buying
-              </ButtonLink>
-              <ButtonLink href="/sell" variant="secondary">
-                I’m selling
-              </ButtonLink>
-              <ButtonLink href="/rent" variant="secondary">
-                I’m renting
-              </ButtonLink>
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
+            <div>
+              <Eyebrow>Get It Sold Realty · San Antonio, Texas</Eyebrow>
+              <h1 className="text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl lg:text-[5rem]">
+                {site.hero.heading}
+              </h1>
+            </div>
+            <div>
+              <p className="text-lg leading-relaxed">{site.hero.body}</p>
+              <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                <ButtonLink href="/buy" variant="secondary">
+                  I’m buying
+                </ButtonLink>
+                <ButtonLink href="/sell" variant="secondary">
+                  I’m selling
+                </ButtonLink>
+                <ButtonLink href="/rent" variant="secondary">
+                  I’m renting
+                </ButtonLink>
+              </div>
             </div>
           </div>
-          <Photo
-            image={site.images.hero}
-            fallbackAlt="A San Antonio home"
-            sizes="(min-width: 1248px) 520px, (min-width: 1024px) 42vw, 100vw"
-            priority
-            className="aspect-[4/3] w-full lg:aspect-[5/6]"
-          />
+
+          <div className="mt-12 flex h-[clamp(260px,40vw,520px)] gap-3 lg:mt-16 lg:gap-4">
+            {site.images.heroGallery.slice(0, 2).map((img, i) => (
+              <Photo
+                key={img.src}
+                image={img}
+                fallbackAlt=""
+                shape="pill"
+                sizes="700px"
+                className={`h-full w-[clamp(44px,5.5vw,80px)] shrink-0 ${i === 0 ? "hidden lg:block" : "hidden md:block"}`}
+              />
+            ))}
+            <Photo
+              image={site.images.hero}
+              fallbackAlt="A San Antonio home"
+              caption={site.images.heroCaption}
+              sizes="(min-width: 1248px) 900px, 100vw"
+              priority
+              className="h-full min-w-0 flex-1"
+            />
+            {site.images.heroGallery.slice(2, 4).map((img, i) => (
+              <Photo
+                key={img.src}
+                image={img}
+                fallbackAlt=""
+                shape="pill"
+                sizes="700px"
+                className={`h-full w-[clamp(44px,5.5vw,80px)] shrink-0 ${i === 1 ? "hidden lg:block" : "hidden md:block"}`}
+              />
+            ))}
+          </div>
         </Container>
       </section>
 
@@ -87,49 +115,70 @@ export default function Home() {
 
       {/* Services */}
       <Section>
-        <Container>
-          <div className="max-w-2xl">
+        <Container className="grid gap-12 lg:grid-cols-[6fr_5fr] lg:gap-16">
+          <div className="order-last grid grid-cols-2 gap-4 lg:order-none lg:gap-5">
+            {site.images.services.map((img, i) => (
+              <Photo
+                key={img.src}
+                image={img}
+                fallbackAlt=""
+                shape={i === 0 ? "arch" : "rounded"}
+                sizes="(min-width: 1024px) 340px, 50vw"
+                className="aspect-[3/4] w-full"
+              />
+            ))}
+          </div>
+          <div className="flex flex-col justify-center">
             <Eyebrow>Our services</Eyebrow>
             <h2 className="text-3xl font-medium sm:text-4xl">How can we help you move?</h2>
+            <ul className="mt-8 border-t border-line">
+              {services.map((s) => (
+                <li key={s.href} className="border-b border-line py-6">
+                  <h3 className="text-2xl font-normal">{s.title}</h3>
+                  <p className="mt-2 leading-relaxed">{s.body}</p>
+                  <ArrowLink href={s.href} className="mt-4 text-[15px]">
+                    {s.link}
+                  </ArrowLink>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="mt-12 grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-3">
-            {services.map((s) => (
-              <li key={s.href} className="flex flex-col bg-white p-8 lg:p-10">
-                <h3 className="text-xl font-medium">{s.title}</h3>
-                <p className="mt-3 flex-1 leading-relaxed">{s.body}</p>
-                <ArrowLink href={s.href} className="mt-8">
-                  {s.link}
-                </ArrowLink>
-              </li>
-            ))}
-          </ul>
         </Container>
       </Section>
 
       {/* Military families and veterans */}
       <Section className="bg-ivory">
-        <Container className="grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-20">
+        <Container className="grid gap-12 lg:grid-cols-[5fr_6fr] lg:items-center lg:gap-20">
           <div>
             <Eyebrow>Military families and veterans</Eyebrow>
             <h2 className="text-3xl font-medium leading-tight sm:text-4xl">
               Real estate guidance for military families and veterans.
             </h2>
-            <p className="mt-5 max-w-md text-lg leading-relaxed">
+            <p className="mt-5 text-lg leading-relaxed">
               San Antonio is home to a large military community. Irma and John help service members, veterans, and
               their families buy, sell, or rent with a clear plan for the move ahead.
             </p>
+            <ul className="mt-8 divide-y divide-line border-y border-line">
+              {militaryPoints.map((p) => (
+                <li key={p.title} className="py-5">
+                  <h3 className="text-lg font-medium">{p.title}</h3>
+                  <p className="mt-1 leading-relaxed">{p.body}</p>
+                </li>
+              ))}
+            </ul>
             <ArrowLink href={CONTACT_HREF} className="mt-8">
               Tell us about your move
             </ArrowLink>
           </div>
-          <ul className="divide-y divide-line border-y border-line">
-            {militaryPoints.map((p) => (
-              <li key={p.title} className="grid gap-2 py-7 sm:grid-cols-[200px_1fr] sm:gap-8">
-                <h3 className="text-lg font-medium">{p.title}</h3>
-                <p className="leading-relaxed">{p.body}</p>
-              </li>
-            ))}
-          </ul>
+          <Photo
+            image={site.images.military}
+            fallbackAlt="A San Antonio home"
+            shape="arch"
+            caption="Relocating to San Antonio"
+            captionOn="ivory"
+            sizes="(min-width: 1024px) 620px, 100vw"
+            className="aspect-[4/3] w-full lg:aspect-[4/5]"
+          />
         </Container>
       </Section>
 

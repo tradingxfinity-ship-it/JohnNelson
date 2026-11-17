@@ -63,6 +63,32 @@ export const site = {
       width: 1536,
       height: 1024,
     } as SiteImage,
+    /** Narrow pill-shaped photos flanking the hero image: two on each side. Shown on larger screens. */
+    heroGallery: [
+      { src: "/images/dining-room-pendant.webp", alt: "Dining room with a pendant light and farmhouse table", width: 768, height: 576 },
+      { src: "/images/living-room-stone-fireplace.webp", alt: "Living room with a stone fireplace and beamed ceiling", width: 768, height: 576 },
+      { src: "/images/back-deck-patio.webp", alt: "Covered back deck with outdoor seating and dining", width: 768, height: 576 },
+      { src: "/images/stone-home-exterior.webp", alt: "Stone two-story home under shade trees", width: 1535, height: 1025 },
+    ] as NonNullable<SiteImage>[],
+    /** Caption tab on the hero photo. */
+    heroCaption: "Hill Country ranch · San Antonio",
+    /** Interior photos beside the “How can we help you move?” list. */
+    services: [
+      { src: "/images/dining-room-green-wall.webp", alt: "Dining room with a green paneled wall and wood table", width: 768, height: 576 },
+      { src: "/images/vintage-tile-bathroom.webp", alt: "Bathroom with vintage green tile and arched mirrors", width: 768, height: 576 },
+    ] as NonNullable<SiteImage>[],
+    /** Arch-topped photo in the military families section. */
+    military: {
+      src: "/images/ranch-home-oak-tree.webp",
+      alt: "Brick ranch home under a large live oak tree",
+      width: 1536,
+      height: 1080,
+    } as SiteImage,
+    /** Photo row on the About page. */
+    aboutGallery: [
+      { src: "/images/two-story-home-porch.webp", alt: "Two-story home with a covered front porch", width: 1536, height: 1080 },
+      { src: "/images/living-room-arched-door.webp", alt: "Bright living room with an arched door and fireplace", width: 768, height: 576 },
+    ] as NonNullable<SiteImage>[],
     /** Original portrait of Irma and John, shown at a small size to stay sharp. */
     teamPortrait: {
       src: "/images/irma-john-nelson.jpg",

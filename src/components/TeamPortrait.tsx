@@ -11,7 +11,7 @@ export function TeamPortrait({ priority = false, className = "" }: { priority?: 
   const maxWidth = portrait ? Math.min(portrait.width, 320) : 320;
 
   return (
-    <figure className={`flex flex-col items-center justify-center rounded-md border border-line bg-ivory px-8 py-12 ${className}`}>
+    <figure className={`flex flex-col items-center justify-center rounded-lg rounded-tr-[clamp(64px,14vw,180px)] border border-line bg-ivory px-8 py-14 ${className}`}>
       {portrait ? (
         <Image
           src={portrait.src}

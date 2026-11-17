@@ -34,7 +34,7 @@ export function ServicePage({
             <Eyebrow>{eyebrow}</Eyebrow>
             <h1 className="text-4xl font-medium leading-[1.08] sm:text-5xl">{headline}</h1>
             <p className="mt-6 max-w-md text-lg leading-relaxed">{intro}</p>
-            {image && <Photo image={image} fallbackAlt={imageAlt} sizes="(min-width: 1024px) 420px, 100vw" className="mt-10 aspect-[4/3]" />}
+            {image && <Photo image={image} fallbackAlt={imageAlt} shape="arch" sizes="(min-width: 1024px) 420px, 100vw" className="mt-10 aspect-[4/3]" />}
             <ContactDetails className="mt-10 hidden lg:block" />
           </div>
           <InquiryForm defaultType={type} />
