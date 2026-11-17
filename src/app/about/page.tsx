@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
+import { TeamPortrait } from "@/components/TeamPortrait";
 import { ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
 import { CONTACT_HREF, site } from "@/content/site";
 
@@ -33,13 +33,7 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <Photo
-            image={site.images.teamPortrait}
-            fallbackAlt="Portrait of Irma and John Nelson (photo coming soon)"
-            sizes="(min-width: 1024px) 480px, 100vw"
-            priority
-            className="aspect-[4/5] w-full sm:aspect-[4/3] lg:aspect-[4/5]"
-          />
+          <TeamPortrait priority />
         </Container>
       </section>
 

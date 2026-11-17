@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { InquirySection } from "@/components/InquirySection";
 import { Photo } from "@/components/Photo";
 import { StatsStrip } from "@/components/StatsStrip";
+import { TeamPortrait } from "@/components/TeamPortrait";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
 import { CONTACT_HREF, site } from "@/content/site";
 
@@ -73,11 +74,11 @@ export default function Home() {
             </div>
           </div>
           <Photo
-            image={site.images.teamPortrait}
-            fallbackAlt="Portrait of Irma and John Nelson (photo coming soon)"
-            sizes="(min-width: 1024px) 520px, 100vw"
+            image={site.images.hero}
+            fallbackAlt="A San Antonio home"
+            sizes="(min-width: 1248px) 520px, (min-width: 1024px) 42vw, 100vw"
             priority
-            className="aspect-[4/5] w-full sm:aspect-[4/3] lg:aspect-[4/5]"
+            className="aspect-[4/3] w-full lg:aspect-[5/6]"
           />
         </Container>
       </section>
@@ -135,12 +136,7 @@ export default function Home() {
       {/* Meet Irma and John */}
       <Section>
         <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <Photo
-            image={site.images.teamCandid ?? site.images.teamPortrait}
-            fallbackAlt="Irma and John Nelson (photo coming soon)"
-            sizes="(min-width: 1024px) 560px, 100vw"
-            className="aspect-[4/3] w-full"
-          />
+          <TeamPortrait />
           <div>
             <Eyebrow>Meet the team</Eyebrow>
             <h2 className="text-3xl font-medium sm:text-4xl">A real estate couple who know San Antonio.</h2>

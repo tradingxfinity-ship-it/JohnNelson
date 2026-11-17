@@ -53,14 +53,42 @@ export const site = {
   },
 
   images: {
-    /** Original portrait of Irma and John. Drop the file in /public/images and set it here. */
-    teamPortrait: null as SiteImage,
-    /** Second team photo used in “Meet Irma and John” and on the About page. Falls back to teamPortrait. */
-    teamCandid: null as SiteImage,
+    /**
+     * Large homepage hero image. Uses a San Antonio home for now because the supplied portrait
+     * is only 240px wide. Swap in a high-resolution portrait of Irma and John (1200px+) when available.
+     */
+    hero: {
+      src: "/images/ranch-home-front-porch.webp",
+      alt: "Single-story Hill Country home with a stone walkway and front porch under live oaks",
+      width: 1536,
+      height: 1024,
+    } as SiteImage,
+    /** Original portrait of Irma and John, shown at a small size to stay sharp. */
+    teamPortrait: {
+      src: "/images/irma-john-nelson.jpg",
+      alt: "Irma and John Nelson",
+      width: 240,
+      height: 240,
+    } as SiteImage,
     /** Supporting property photos for the service pages. */
-    buy: null as SiteImage,
-    sell: null as SiteImage,
-    rent: null as SiteImage,
+    buy: {
+      src: "/images/stone-home-exterior.webp",
+      alt: "Stone two-story home with a two-car garage under shade trees",
+      width: 1535,
+      height: 1025,
+    } as SiteImage,
+    sell: {
+      src: "/images/living-room-fireplace.webp",
+      alt: "Staged living room with a brick fireplace and dark wood floors",
+      width: 768,
+      height: 576,
+    } as SiteImage,
+    rent: {
+      src: "/images/two-story-home-exterior.webp",
+      alt: "Two-story brick and siding home with a front porch and driveway",
+      width: 768,
+      height: 576,
+    } as SiteImage,
   },
 };
 

@@ -24,18 +24,18 @@ Form options (budget ranges, timelines, property types) are in `src/lib/inquiry.
 
 | Item | Where it goes |
 | --- | --- |
-| Original portrait of Irma and John | Save as `public/images/team-portrait.jpg`, then set `images.teamPortrait` in `site.ts` |
-| Second team photo (optional) | `images.teamCandid`; falls back to the portrait |
-| Property photos for Buy/Sell/Rent (optional) | `images.buy`, `images.sell`, `images.rent` |
+| High-resolution portrait of Irma and John (1200px+ wide) | The current `irma-john-nelson.jpg` is 240×240, so it's shown small in a portrait panel and a home photo fills the hero. With a larger file, point `images.hero` at it to put the couple in the homepage hero |
 | Zillow profile URL | `zillow.profileUrl`. The “Read reviews on Zillow” link appears once this is set |
 | Zillow testimonials (optional) | `zillow.testimonials`. Use only exact quotes the client supplies |
 | Logo file (optional) | `logo`. A text wordmark is used until then |
 
+Images in use: `images.hero` (homepage), `images.teamPortrait` (home + About), and `images.buy` / `sell` / `rent`. The other photos in `public/images` are available to swap in.
+
 Example image entry (use the photo's real pixel size; Next.js resizes and serves optimized versions):
 
 ```ts
-teamPortrait: {
-  src: "/images/team-portrait.jpg",
+hero: {
+  src: "/images/irma-john-portrait-large.jpg",
   alt: "Irma and John Nelson standing outside a San Antonio home",
   width: 1600,
   height: 2000,
