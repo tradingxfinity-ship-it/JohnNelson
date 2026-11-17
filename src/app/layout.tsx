@@ -1,0 +1,39 @@
+import type { Metadata, Viewport } from "next";
+import { Instrument_Sans } from "next/font/google";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { site } from "@/content/site";
+import "./globals.css";
+
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  title: {
+    default: `${site.name} | San Antonio Real Estate with Irma and John Nelson`,
+    template: `%s | ${site.name}`,
+  },
+  description:
+    "Buy, sell, or rent in San Antonio with Irma and John Nelson of Get It Sold Realty. 19 years of local experience, 290+ homes sold.",
+  openGraph: { siteName: site.name, locale: "en_US", type: "website" },
+};
+
+export const viewport: Viewport = { themeColor: "#14283F" };
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en" className={instrumentSans.variable}>
+      <body className="flex min-h-screen flex-col antialiased">
+        <Header />
+        <main id="main" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
