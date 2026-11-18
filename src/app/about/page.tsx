@@ -223,12 +223,13 @@ export default function AboutPage() {
             <dl className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">
               {[
                 { value: String(site.serviceAreas.length), label: "Service areas" },
-                { value: String(portfolio.length), label: "Homes in our portfolio" },
+                { value: String(portfolio.length), label: "Portfolio homes" },
                 { value: String(site.languages.length), label: site.languages.join(" & ") },
               ].map((s) => (
-                <div key={s.label} className="flex flex-col-reverse rounded-md border border-line px-3 py-3 sm:px-4">
-                  <dt className="mt-0.5 text-xs leading-snug sm:text-[13px]">{s.label}</dt>
-                  <dd className="text-2xl font-medium tracking-[-0.03em] text-navy sm:text-3xl">{s.value}</dd>
+                // Column-reverse keeps the number above its label; justify-end pins both to the top
+                <div key={s.label} className="flex flex-col-reverse justify-end rounded-md bg-navy px-3 py-4 sm:px-5 sm:py-5">
+                  <dt className="mt-1 text-xs leading-snug text-white/75 sm:text-[13px]">{s.label}</dt>
+                  <dd className="text-2xl font-medium leading-none tracking-[-0.03em] text-gold-light sm:text-3xl">{s.value}</dd>
                 </div>
               ))}
             </dl>
