@@ -52,7 +52,7 @@ export function HeroSearch() {
       />
       <button
         type="submit"
-        className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-sm bg-navy px-4 text-[15px] font-medium text-gold-light transition-colors hover:bg-navy-hover hover:text-white sm:px-5"
+        className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-sm bg-navy px-4 text-[15px] font-medium text-white transition-colors hover:bg-navy-hover hover:text-gold-light sm:px-5"
       >
         <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
           <circle cx="9" cy="9" r="6" />

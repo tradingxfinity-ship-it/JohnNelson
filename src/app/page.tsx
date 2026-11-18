@@ -54,9 +54,6 @@ const militaryPoints = [
   },
 ];
 
-/** Hero buttons: gold text that turns white on hover */
-const heroButton = "text-gold-light! hover:text-white!";
-
 export default function Home() {
   return (
     <>
@@ -74,9 +71,9 @@ export default function Home() {
               <p className="text-lg leading-relaxed">{site.hero.body}</p>
               <HeroSearch />
               <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                <ButtonLink href="/buy" className={heroButton}>I’m buying</ButtonLink>
-                <ButtonLink href="/sell" className={heroButton}>I’m selling</ButtonLink>
-                <ButtonLink href="/rent" className={heroButton}>I’m renting</ButtonLink>
+                <ButtonLink href="/buy">I’m buying</ButtonLink>
+                <ButtonLink href="/sell">I’m selling</ButtonLink>
+                <ButtonLink href="/rent">I’m renting</ButtonLink>
               </div>
             </div>
           </div>
