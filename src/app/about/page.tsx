@@ -127,12 +127,22 @@ export default function AboutPage() {
       {/* How we work */}
       <Section>
         <Container className="grid gap-12 lg:grid-cols-[4fr_7fr] lg:gap-20">
-          <div>
-            <Eyebrow>How we work</Eyebrow>
-            <h2 className="text-[1.75rem] font-medium leading-tight sm:text-4xl">What working with us looks like.</h2>
-            <p className="mt-5 max-w-sm leading-relaxed">
+          <div className="flex flex-col rounded-lg border-2 border-gold bg-navy p-7 sm:p-9">
+            <p className="mb-4 flex items-center gap-3 text-sm font-medium text-white/80">
+              <span aria-hidden className="h-px w-8 bg-gold-light" />
+              How we work
+            </p>
+            <h2 className="text-[1.75rem] font-medium leading-tight text-white sm:text-4xl">
+              What working with us looks like.
+            </h2>
+            <p className="mt-5 max-w-sm leading-relaxed text-white/80">
               Through Get It Sold Realty, John is the broker and owner, and clients work with Irma and John themselves.
             </p>
+            <div className="mt-8 lg:mt-auto lg:pt-10">
+              <ButtonLink href={CONTACT_HREF} variant="inverse" className="w-full sm:w-auto">
+                Talk to Irma and John
+              </ButtonLink>
+            </div>
           </div>
           <ol className="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2">
             {principles.map((p, i) => (
