@@ -110,10 +110,10 @@ export function PortfolioHero() {
             {stats.map((s) => (
               <div
                 key={s.label}
-                className="flex flex-col-reverse rounded-md border border-white/25 bg-navy/40 px-4 py-3 backdrop-blur-sm"
+                className="flex flex-col-reverse justify-end rounded-md border border-white/25 bg-navy/40 px-4 py-3 backdrop-blur-sm"
               >
                 <dt className="mt-1 text-xs leading-snug text-white/75">{s.label}</dt>
-                <dd className="text-2xl font-medium tracking-[-0.03em] sm:text-[1.75rem]">{s.value}</dd>
+                <dd className="text-2xl font-medium tracking-[-0.03em] text-gold-light sm:text-[1.75rem]">{s.value}</dd>
               </div>
             ))}
           </dl>
