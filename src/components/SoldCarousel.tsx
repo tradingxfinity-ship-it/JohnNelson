@@ -69,18 +69,18 @@ export function SoldCarousel({ homes }: { homes: PortfolioHome[] }) {
                     sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 82vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                   />
-                  <span className="absolute bottom-0 left-0 rounded-tr-lg bg-white px-4 pb-1.5 pt-3 text-xs font-medium uppercase tracking-[0.12em] text-navy">
+                  <span className="absolute bottom-0 left-0 rounded-tr-lg bg-white px-4 pb-1.5 pt-3 text-xs font-medium uppercase tracking-[0.12em] text-blue">
                     Sold · {h.sold}
                   </span>
                 </span>
                 <span className="mt-4 flex items-start justify-between gap-4">
                   <span className="min-w-0">
-                    <span className="block text-lg font-medium text-navy underline-offset-4 group-hover:underline">
+                    <span className="block text-lg font-medium text-blue underline-offset-4 group-hover:underline">
                       {h.city}
                     </span>
                     <span className="mt-0.5 block text-sm">{h.details.join(" · ")}</span>
                   </span>
-                  <span className="shrink-0 pt-1 text-sm font-medium text-navy">
+                  <span className="shrink-0 pt-1 text-sm font-medium text-blue">
                     {album?.photos.length ?? 1} photos <span aria-hidden>→</span>
                   </span>
                 </span>
@@ -95,7 +95,7 @@ export function SoldCarousel({ homes }: { homes: PortfolioHome[] }) {
           type="button"
           onClick={() => scrollByCards(-1)}
           disabled={atStart}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-navy transition-colors hover:border-navy disabled:opacity-40 disabled:hover:border-line"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-blue transition-colors hover:border-blue disabled:opacity-40 disabled:hover:border-line"
         >
           <span className="sr-only">Previous homes</span>
           <span aria-hidden>←</span>
@@ -104,7 +104,7 @@ export function SoldCarousel({ homes }: { homes: PortfolioHome[] }) {
           type="button"
           onClick={() => scrollByCards(1)}
           disabled={atEnd}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-navy bg-navy text-white transition-colors hover:bg-navy-hover hover:text-gold-light disabled:opacity-40 disabled:hover:text-white"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-blue bg-blue text-white transition-colors hover:border-red hover:bg-red disabled:opacity-40 disabled:hover:border-blue disabled:hover:bg-blue"
         >
           <span className="sr-only">Next homes</span>
           <span aria-hidden>→</span>

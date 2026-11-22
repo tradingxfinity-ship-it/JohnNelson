@@ -5,7 +5,7 @@ import L from "leaflet";
 import { useEffect, useRef } from "react";
 import { salePins } from "@/content/sales";
 
-const COLORS = { sold: "#1C2B4A", forSale: "#B8925A" };
+const COLORS = { sold: "#002868", forSale: "#BF0A30" };
 
 /** Leaflet map of sale pins. Loaded only in the browser (see SalesMap). */
 export default function SalesMapClient({

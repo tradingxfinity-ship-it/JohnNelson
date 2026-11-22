@@ -33,7 +33,7 @@ export function PortfolioGrid() {
               onClick={() => setArea(a)}
               aria-pressed={area === a}
               className={`min-h-10 shrink-0 whitespace-nowrap rounded-full border px-4 text-sm font-medium transition-colors ${
-                area === a ? "border-navy bg-navy text-white" : "border-line text-navy hover:border-navy"
+                area === a ? "border-blue bg-blue text-white" : "border-line text-blue hover:border-blue"
               }`}
             >
               {a}
@@ -100,18 +100,18 @@ function HomeCard({ home, priority, onOpen }: { home: PortfolioHome; priority: b
           priority={priority}
           className="object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
-        <span className="absolute bottom-0 left-0 rounded-tr-lg bg-white px-4 pb-1.5 pt-3 text-xs font-medium uppercase tracking-[0.12em] text-navy">
+        <span className="absolute bottom-0 left-0 rounded-tr-lg bg-white px-4 pb-1.5 pt-3 text-xs font-medium uppercase tracking-[0.12em] text-blue">
           Sold · {home.sold}
         </span>
       </span>
       <span className="mt-4 flex items-start justify-between gap-4">
         <span className="min-w-0">
-          <span className="block text-lg font-medium text-navy underline-offset-4 group-hover:underline group-focus-visible:underline">
+          <span className="block text-lg font-medium text-blue underline-offset-4 group-hover:underline group-focus-visible:underline">
             {home.city}
           </span>
           <span className="mt-0.5 block text-sm">TX {home.zip}</span>
         </span>
-        <span className="shrink-0 pt-1 text-sm font-medium text-navy">
+        <span className="shrink-0 pt-1 text-sm font-medium text-blue">
           {album ? `${album.photos.length} photos` : "View"} <span aria-hidden>→</span>
         </span>
       </span>
@@ -119,7 +119,7 @@ function HomeCard({ home, priority, onOpen }: { home: PortfolioHome; priority: b
         {home.details.map((d, j) => (
           <span key={d} className="flex items-center gap-3">
             {j > 0 && <span aria-hidden className="h-3 w-px bg-line" />}
-            <span className="font-medium text-navy">{d}</span>
+            <span className="font-medium text-blue">{d}</span>
           </span>
         ))}
       </span>

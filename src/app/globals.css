@@ -2,18 +2,17 @@
 
 @theme {
   --color-white: #ffffff;
-  /* Deep navy: headings, buttons, dark bands */
-  --color-navy: #1c2b4a;
-  --color-navy-hover: #131f37;
+  /* Texas flag blue (Old Glory Blue): headings, buttons, dark bands */
+  --color-blue: #002868;
+  --color-blue-hover: #001a45;
   /* Crisp, cool off-white for alternating sections and placeholders */
   --color-cloud: #f5f6f9;
   --color-slate: #4b5874;
-  /* Warm gold: rules, stars, bars, and pins */
-  --color-gold: #b8925a;
-  /* Light gold for accents on navy */
-  --color-gold-light: #d9bf85;
-  /* Deeper gold for small text on white (passes contrast) */
-  --color-gold-deep: #8a6a3b;
+  /* Texas flag red (Old Glory Red): accent lines, stars, bars, pins, button hovers */
+  --color-red: #bf0a30;
+  --color-red-hover: #9e0827;
+  /* Brighter red for accents on blue backgrounds (Texas red is too dark there) */
+  --color-red-light: #ff5c70;
   --color-line: #e3e7ed;
   --color-error: #b3261e;
   --color-success: #1f6b4a;
@@ -41,7 +40,7 @@
   h2,
   h3,
   h4 {
-    color: var(--color-navy);
+    color: var(--color-blue);
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
@@ -52,7 +51,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-gold);
+    outline: 2px solid var(--color-red);
     outline-offset: 2px;
   }
 }
@@ -85,7 +84,7 @@
 
 .select-chevron {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%231C2B4A' stroke-width='1.5'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23002868' stroke-width='1.5'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   background-size: 12px 8px;
@@ -104,10 +103,10 @@
   line-height: 1.5;
 }
 .sales-map .leaflet-popup-content strong {
-  color: var(--color-navy);
+  color: var(--color-blue);
   font-weight: 500;
 }
-/* Mute the map tiles so the navy and gold pins stand out */
+/* Mute the map tiles so the blue and red pins stand out */
 .sales-map .leaflet-tile-pane {
   filter: grayscale(1) brightness(1.04) contrast(0.92);
 }

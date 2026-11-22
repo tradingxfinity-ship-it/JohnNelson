@@ -179,7 +179,7 @@ export function HeroCarousel() {
         {centerSlot && (
           <>
             <p
-              className="pointer-events-none absolute bottom-0 z-10 rounded-tr-lg bg-white px-4 pb-1.5 pt-3 text-xs font-medium uppercase tracking-[0.12em] text-navy sm:px-5 sm:pt-3.5 sm:text-[13px]"
+              className="pointer-events-none absolute bottom-0 z-10 rounded-tr-lg bg-white px-4 pb-1.5 pt-3 text-xs font-medium uppercase tracking-[0.12em] text-blue sm:px-5 sm:pt-3.5 sm:text-[13px]"
               style={{ left: centerSlot.left }}
               aria-live={paused || reduceMotion ? "polite" : "off"}
             >
@@ -187,7 +187,7 @@ export function HeroCarousel() {
               <span className="sr-only">, {current.sold}</span>
             </p>
             <div
-              className="absolute bottom-0 z-10 flex items-center gap-1 rounded-tl-lg bg-white py-1.5 pl-2 pr-1.5 text-navy sm:gap-2 sm:pl-3"
+              className="absolute bottom-0 z-10 flex items-center gap-1 rounded-tl-lg bg-white py-1.5 pl-2 pr-1.5 text-blue sm:gap-2 sm:pl-3"
               style={{ right: layout ? layout.width - (centerSlot.left + centerSlot.width) : 0 }}
             >
               <button

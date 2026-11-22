@@ -162,11 +162,11 @@ export function AlbumViewer() {
         openerRef.current?.focus();
       }}
       onKeyDown={onKeyDown}
-      className="m-0 h-dvh max-h-none w-screen max-w-none bg-navy p-0 text-white backdrop:bg-navy/90"
+      className="m-0 h-dvh max-h-none w-screen max-w-none bg-blue p-0 text-white backdrop:bg-blue/90"
     >
       {set && photo && mode === "gallery" && (
         <div ref={galleryRef} className="h-full overflow-y-auto">
-          <div className="sticky top-0 z-10 bg-navy/95 backdrop-blur-sm">
+          <div className="sticky top-0 z-10 bg-blue/95 backdrop-blur-sm">
             <div className="mx-auto flex max-w-[1248px] items-center justify-between gap-4 px-5 py-4 sm:px-8">
               <div className="min-w-0">
                 <p className="truncate text-base font-medium sm:text-lg">{set.photos[0].title}</p>
@@ -213,7 +213,7 @@ export function AlbumViewer() {
                     type="button"
                     data-tile={i}
                     onClick={() => openPhoto(i)}
-                    className="group relative aspect-[4/3] overflow-hidden rounded-md bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:aspect-auto sm:h-full"
+                    className="group relative aspect-[4/3] overflow-hidden rounded-md bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red sm:aspect-auto sm:h-full"
                   >
                     <span className="sr-only">
                       Open photo {i + 1} of {count}
@@ -311,7 +311,7 @@ export function AlbumViewer() {
                 <button
                   type="button"
                   onClick={() => go(-1)}
-                  className="absolute left-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-navy/70 hover:bg-navy sm:left-6"
+                  className="absolute left-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-blue/70 hover:bg-blue sm:left-6"
                 >
                   <span className="sr-only">Previous photo</span>
                   <span aria-hidden className="text-xl">
@@ -321,7 +321,7 @@ export function AlbumViewer() {
                 <button
                   type="button"
                   onClick={() => go(1)}
-                  className="absolute right-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-navy/70 hover:bg-navy sm:right-6"
+                  className="absolute right-3 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-blue/70 hover:bg-blue sm:right-6"
                 >
                   <span className="sr-only">Next photo</span>
                   <span aria-hidden className="text-xl">
@@ -334,7 +334,7 @@ export function AlbumViewer() {
               <button
                 type="button"
                 onClick={openFullAlbum}
-                className="absolute bottom-4 left-1/2 inline-flex min-h-11 -translate-x-1/2 items-center rounded-md bg-white px-4 text-sm font-medium text-navy sm:hidden"
+                className="absolute bottom-4 left-1/2 inline-flex min-h-11 -translate-x-1/2 items-center rounded-md bg-white px-4 text-sm font-medium text-blue sm:hidden"
               >
                 View all {fullAlbum.photos.length} photos
               </button>
@@ -358,7 +358,7 @@ export function AlbumViewer() {
                     aria-current={i === index ? "true" : undefined}
                     className={`relative h-12 w-16 shrink-0 overflow-hidden rounded-md transition-opacity sm:h-14 sm:w-20 ${
                       i === index
-                        ? "opacity-100 ring-2 ring-gold ring-offset-2 ring-offset-navy"
+                        ? "opacity-100 ring-2 ring-red ring-offset-2 ring-offset-blue"
                         : "opacity-50 hover:opacity-100"
                     }`}
                   >

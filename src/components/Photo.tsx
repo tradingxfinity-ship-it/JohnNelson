@@ -36,7 +36,7 @@ export function Photo({
   className?: string;
 }) {
   const captionTab = caption ? (
-    <span className={`absolute bottom-0 left-0 rounded-tr-lg px-4 pb-1.5 pt-3 ${captionOn === "cloud" ? "bg-cloud" : "bg-white"} text-xs font-medium uppercase tracking-[0.12em] text-navy sm:px-5 sm:pt-3.5 sm:text-[13px]`}>
+    <span className={`absolute bottom-0 left-0 rounded-tr-lg px-4 pb-1.5 pt-3 ${captionOn === "cloud" ? "bg-cloud" : "bg-white"} text-xs font-medium uppercase tracking-[0.12em] text-blue sm:px-5 sm:pt-3.5 sm:text-[13px]`}>
       {caption}
     </span>
   ) : null;
@@ -67,7 +67,7 @@ export function Photo({
 function HomeIllustration() {
   return (
     <svg viewBox="0 0 240 160" className="w-3/5 max-w-[320px]" fill="none" aria-hidden>
-      <g stroke="#1C2B4A" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round">
+      <g stroke="#002868" strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round">
         <path d="M30 140h180" />
         <path d="M44 140V82l46-34 46 34v58" />
         <path d="M34 89l56-41 56 41" />
@@ -79,7 +79,7 @@ function HomeIllustration() {
         <rect x="150" y="108" width="16" height="16" />
         <rect x="174" y="108" width="16" height="16" />
       </g>
-      <g stroke="#B8925A" strokeWidth="1.5" strokeLinecap="round">
+      <g stroke="#BF0A30" strokeWidth="1.5" strokeLinecap="round">
         <path d="M44 120h34M102 120h34" />
         <path d="M136 132h64" />
         <circle cx="196" cy="40" r="10" />

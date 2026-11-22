@@ -5,7 +5,7 @@ import { Container } from "./ui";
 
 export function Footer() {
   return (
-    <footer className="bg-navy text-white/75">
+    <footer className="bg-blue text-white/75">
       <Container className="py-16 lg:py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1.4fr]">
           <div>

@@ -47,18 +47,18 @@ export function SoldGallery() {
                     }
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                   />
-                  <span className="absolute bottom-0 left-0 rounded-tr-lg bg-white px-4 pb-1.5 pt-3 text-xs font-medium uppercase tracking-[0.12em] text-navy sm:px-5 sm:pt-3.5 sm:text-[13px]">
+                  <span className="absolute bottom-0 left-0 rounded-tr-lg bg-white px-4 pb-1.5 pt-3 text-xs font-medium uppercase tracking-[0.12em] text-blue sm:px-5 sm:pt-3.5 sm:text-[13px]">
                     Sold · {a.sold}
                   </span>
                 </span>
                 <span className="mt-5 flex items-start justify-between gap-4">
                   <span className="min-w-0">
-                    <span className="block text-xl font-medium text-navy underline-offset-4 group-hover:underline group-focus-visible:underline">
+                    <span className="block text-xl font-medium text-blue underline-offset-4 group-hover:underline group-focus-visible:underline">
                       {a.title}
                     </span>
                     <span className="mt-1 block text-[15px]">{a.place}</span>
                   </span>
-                  <span className="shrink-0 pt-1 text-sm font-medium text-navy">
+                  <span className="shrink-0 pt-1 text-sm font-medium text-blue">
                     {a.photos.length} photos <span aria-hidden>→</span>
                   </span>
                 </span>
@@ -66,7 +66,7 @@ export function SoldGallery() {
                   {a.details.map((d, j) => (
                     <span key={d} className="flex items-center gap-3">
                       {j > 0 && <span aria-hidden className="h-3 w-px bg-line" />}
-                      <span className="font-medium text-navy">{d}</span>
+                      <span className="font-medium text-blue">{d}</span>
                     </span>
                   ))}
                 </span>

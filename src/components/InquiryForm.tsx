@@ -18,7 +18,7 @@ import { buttonStyles } from "./ui";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClass =
-  "block w-full min-h-12 rounded-md border bg-white px-3.5 py-2.5 text-base text-navy placeholder:text-slate/60 transition-colors focus:border-navy focus:outline-2 focus:outline-offset-0 focus:outline-navy/15 aria-[invalid=true]:border-error";
+  "block w-full min-h-12 rounded-md border bg-white px-3.5 py-2.5 text-base text-blue placeholder:text-slate/60 transition-colors focus:border-blue focus:outline-2 focus:outline-offset-0 focus:outline-blue/15 aria-[invalid=true]:border-error";
 
 export function InquiryForm({ defaultType }: { defaultType?: InquiryType }) {
   const uid = useId();
@@ -113,7 +113,7 @@ export function InquiryForm({ defaultType }: { defaultType?: InquiryType }) {
         role="status"
         className="rounded-md border border-line bg-white p-8 outline-none sm:p-10"
       >
-        <span aria-hidden className="flex h-11 w-11 items-center justify-center rounded-full border border-gold text-gold-deep">
+        <span aria-hidden className="flex h-11 w-11 items-center justify-center rounded-full border border-red text-red">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8">
             <path d="M4 10.5l4 4 8-9" />
           </svg>
@@ -121,7 +121,7 @@ export function InquiryForm({ defaultType }: { defaultType?: InquiryType }) {
         <h3 className="mt-6 text-2xl font-medium">Thanks for reaching out. Irma and John will be in touch.</h3>
         <p className="mt-3 leading-relaxed">
           Need to talk sooner? Call{" "}
-          <a href={site.contact.phoneHref} className="font-medium text-navy underline underline-offset-4">
+          <a href={site.contact.phoneHref} className="font-medium text-blue underline underline-offset-4">
             {site.contact.phoneDisplay}
           </a>
           .
@@ -159,12 +159,12 @@ export function InquiryForm({ defaultType }: { defaultType?: InquiryType }) {
           ref={resultRef}
           tabIndex={-1}
           role="alert"
-          className="mb-8 rounded-md border border-error/30 bg-error/5 p-4 text-sm leading-relaxed text-navy outline-none"
+          className="mb-8 rounded-md border border-error/30 bg-error/5 p-4 text-sm leading-relaxed text-blue outline-none"
         >
           <p className="font-medium">We couldn’t send your inquiry.</p>
           <p className="mt-1 text-slate">
             {serverMessage || "Something went wrong on our end."} Your details are still here. Try again, or call{" "}
-            <a href={site.contact.phoneHref} className="font-medium text-navy underline underline-offset-4">
+            <a href={site.contact.phoneHref} className="font-medium text-blue underline underline-offset-4">
               {site.contact.phoneDisplay}
             </a>
             .
@@ -173,7 +173,7 @@ export function InquiryForm({ defaultType }: { defaultType?: InquiryType }) {
       )}
 
       <fieldset aria-describedby={errors.inquiryType ? id("inquiryType-error") : undefined}>
-        <legend className="text-lg font-medium text-navy">How can we help?</legend>
+        <legend className="text-lg font-medium text-blue">How can we help?</legend>
         <div className="mt-4 grid grid-cols-3 gap-2">
           {INQUIRY_TYPES.map((t) => (
             <label key={t} className="relative cursor-pointer">
@@ -185,7 +185,7 @@ export function InquiryForm({ defaultType }: { defaultType?: InquiryType }) {
                 onChange={() => update("inquiryType", t)}
                 className="peer sr-only"
               />
-              <span className="flex min-h-12 items-center justify-center rounded-md border border-line text-[15px] font-medium text-navy transition-colors hover:border-navy peer-checked:border-navy peer-checked:bg-navy peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gold">
+              <span className="flex min-h-12 items-center justify-center rounded-md border border-line text-[15px] font-medium text-blue transition-colors hover:border-blue peer-checked:border-blue peer-checked:bg-blue peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-red">
                 {INQUIRY_TYPE_LABELS[t]}
               </span>
             </label>
@@ -244,7 +244,7 @@ export function InquiryForm({ defaultType }: { defaultType?: InquiryType }) {
       {type && (
         <fieldset className="mt-8 border-t border-line pt-8">
           <legend className="sr-only">{INQUIRY_TYPE_LABELS[type]} details</legend>
-          <p aria-hidden className="mb-5 text-sm font-medium text-navy">
+          <p aria-hidden className="mb-5 text-sm font-medium text-blue">
             {type === "buy" ? "About the home you want" : type === "sell" ? "About your property" : "About the rental you need"}
           </p>
           <div className="grid gap-5 sm:grid-cols-2">
@@ -333,7 +333,7 @@ export function InquiryForm({ defaultType }: { defaultType?: InquiryType }) {
           {submitting ? "Sending…" : status === "error" ? "Try again" : type ? SUBMIT_LABELS[type] : "Send my inquiry"}
         </button>
         <p className="text-sm text-slate">
-          <span aria-hidden className="text-gold">*</span> Required
+          <span aria-hidden className="text-red">*</span> Required
         </p>
       </div>
       <p className="sr-only" aria-live="polite">
@@ -358,11 +358,11 @@ function Field({
 }) {
   return (
     <div className={className}>
-      <label htmlFor={htmlFor} className="mb-2 block text-sm font-medium text-navy">
+      <label htmlFor={htmlFor} className="mb-2 block text-sm font-medium text-blue">
         {label}
         {required ? (
           <>
-            <span aria-hidden className="ml-0.5 text-gold">*</span>
+            <span aria-hidden className="ml-0.5 text-red">*</span>
             <span className="sr-only"> (required)</span>
           </>
         ) : (

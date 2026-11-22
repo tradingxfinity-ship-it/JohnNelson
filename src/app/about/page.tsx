@@ -84,7 +84,7 @@ export default function AboutPage() {
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
               {["Broker/owner team", `Se habla español`, "San Antonio, Texas"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
-                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-gold" />
+                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-red" />
                   {t}
                 </li>
               ))}
@@ -103,7 +103,7 @@ export default function AboutPage() {
       </section>
 
       {/* Numbers */}
-      <section aria-label="By the numbers" className="bg-navy">
+      <section aria-label="By the numbers" className="bg-blue">
         <Container>
           <dl className="grid grid-cols-2 lg:grid-cols-4">
             {[
@@ -117,7 +117,7 @@ export default function AboutPage() {
                 } ${i >= 2 ? "border-t lg:border-t-0" : ""} ${i === 2 ? "lg:border-l lg:pl-10" : ""}`}
               >
                 <dt className="text-[15px] text-white/70">{s.label}</dt>
-                <dd className="text-4xl font-medium tracking-[-0.03em] text-gold-light lg:text-5xl">{s.value}</dd>
+                <dd className="text-4xl font-medium tracking-[-0.03em] text-red-light lg:text-5xl">{s.value}</dd>
               </div>
             ))}
           </dl>
@@ -127,9 +127,9 @@ export default function AboutPage() {
       {/* How we work */}
       <Section>
         <Container className="grid gap-12 lg:grid-cols-[4fr_7fr] lg:gap-20">
-          <div className="flex flex-col rounded-lg border-2 border-gold bg-navy p-7 sm:p-9">
+          <div className="flex flex-col rounded-lg border-2 border-red bg-blue p-7 sm:p-9">
             <p className="mb-4 flex items-center gap-3 text-sm font-medium text-white/80">
-              <span aria-hidden className="h-px w-8 bg-gold-light" />
+              <span aria-hidden className="h-px w-8 bg-red-light" />
               How we work
             </p>
             <h2 className="text-[1.75rem] font-medium leading-tight text-white sm:text-4xl">
@@ -147,7 +147,7 @@ export default function AboutPage() {
           <ol className="grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2">
             {principles.map((p, i) => (
               <li key={p.title} className="bg-white p-7 lg:p-8">
-                <span className="text-sm font-medium text-gold-deep">0{i + 1}</span>
+                <span className="text-sm font-medium text-red">0{i + 1}</span>
                 <h3 className="mt-3 text-xl font-medium">{p.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed">{p.body}</p>
               </li>
@@ -227,17 +227,17 @@ export default function AboutPage() {
                 { value: String(site.languages.length), label: site.languages.join(" & ") },
               ].map((s) => (
                 // Column-reverse keeps the number above its label; justify-end pins both to the top
-                <div key={s.label} className="flex flex-col-reverse justify-end rounded-md bg-navy px-3 py-4 sm:px-5 sm:py-5">
+                <div key={s.label} className="flex flex-col-reverse justify-end rounded-md bg-blue px-3 py-4 sm:px-5 sm:py-5">
                   <dt className="mt-1 text-xs leading-snug text-white/75 sm:text-[13px]">{s.label}</dt>
-                  <dd className="text-2xl font-medium leading-none tracking-[-0.03em] text-gold-light sm:text-3xl">{s.value}</dd>
+                  <dd className="text-2xl font-medium leading-none tracking-[-0.03em] text-red-light sm:text-3xl">{s.value}</dd>
                 </div>
               ))}
             </dl>
 
-            <h3 className="mt-8 text-sm font-medium text-navy">Service areas</h3>
+            <h3 className="mt-8 text-sm font-medium text-blue">Service areas</h3>
             <ul className="mt-3 flex flex-wrap gap-1.5">
               {site.serviceAreas.map((a) => (
-                <li key={a} className="rounded-full bg-cloud px-3 py-1 text-[13px] text-navy">
+                <li key={a} className="rounded-full bg-cloud px-3 py-1 text-[13px] text-blue">
                   {a}
                 </li>
               ))}
@@ -253,16 +253,16 @@ export default function AboutPage() {
             </div>
             {/* Homes sold by area: laid over the map on larger screens, below it on phones */}
             <div className="mt-3 rounded-md border border-line bg-white p-4 sm:absolute sm:bottom-5 sm:left-5 sm:z-[500] sm:mt-0 sm:w-[280px] sm:border-0 sm:bg-white/95 sm:p-5 sm:shadow-sm sm:backdrop-blur-sm">
-              <p className="text-sm font-medium text-navy">Homes in our portfolio</p>
+              <p className="text-sm font-medium text-blue">Homes in our portfolio</p>
               <ul className="mt-3 space-y-2.5">
                 {byCity.slice(0, 5).map(([city, n]) => (
                   <li key={city}>
                     <div className="flex items-baseline justify-between text-[13px]">
-                      <span className="text-navy">{city}</span>
+                      <span className="text-blue">{city}</span>
                       <span className="tabular-nums">{n}</span>
                     </div>
                     <div className="mt-1 h-1 rounded-full bg-line">
-                      <div className="h-1 rounded-full bg-gold" style={{ width: `${(n / byCity[0][1]) * 100}%` }} />
+                      <div className="h-1 rounded-full bg-red" style={{ width: `${(n / byCity[0][1]) * 100}%` }} />
                     </div>
                   </li>
                 ))}
@@ -275,11 +275,11 @@ export default function AboutPage() {
       <Reviews />
 
       {/* Call to action */}
-      <section className="relative isolate overflow-hidden bg-navy py-20 lg:py-26">
+      <section className="relative isolate overflow-hidden bg-blue py-20 lg:py-26">
         {site.images.contact && (
           <Image src={site.images.contact.src} alt="" fill sizes="100vw" className="-z-20 object-cover" />
         )}
-        <div aria-hidden className="absolute inset-0 -z-10 bg-navy/80" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-blue/80" />
         <Container className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
             <h2 className="text-3xl font-medium text-white sm:text-4xl">Ready to talk about your move?</h2>

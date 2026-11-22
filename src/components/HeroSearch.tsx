@@ -23,7 +23,7 @@ export function HeroSearch() {
     <form
       role="search"
       onSubmit={onSubmit}
-      className="mt-6 flex items-stretch rounded-md border border-line bg-white p-1.5 focus-within:border-navy"
+      className="mt-6 flex items-stretch rounded-md border border-line bg-white p-1.5 focus-within:border-blue"
     >
       <label htmlFor={`${id}-intent`} className="sr-only">
         Looking to
@@ -32,7 +32,7 @@ export function HeroSearch() {
         id={`${id}-intent`}
         value={intent}
         onChange={(e) => setIntent(e.target.value as "buy" | "rent")}
-        className="select-chevron shrink-0 rounded-sm border-r border-line bg-transparent py-2 pl-3 pr-9 text-[15px] font-medium text-navy focus:outline-none"
+        className="select-chevron shrink-0 rounded-sm border-r border-line bg-transparent py-2 pl-3 pr-9 text-[15px] font-medium text-blue focus:outline-none"
       >
         <option value="buy">Buy</option>
         <option value="rent">Rent</option>
@@ -48,11 +48,11 @@ export function HeroSearch() {
         placeholder="City or ZIP code"
         autoComplete="off"
         maxLength={120}
-        className="w-0 min-w-0 flex-1 bg-transparent px-3 text-[15px] text-navy placeholder:text-slate/70 focus:outline-none"
+        className="w-0 min-w-0 flex-1 bg-transparent px-3 text-[15px] text-blue placeholder:text-slate/70 focus:outline-none"
       />
       <button
         type="submit"
-        className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-sm bg-navy px-4 text-[15px] font-medium text-white transition-colors hover:bg-navy-hover hover:text-gold-light sm:px-5"
+        className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-sm bg-blue px-4 text-[15px] font-medium text-white transition-colors hover:bg-red sm:px-5"
       >
         <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
           <circle cx="9" cy="9" r="6" />

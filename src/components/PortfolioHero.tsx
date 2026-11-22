@@ -44,7 +44,7 @@ export function PortfolioHero() {
   ];
 
   return (
-    <section className="relative isolate overflow-hidden bg-navy text-white">
+    <section className="relative isolate overflow-hidden bg-blue text-white">
       {/* Background carousel */}
       <div aria-hidden className="absolute inset-0 -z-10">
         {slides.map((s, i) => (
@@ -60,8 +60,8 @@ export function PortfolioHero() {
             } duration-[1400ms,7000ms] motion-reduce:scale-100`}
           />
         ))}
-        {/* Flat navy wash keeps the text readable on any photo */}
-        <div className="absolute inset-0 bg-navy/60" />
+        {/* Flat blue wash keeps the text readable on any photo */}
+        <div className="absolute inset-0 bg-blue/60" />
       </div>
 
       <Container className="relative flex min-h-[clamp(300px,34vh,380px)] flex-col justify-end pb-8 pt-14 sm:pb-10">
@@ -98,7 +98,7 @@ export function PortfolioHero() {
         <div className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
           <div>
             <p className="flex items-center gap-3 text-sm font-medium text-white/85">
-              <span aria-hidden className="h-px w-8 bg-gold-light" />
+              <span aria-hidden className="h-px w-8 bg-red-light" />
               {portfolio.length} homes across {communities} communities
             </p>
             <h1 className="mt-3 text-[3.5rem] font-semibold leading-[0.9] tracking-[-0.045em] text-white sm:text-[5.5rem] lg:text-[7rem]">
@@ -110,10 +110,10 @@ export function PortfolioHero() {
             {stats.map((s) => (
               <div
                 key={s.label}
-                className="flex flex-col-reverse justify-end rounded-md border border-white/25 bg-navy/40 px-4 py-3 backdrop-blur-sm"
+                className="flex flex-col-reverse justify-end rounded-md border border-white/25 bg-blue/40 px-4 py-3 backdrop-blur-sm"
               >
                 <dt className="mt-1 text-xs leading-snug text-white/75">{s.label}</dt>
-                <dd className="text-2xl font-medium tracking-[-0.03em] text-gold-light sm:text-[1.75rem]">{s.value}</dd>
+                <dd className="text-2xl font-medium tracking-[-0.03em] text-red-light sm:text-[1.75rem]">{s.value}</dd>
               </div>
             ))}
           </dl>

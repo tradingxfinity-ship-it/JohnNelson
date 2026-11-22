@@ -1,7 +1,7 @@
 import { site } from "@/content/site";
 import { Container, Eyebrow, Section } from "./ui";
 
-function Stars({ className = "text-gold" }: { className?: string }) {
+function Stars({ className = "text-red" }: { className?: string }) {
   return (
     <span className={`flex gap-0.5 ${className}`} aria-hidden>
       {Array.from({ length: 5 }).map((_, i) => (
@@ -26,12 +26,12 @@ export function Reviews() {
     <Section className="border-t border-line">
       <Container className="grid gap-10 lg:grid-cols-[4fr_8fr] lg:gap-12">
         {/* Summary */}
-        <div className="rounded-lg bg-navy p-7 text-white sm:p-8">
+        <div className="rounded-lg bg-blue p-7 text-white sm:p-8">
           <p className="text-sm font-medium text-white/70">Zillow rating</p>
           <div className="mt-3 flex items-end gap-4">
             <p className="text-6xl font-medium leading-none tracking-[-0.04em]">{rating}</p>
             <div className="pb-1">
-              <Stars className="text-gold-light" />
+              <Stars className="text-red-light" />
               <p className="mt-1.5 text-sm text-white/80">{reviewCount} reviews</p>
             </div>
           </div>
@@ -45,7 +45,7 @@ export function Reviews() {
                   <span className="tabular-nums text-white/85">{b.count}</span>
                 </div>
                 <div className="mt-1 h-1 rounded-full bg-white/15">
-                  <div className="h-1 rounded-full bg-gold-light" style={{ width: `${Math.max(2, (b.count / max) * 100)}%` }} />
+                  <div className="h-1 rounded-full bg-red-light" style={{ width: `${Math.max(2, (b.count / max) * 100)}%` }} />
                 </div>
               </li>
             ))}
@@ -65,7 +65,7 @@ export function Reviews() {
               href={reviewsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-white px-5 text-[15px] font-medium text-navy hover:bg-cloud"
+              className="mt-8 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md bg-white px-5 text-[15px] font-medium text-blue hover:bg-cloud"
             >
               Read all reviews on Zillow
               <span aria-hidden>↗</span>
@@ -91,16 +91,16 @@ export function Reviews() {
                   <span className="text-[13px]">{r.date}</span>
                 </div>
                 <p className="mt-4 flex items-center gap-2">
-                  <span className="rounded-full bg-cloud px-2.5 py-0.5 text-xs font-medium text-navy">{r.kind}</span>
+                  <span className="rounded-full bg-cloud px-2.5 py-0.5 text-xs font-medium text-blue">{r.kind}</span>
                   <span className="sr-only">{r.rating} out of 5 stars.</span>
                 </p>
-                <p className="mt-2 flex-1 text-[15px] leading-relaxed text-navy">{r.description}</p>
+                <p className="mt-2 flex-1 text-[15px] leading-relaxed text-blue">{r.description}</p>
                 {reviewsUrl && (
                   <a
                     href={reviewsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-navy underline-offset-4 hover:underline"
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-blue underline-offset-4 hover:underline"
                   >
                     Read this review on Zillow
                     <span aria-hidden>↗</span>

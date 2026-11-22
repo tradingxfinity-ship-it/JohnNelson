@@ -38,7 +38,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-line bg-white">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-sm focus:bg-navy focus:px-3 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-sm focus:bg-blue focus:px-3 focus:py-2 focus:text-white"
       >
         Skip to content
       </a>
@@ -52,9 +52,9 @@ export function Header() {
                 <Link
                   href={link.href}
                   aria-current={isActive(link.href) ? "page" : undefined}
-                  className={`relative py-2 text-[15px] font-medium transition-colors hover:text-navy ${
+                  className={`relative py-2 text-[15px] font-medium transition-colors hover:text-blue ${
                     isActive(link.href)
-                      ? "text-navy after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-gold"
+                      ? "text-blue after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-red"
                       : "text-slate"
                   }`}
                 >
@@ -72,7 +72,7 @@ export function Header() {
           <button
             ref={toggleRef}
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-navy md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-blue md:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((o) => !o)}
@@ -94,7 +94,7 @@ export function Header() {
                   <Link
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
-                    className={`flex min-h-12 items-center text-base font-medium ${isActive(link.href) ? "text-navy" : "text-slate"}`}
+                    className={`flex min-h-12 items-center text-base font-medium ${isActive(link.href) ? "text-blue" : "text-slate"}`}
                     onClick={() => setOpen(false)}
                   >
                     {link.label}

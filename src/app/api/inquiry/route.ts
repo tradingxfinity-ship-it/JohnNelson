@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
     `Submitted: ${submittedAt} (San Antonio time)`,
     "Reply to this email to respond directly to the visitor.",
   ].join("\n");
-  const html = `<div style="font-family:Arial,sans-serif;color:#1C2B4A;max-width:600px">
+  const html = `<div style="font-family:Arial,sans-serif;color:#002868;max-width:600px">
 <h2 style="margin:0 0 16px">New ${typeLabel.toLowerCase()} inquiry</h2>
 <table cellpadding="8" style="border-collapse:collapse;width:100%;font-size:14px">
 <tr><td style="border-bottom:1px solid #E3E7ED;color:#4B5874;width:40%">Inquiry type</td><td style="border-bottom:1px solid #E3E7ED">${typeLabel}</td></tr>

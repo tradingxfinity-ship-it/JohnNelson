@@ -10,7 +10,7 @@ import { Container, Section } from "./ui";
  */
 export function InquirySection({ defaultType }: { defaultType?: InquiryType }) {
   return (
-    <Section id="contact" className="relative isolate overflow-hidden bg-navy">
+    <Section id="contact" className="relative isolate overflow-hidden bg-blue">
       {site.images.contact && (
         <Image
           src={site.images.contact.src}
@@ -20,13 +20,13 @@ export function InquirySection({ defaultType }: { defaultType?: InquiryType }) {
           className="-z-20 object-cover"
         />
       )}
-      {/* Flat navy tint keeps text and the form readable over the photo */}
-      <div aria-hidden className="absolute inset-0 -z-10 bg-navy/80" />
+      {/* Flat blue tint keeps text and the form readable over the photo */}
+      <div aria-hidden className="absolute inset-0 -z-10 bg-blue/80" />
 
       <Container className="grid gap-10 lg:grid-cols-[5fr_7fr] lg:items-start lg:gap-x-20">
         <div className="lg:sticky lg:top-28">
           <p className="mb-4 flex items-center gap-3 text-sm font-medium text-white/80">
-            <span aria-hidden className="h-px w-8 bg-gold-light" />
+            <span aria-hidden className="h-px w-8 bg-red-light" />
             Contact
           </p>
           <h2 className="text-3xl font-medium text-white sm:text-4xl">Tell us about your next move.</h2>
@@ -46,7 +46,7 @@ export function InquirySection({ defaultType }: { defaultType?: InquiryType }) {
 
 export function ContactDetails({ className = "", inverse = false }: { className?: string; inverse?: boolean }) {
   const label = inverse ? "text-white/70" : "text-slate";
-  const link = inverse ? "text-white" : "text-navy";
+  const link = inverse ? "text-white" : "text-blue";
   return (
     <dl className={`space-y-5 border-t pt-8 text-[15px] ${inverse ? "border-white/20" : "border-line"} ${className}`}>
       <div>

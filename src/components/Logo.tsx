@@ -12,16 +12,16 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
           <span
             aria-hidden
             className={`flex h-9 w-9 items-center justify-center rounded-sm border text-[13px] font-semibold tracking-tight ${
-              inverse ? "border-white/40 text-white" : "border-navy text-navy"
+              inverse ? "border-white/40 text-white" : "border-blue text-blue"
             }`}
           >
             GIS
           </span>
           <span className="flex flex-col leading-none">
-            <span className={`text-[17px] font-semibold tracking-[-0.02em] ${inverse ? "text-white" : "text-navy"}`}>
+            <span className={`text-[17px] font-semibold tracking-[-0.02em] ${inverse ? "text-white" : "text-blue"}`}>
               Get It Sold
             </span>
-            <span className={`mt-1 text-[11px] font-medium uppercase tracking-[0.18em] ${inverse ? "text-gold-light" : "text-gold-deep"}`}>
+            <span className={`mt-1 text-[11px] font-medium uppercase tracking-[0.18em] ${inverse ? "text-red-light" : "text-red"}`}>
               Realty
             </span>
           </span>

@@ -51,13 +51,13 @@ export function Listings() {
                     </h3>
                     <p className="mt-1 text-[15px]">{listing.city}</p>
                   </div>
-                  <p className="shrink-0 text-xl font-medium text-navy">{listing.price}</p>
+                  <p className="shrink-0 text-xl font-medium text-blue">{listing.price}</p>
                 </div>
                 <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-line pt-4 text-sm">
                   {listing.details.map((d, j) => (
                     <span key={d} className="flex items-center gap-3">
                       {j > 0 && <span aria-hidden className="h-3 w-px bg-line" />}
-                      <span className="font-medium text-navy">{d}</span>
+                      <span className="font-medium text-blue">{d}</span>
                     </span>
                   ))}
                   <span aria-hidden className="h-3 w-px bg-line" />
@@ -73,7 +73,7 @@ export function Listings() {
             href={listingsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-10 inline-flex items-center gap-2 font-medium text-navy underline-offset-4 hover:underline"
+            className="mt-10 inline-flex items-center gap-2 font-medium text-blue underline-offset-4 hover:underline"
           >
             See all listings and sales on Zillow
             <span aria-hidden>↗</span>

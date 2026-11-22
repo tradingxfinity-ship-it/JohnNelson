@@ -27,11 +27,11 @@ export function SalesMap() {
           </p>
           <ul className="mt-8 space-y-3 border-t border-line pt-6 text-[15px]">
             <li className="flex items-center gap-3">
-              <span aria-hidden className="h-3.5 w-3.5 rounded-full border-2 border-white bg-navy outline outline-1 outline-line" />
+              <span aria-hidden className="h-3.5 w-3.5 rounded-full border-2 border-white bg-blue outline outline-1 outline-line" />
               Sold
             </li>
             <li className="flex items-center gap-3">
-              <span aria-hidden className="h-3.5 w-3.5 rounded-full border-2 border-white bg-gold outline outline-1 outline-line" />
+              <span aria-hidden className="h-3.5 w-3.5 rounded-full border-2 border-white bg-red outline outline-1 outline-line" />
               For sale
             </li>
           </ul>
@@ -43,7 +43,7 @@ export function SalesMap() {
               href={`${site.zillow.profileUrl}#listings-and-sales`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 font-medium text-navy underline-offset-4 hover:underline"
+              className="mt-8 inline-flex items-center gap-2 font-medium text-blue underline-offset-4 hover:underline"
             >
               See all sales on Zillow
               <span aria-hidden>↗</span>

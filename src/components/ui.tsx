@@ -17,23 +17,23 @@ export function Section({
   );
 }
 
-/** Small gold label with a short rule, used above section headings. */
+/** Small label with a short red rule, used above section headings. */
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
     <p className="mb-4 flex items-center gap-3 text-sm font-medium text-slate">
-      <span aria-hidden className="h-px w-8 bg-gold" />
+      <span aria-hidden className="h-px w-8 bg-red" />
       {children}
     </p>
   );
 }
 
 const buttonBase =
-  "inline-flex min-h-12 items-center justify-center rounded-md px-5 text-[15px] font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
+  "inline-flex min-h-12 items-center justify-center rounded-md px-5 text-[15px] font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red";
 
 export const buttonStyles = {
-  primary: `${buttonBase} bg-navy text-white hover:bg-navy-hover hover:text-gold-light`,
-  secondary: `${buttonBase} border border-navy bg-white text-navy hover:bg-navy hover:text-gold-light`,
-  inverse: `${buttonBase} bg-white text-navy hover:bg-cloud`,
+  primary: `${buttonBase} bg-blue text-white hover:bg-red`,
+  secondary: `${buttonBase} border border-blue bg-white text-blue hover:bg-blue hover:text-white`,
+  inverse: `${buttonBase} bg-white text-blue hover:bg-cloud`,
 };
 
 export function ButtonLink({
@@ -48,7 +48,7 @@ export function ButtonLink({
 export function ArrowLink({ className = "", children, ...props }: ComponentProps<typeof Link>) {
   return (
     <Link
-      className={`group inline-flex items-center gap-2 font-medium text-navy underline-offset-4 hover:underline focus-visible:underline ${className}`}
+      className={`group inline-flex items-center gap-2 font-medium text-blue underline-offset-4 hover:underline focus-visible:underline ${className}`}
       {...props}
     >
       {children}
