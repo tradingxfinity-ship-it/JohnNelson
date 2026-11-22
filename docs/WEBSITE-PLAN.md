@@ -5,8 +5,8 @@ Last updated November 22, 2026. This file records what has been decided for the 
 ## Decisions (locked in)
 
 ### Colors
-- Texas flag colors: **Texas blue `#002868`** and **Texas red `#BF0A30`**, on white, with a cool off-white `#F5F6F9` for alternating sections.
-- A brighter red, **`#FF5C70`**, is used for accents on blue backgrounds, where Texas red is too dark to read.
+- **Texas blue `#002868`** and **logo red `#C80000`** (the red of "SOLD" in the logo, a pure red; it replaced Texas flag red `#BF0A30`), on white, with a cool off-white `#F5F6F9` for alternating sections.
+- A brighter red, **`#FF5C5C`**, is used for accents on blue backgrounds, where the main red is too dark to read.
 - Blue buttons fill red on hover. Tokens live in `src/app/globals.css` (`blue`, `red`, `red-light`).
 - This replaces the proposal's "navy, warm white, red SOLD, gold accents". Gold is no longer used.
 

@@ -8,11 +8,11 @@
   /* Crisp, cool off-white for alternating sections and placeholders */
   --color-cloud: #f5f6f9;
   --color-slate: #4b5874;
-  /* Texas flag red (Old Glory Red): accent lines, stars, bars, pins, button hovers */
-  --color-red: #bf0a30;
-  --color-red-hover: #9e0827;
-  /* Brighter red for accents on blue backgrounds (Texas red is too dark there) */
-  --color-red-light: #ff5c70;
+  /* Red from the logo's "SOLD": accent lines, stars, bars, pins, button hovers */
+  --color-red: #c80000;
+  --color-red-hover: #a00000;
+  /* Brighter red for accents on blue backgrounds (the main red is too dark there) */
+  --color-red-light: #ff5c5c;
   --color-line: #e3e7ed;
   --color-error: #b3261e;
   --color-success: #1f6b4a;

@@ -79,7 +79,7 @@ function HomeIllustration() {
         <rect x="150" y="108" width="16" height="16" />
         <rect x="174" y="108" width="16" height="16" />
       </g>
-      <g stroke="#BF0A30" strokeWidth="1.5" strokeLinecap="round">
+      <g stroke="#C80000" strokeWidth="1.5" strokeLinecap="round">
         <path d="M44 120h34M102 120h34" />
         <path d="M136 132h64" />
         <circle cx="196" cy="40" r="10" />
