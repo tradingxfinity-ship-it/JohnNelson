@@ -45,7 +45,7 @@ export function HeroSearch() {
         type="search"
         value={area}
         onChange={(e) => setArea(e.target.value)}
-        placeholder="City or ZIP code"
+        placeholder="Find your next property"
         autoComplete="off"
         maxLength={120}
         className="w-0 min-w-0 flex-1 bg-transparent px-3 text-[15px] text-blue placeholder:text-slate/70 focus:outline-none"
