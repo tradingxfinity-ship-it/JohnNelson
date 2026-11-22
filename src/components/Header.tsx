@@ -32,7 +32,8 @@ export function Header() {
     };
   }, [open]);
 
-  const isActive = (href: string) => pathname === href;
+  // A section stays active on its subpages, e.g. /blog on /blog/some-post
+  const isActive = (href: string) => pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
   const linkClass = (href: string) =>
     `relative py-2 text-[15px] font-medium transition-colors hover:text-blue ${
       isActive(href) ? "text-blue after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-red" : "text-slate"
@@ -50,7 +51,7 @@ export function Header() {
         <Logo />
 
         <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-7">
+          <ul className="flex items-center gap-5 xl:gap-7">
             {navLinks.map((link) =>
               "children" in link ? (
                 <li key={link.label}>

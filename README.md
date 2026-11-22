@@ -57,6 +57,26 @@ Until a photo is set, a neutral line-drawing placeholder holds its place.
 - **To connect LERA:** after John's broker signs LERA's data agreement, set `LERA_RESO_URL`, `LERA_RESO_TOKEN`, and `LERA_OFFICE_MLS_ID` (see `.env.example`). The feed is re-read hourly, inside LERA's 12-hour limit. Expired and withdrawn listings, and listings whose sellers opted out of internet display, are left out. Pages showing LERA data carry LERA's required source, disclaimer, and copyright notices (`src/components/ListingNotice.tsx`). The full rules are in `docs/WEBSITE-PLAN.md`.
 - The feed's exact base URL and field support should be checked against LERA's documentation when access is granted.
 
+## Blog
+
+Posts are Markdown files in `content/blog/`. To add one, copy an existing file, rename it (the file name becomes the web address, e.g. `content/blog/my-post.md` → `/blog/my-post`), and edit the header:
+
+```
+---
+title: Post title
+description: One or two sentences for search results and the post list
+date: 2026-11-22
+category: seniors
+youtube: VIDEO_ID
+---
+```
+
+- `category` is one of `seniors`, `veterans`, `land`, `luxury`, `building-investing`, `buying`, `selling` (see `src/lib/blog.ts`). Each specialty page shows its latest posts under "From our blog".
+- `youtube` is optional: the video ID from a YouTube link (the part after `v=`). It embeds above the post using YouTube's privacy-enhanced player.
+- Add `draft: true` to hide a post.
+- The body supports `##` and `###` headings, paragraphs, `-` and `1.` lists, `>` quotes, `**bold**`, `*italic*`, and `[links](/path)`.
+- The four starter posts were drafted for John and Irma to review before launch.
+
 ## Sales map
 
 The homepage map (`src/components/SalesMap.tsx`) reads its pins from `src/content/sales.ts`: the 82 sales with locations on the Zillow profile map (its most recent 100) and the 3 current listings, with coordinates rounded to about 1 km so past clients' homes aren't pinpointed. Zillow's own map can't be embedded, so add new sales to that file (keep the rounding). For the full sales history, export it from the MLS and add the rows the same way.

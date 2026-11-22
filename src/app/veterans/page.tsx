@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { InquirySection } from "@/components/InquirySection";
+import { TopicPosts } from "@/components/TopicPosts";
 import { TopicGrid, TopicHero, TopicSteps } from "@/components/TopicPage";
 import { veterans } from "@/content/services";
 import { site } from "@/content/site";
@@ -39,6 +40,8 @@ export default function VeteransPage() {
       />
 
       <TopicSteps headline="Working around your orders" steps={veterans.steps} />
+
+      <TopicPosts category="veterans" />
 
       <InquirySection defaultType="buy" />
     </>

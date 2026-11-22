@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { InquirySection } from "@/components/InquirySection";
+import { TopicPosts } from "@/components/TopicPosts";
 import { TopicGrid, TopicHero } from "@/components/TopicPage";
 import { luxury } from "@/content/services";
 
@@ -44,6 +45,8 @@ export default function LuxuryPage() {
         headline="Selling and buying at a higher price point."
         topics={luxury.topics}
       />
+
+      <TopicPosts category="luxury" />
 
       <InquirySection defaultType="sell" />
     </>

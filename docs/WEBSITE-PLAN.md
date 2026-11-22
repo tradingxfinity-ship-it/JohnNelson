@@ -17,7 +17,7 @@ Last updated November 22, 2026. This file records what has been decided for the 
 ### Focus and specialty pages (from John, November 2026)
 - Focus on homes, land, and luxury. Rentals stay part of the business but are low priority: the Rent page stays, linked from the footer and services list, not the main menu.
 - Niche pages, each with material focused on its audience, under a **Who we help** dropdown in the main menu: Seniors & downsizing (`/senior-transitions`), Veterans & military (`/veterans`), Land & acreage (`/land`), Luxury homes (`/luxury`), Building & investing (`/building-investing`). The list lives in `specialties` in `src/content/services.ts`.
-- Later, for SEO: blog posts in each niche and links to John's YouTube videos explaining the process.
+- Blog at `/blog` (Markdown files in `content/blog/`), with posts by topic shown on each specialty page and optional YouTube embeds per post. Four starter posts need John and Irma's review.
 
 ### Listings: three separate areas
 | Page | What's on it | Data source |
@@ -120,8 +120,8 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | Proposal | Site now | Status |
 |---|---|---|
 | Helpful local pages (no keyword stuffing) | None | ❌ |
-| Articles: downsizing a parent's home, as-is vs. remodel, home condition, investing basics | None | ❌ |
-| YouTube videos linked to service pages | None | ⏸ |
+| Articles: downsizing a parent's home, as-is vs. remodel, home condition, investing basics | `/blog`: downsizing a parent's home, as-is vs. remodel, buying land, buying on PCS orders (drafts for review) | 🟡 ⏸ review |
+| YouTube videos linked to service pages | Posts can embed a video (`youtube:` in the post header) | ⏸ need video links |
 | IDX search | Built on the RESO format; connect with `LERA_RESO_URL`, `LERA_RESO_TOKEN`, `LERA_OFFICE_MLS_ID` | ⏸ LERA access |
 | Home valuation inquiry | Sell form | ✅ |
 | Consultation scheduling | None (contact form only) | ❌ |

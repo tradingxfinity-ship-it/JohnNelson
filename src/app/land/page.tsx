@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { InquirySection } from "@/components/InquirySection";
+import { TopicPosts } from "@/components/TopicPosts";
 import { TopicGrid, TopicHero } from "@/components/TopicPage";
 import { ArrowLink, Container } from "@/components/ui";
 import { land } from "@/content/services";
@@ -50,6 +51,8 @@ export default function LandPage() {
           See our current listings, including land
         </ArrowLink>
       </Container>
+
+      <TopicPosts category="land" />
 
       <InquirySection defaultType="buy" />
     </>

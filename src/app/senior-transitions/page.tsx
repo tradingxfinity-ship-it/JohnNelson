@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { InquirySection } from "@/components/InquirySection";
+import { TopicPosts } from "@/components/TopicPosts";
 import { TopicGrid, TopicHero, TopicSteps } from "@/components/TopicPage";
 import { seniorTransitions } from "@/content/services";
 import { site } from "@/content/site";
@@ -41,6 +42,8 @@ export default function SeniorTransitionsPage() {
       />
 
       <TopicSteps headline="Working through it together" steps={seniorTransitions.steps} />
+
+      <TopicPosts category="seniors" />
 
       <InquirySection defaultType="sell" />
     </>

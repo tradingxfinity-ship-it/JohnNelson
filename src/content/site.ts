@@ -249,6 +249,7 @@ export const navLinks: (NavLink | NavGroup)[] = [
   { label: "Who we help", children: specialties },
   { href: "/listings", label: "Our listings" },
   { href: "/portfolio", label: "Portfolio" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
 ];
 

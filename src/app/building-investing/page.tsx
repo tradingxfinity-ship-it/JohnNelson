@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { InquirySection } from "@/components/InquirySection";
+import { TopicPosts } from "@/components/TopicPosts";
 import { TopicGrid, TopicHero } from "@/components/TopicPage";
 import { buildingInvesting } from "@/content/services";
 
@@ -52,6 +53,8 @@ export default function BuildingInvestingPage() {
         intro="For first-time and experienced investors alike, we look at the numbers and the property together."
         topics={buildingInvesting.investing}
       />
+
+      <TopicPosts category="building-investing" />
 
       <InquirySection defaultType="buy" />
     </>
