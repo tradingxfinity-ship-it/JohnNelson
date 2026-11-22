@@ -9,7 +9,7 @@ export function StatsStrip({ className = "" }: { className?: string }) {
           {site.stats.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse gap-1 py-7 sm:px-8 sm:py-10 sm:first:pl-0 lg:px-12">
               <dt className="text-[15px] text-white/70">{stat.label}</dt>
-              <dd className="text-4xl font-medium tracking-[-0.03em] text-red-light lg:text-5xl">{stat.value}</dd>
+              <dd className="text-4xl font-medium tracking-[-0.03em] text-white lg:text-5xl">{stat.value}</dd>
             </div>
           ))}
         </dl>
