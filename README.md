@@ -9,6 +9,10 @@ npm run dev                  # http://localhost:3000
 npm run build && npm start   # production
 ```
 
+## Plan and decisions
+
+The locked-in direction (colors, listings, LERA MLS rules) and what is still missing from the brand rebuild proposal are in [`docs/WEBSITE-PLAN.md`](docs/WEBSITE-PLAN.md).
+
 ## Editing content
 
 Almost everything you'd want to change lives in **`src/content/site.ts`**:
