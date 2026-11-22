@@ -6,7 +6,16 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
   return (
     <Link href="/" className="inline-flex items-center gap-3" aria-label={`${site.name}, home`}>
       {site.logo ? (
-        <Image src={site.logo.src} alt="" width={site.logo.width} height={site.logo.height} className="h-9 w-auto" priority />
+        <Image
+          src={site.logo.src}
+          alt=""
+          width={site.logo.width}
+          height={site.logo.height}
+          sizes={inverse ? "120px" : "90px"}
+          priority={!inverse}
+          // The logo has a white background, so on dark areas it sits on a white plate
+          className={inverse ? "h-24 w-auto rounded-md bg-white p-2" : "h-14 w-auto sm:h-16 lg:h-[76px]"}
+        />
       ) : (
         <>
           <span

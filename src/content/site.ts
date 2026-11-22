@@ -20,8 +20,12 @@ export const site = {
   team: "Irma and John Nelson",
   city: "San Antonio",
 
-  /** Optional logo file in /public, e.g. "/images/logo.svg". Text wordmark is used when null. */
-  logo: null as SiteImage,
+  /**
+   * Logo file in /public (cropped from Nelson_Team_Logo_White_Background.png).
+   * It has a white background, so on dark areas it sits on a white plate.
+   * Set to null to fall back to the text wordmark.
+   */
+  logo: { src: "/images/logo.png", alt: "Get It Sold Realty, The Nelson Team", width: 1320, height: 966 } as SiteImage,
 
   hero: {
     eyebrow: "The Nelson Team · A Legacy of Service",

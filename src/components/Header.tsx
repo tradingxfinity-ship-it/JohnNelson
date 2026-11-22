@@ -46,7 +46,7 @@ export function Header() {
       >
         Skip to content
       </a>
-      <Container className="flex h-[72px] items-center justify-between gap-6">
+      <Container className="flex h-[76px] items-center justify-between gap-6 sm:h-[84px] lg:h-[96px]">
         <Logo />
 
         <nav aria-label="Main" className="hidden lg:block">

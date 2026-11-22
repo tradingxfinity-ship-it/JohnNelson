@@ -61,7 +61,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 ### Brand
 | Proposal | Site now | Status |
 |---|---|---|
-| Name "Get It SOLD Realty" with bold red SOLD | "Get It Sold Realty"; placeholder "GIS" logo | ⏸ need the real logo file |
+| Name "Get It SOLD Realty" with bold red SOLD | Real logo in the header and footer (`public/images/logo.png`) | ✅ |
 | Team identity "The Nelson Team" | Homepage, About, footer | ✅ |
 | Brand line "A Legacy of Service" | Homepage eyebrow, About sign-off | ✅ |
 | Promise "Real Experience. Personal Guidance. Results That Matter." | Not used | ❌ |
@@ -137,7 +137,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | Irma's title and license | ⏸ |
 | Stats: 290+ homes, $100M+, 19 years | ⏸ |
 | Any senior-specialist designation before claiming one | ⏸ |
-| Logo and brand assets | ⏸ |
+| Logo and brand assets | ✅ Logo received (PNG on white). A transparent or SVG version would look sharper on blue. |
 | Current professional photos | ⏸ |
 | Service-area list (11 areas on the site) | ⏸ |
 | Reino Builders affiliation disclosure | ⏸ |
