@@ -21,7 +21,16 @@ const inputClass =
   "block w-full min-h-12 rounded-md border bg-white px-3.5 py-2.5 text-base text-blue placeholder:text-slate/60 transition-colors focus:border-blue focus:outline-2 focus:outline-offset-0 focus:outline-blue/15 aria-[invalid=true]:border-error";
 
 /** `defaultNotes` starts the notes field with text, e.g. the home a visitor is asking about. */
-export function InquiryForm({ defaultType, defaultNotes }: { defaultType?: InquiryType; defaultNotes?: string }) {
+/** `onTypeChange` is called when the visitor picks Buy, Sell, or Rent. */
+export function InquiryForm({
+  defaultType,
+  defaultNotes,
+  onTypeChange,
+}: {
+  defaultType?: InquiryType;
+  defaultNotes?: string;
+  onTypeChange?: (type: InquiryType) => void;
+}) {
   const uid = useId();
   const id = (name: string) => `${uid}-${name}`;
 
@@ -183,7 +192,10 @@ export function InquiryForm({ defaultType, defaultNotes }: { defaultType?: Inqui
                 name="inquiryType"
                 value={t}
                 checked={type === t}
-                onChange={() => update("inquiryType", t)}
+                onChange={() => {
+                  update("inquiryType", t);
+                  onTypeChange?.(t);
+                }}
                 className="peer sr-only"
               />
               <span className="flex min-h-12 items-center justify-center rounded-md border border-line text-[15px] font-medium text-blue transition-colors hover:border-blue peer-checked:border-blue peer-checked:bg-blue peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-red">
