@@ -59,19 +59,21 @@ export default function Home() {
       {/* Hero */}
       <section className="pb-16 pt-10 lg:pb-24 lg:pt-16">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-[7fr_5fr] lg:items-end lg:gap-16">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-end lg:gap-14">
             <div>
               <Eyebrow>{site.hero.eyebrow}</Eyebrow>
-              <h1 className="text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl lg:text-[5rem]">
+              <h1 className="text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl lg:text-[4.5rem] xl:text-[5rem]">
                 {site.hero.heading}
               </h1>
             </div>
             <div>
-              <p className="text-lg leading-relaxed">{site.hero.body}</p>
+              <p className="text-xl leading-relaxed sm:text-2xl sm:leading-snug">{site.hero.body}</p>
               <HeroSearch />
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <ButtonLink href="/sell#contact">What’s my home worth?</ButtonLink>
-                <ButtonLink href={CONTACT_HREF} variant="secondary">
+                <ButtonLink href="/sell#contact" className="min-h-14 text-base sm:text-lg">
+                  What’s my home worth?
+                </ButtonLink>
+                <ButtonLink href={CONTACT_HREF} variant="secondary" className="min-h-14 text-base sm:text-lg">
                   Schedule a consultation
                 </ButtonLink>
               </div>
