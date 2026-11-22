@@ -244,6 +244,343 @@
 .hiw-pulse {
   animation: hiw-pulse 2s ease-out infinite;
 }
+/* Scene parts (src/components/HowScenes.tsx) */
+.hiw-type,
+.hiw-stamp,
+.hiw-sparkle,
+.hiw-shadow,
+.hiw-ripple,
+.hiw-door,
+.hiw-emerge,
+.hiw-pop {
+  transform-box: fill-box;
+}
+@keyframes hiw-fade {
+  from {
+    opacity: 0;
+  }
+}
+.hiw-fade {
+  animation: hiw-fade 0.6s ease var(--d, 0s) both;
+}
+@keyframes hiw-type {
+  from {
+    scale: 0 1;
+  }
+}
+.hiw-type {
+  transform-origin: left center;
+  animation: hiw-type 0.55s cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0s) both;
+}
+@keyframes hiw-stamp {
+  0% {
+    opacity: 0;
+    scale: 2.6;
+    rotate: -40deg;
+  }
+  55% {
+    opacity: 1;
+    scale: 0.9;
+    rotate: -10deg;
+  }
+  75% {
+    scale: 1.05;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+    rotate: -14deg;
+  }
+}
+.hiw-stamp {
+  transform-origin: center;
+  animation: hiw-stamp 0.5s cubic-bezier(0.3, 0.6, 0.3, 1) var(--d, 0s) both;
+}
+@keyframes hiw-shake {
+  20% {
+    translate: -5px 3px;
+  }
+  40% {
+    translate: 4px -2px;
+  }
+  60% {
+    translate: -3px 1px;
+  }
+  80% {
+    translate: 2px 0;
+  }
+}
+.hiw-shake {
+  animation: hiw-shake 0.35s ease-out var(--d, 0s);
+}
+@keyframes hiw-sparkle {
+  0% {
+    opacity: 0;
+    scale: 0;
+    rotate: 0deg;
+  }
+  40% {
+    opacity: 1;
+    scale: 1.25;
+  }
+  100% {
+    opacity: 0;
+    scale: 0.4;
+    rotate: 120deg;
+  }
+}
+.hiw-sparkle {
+  transform-origin: center;
+  animation: hiw-sparkle 1.6s ease-out var(--d, 0s) infinite both;
+}
+@keyframes hiw-drop {
+  0% {
+    opacity: 0;
+    translate: 0 -70px;
+  }
+  55% {
+    opacity: 1;
+    translate: 0 5px;
+  }
+  75% {
+    translate: 0 -6px;
+  }
+  90% {
+    translate: 0 2px;
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.hiw-drop {
+  animation: hiw-drop 0.8s cubic-bezier(0.3, 0.6, 0.3, 1) var(--d, 0s) both;
+}
+@keyframes hiw-shadow {
+  from {
+    opacity: 0;
+    scale: 0.2;
+  }
+  to {
+    opacity: 0.3;
+    scale: 1;
+  }
+}
+.hiw-shadow {
+  transform-origin: center;
+  animation: hiw-shadow 0.8s ease-out var(--d, 0s) both;
+}
+@keyframes hiw-ripple {
+  from {
+    opacity: 0.9;
+    scale: 0.5;
+  }
+  to {
+    opacity: 0;
+    scale: 2.2;
+  }
+}
+.hiw-ripple {
+  transform-origin: center;
+  animation: hiw-ripple 1.6s ease-out var(--d, 0s) infinite both;
+}
+@keyframes hiw-tint {
+  from {
+    fill: white;
+  }
+}
+.hiw-tint {
+  animation: hiw-tint 0.5s ease var(--d, 0s) both;
+}
+@keyframes hiw-light {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.hiw-light {
+  animation: hiw-light 0.9s ease var(--d, 0s) both;
+}
+@keyframes hiw-door {
+  to {
+    scale: 0.16 1;
+  }
+}
+.hiw-door {
+  transform-origin: left center;
+  animation: hiw-door 0.9s cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0s) both;
+}
+@keyframes hiw-sweep {
+  0%,
+  100% {
+    translate: -80px 0;
+  }
+  50% {
+    translate: 80px 14px;
+  }
+}
+.hiw-sweep {
+  animation: hiw-sweep 3.6s ease-in-out var(--d, 0s) infinite both;
+}
+@keyframes hiw-scan {
+  0% {
+    translate: 0 0;
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    translate: 0 200px;
+    opacity: 0;
+  }
+}
+.hiw-scan {
+  animation: hiw-scan 2.2s ease-in-out var(--d, 0s) infinite both;
+}
+@keyframes hiw-flow {
+  to {
+    stroke-dashoffset: -26;
+  }
+}
+.hiw-flow {
+  animation:
+    hiw-fade 0.6s ease var(--d, 0s) both,
+    hiw-flow 0.9s linear var(--d, 0s) infinite;
+}
+@keyframes hiw-tag {
+  0%,
+  100% {
+    rotate: -9deg;
+  }
+  50% {
+    rotate: 9deg;
+  }
+}
+.hiw-tag {
+  transform-box: view-box;
+  transform-origin: 262px 54px;
+  animation: hiw-tag 2.2s ease-in-out infinite;
+}
+@keyframes hiw-keyin {
+  from {
+    opacity: 0;
+    translate: 120px 0;
+  }
+}
+.hiw-keyin {
+  animation: hiw-keyin 0.7s cubic-bezier(0.2, 0.65, 0.25, 1) var(--d, 0s) both;
+}
+@keyframes hiw-keyturn {
+  to {
+    rotate: 90deg;
+  }
+}
+.hiw-keyturn {
+  transform-box: view-box;
+  animation: hiw-keyturn 0.45s cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0s) both;
+}
+@keyframes hiw-emerge {
+  from {
+    opacity: 0;
+    translate: 0 30px;
+    scale: 0.7;
+  }
+}
+.hiw-emerge {
+  transform-origin: center bottom;
+  animation: hiw-emerge 0.7s cubic-bezier(0.3, 0.6, 0.3, 1.3) var(--d, 0s) both;
+}
+@keyframes hiw-confetti {
+  0% {
+    opacity: 0;
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: var(--x) var(--y);
+    rotate: var(--r);
+  }
+}
+.hiw-confetti {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hiw-confetti 1.4s cubic-bezier(0.15, 0.7, 0.3, 1) var(--d, 0s) both;
+}
+@keyframes hiw-out {
+  to {
+    opacity: 0;
+    translate: 24px 0;
+  }
+}
+.hiw-out {
+  animation: hiw-out 0.35s ease-in var(--d, 0s) both;
+}
+/* Slide and heading entrances */
+@keyframes hiw-enter {
+  from {
+    opacity: 0;
+    translate: var(--dx, 48px) 0;
+    scale: 0.96;
+  }
+}
+.hiw-enter {
+  animation: hiw-enter 0.6s cubic-bezier(0.2, 0.65, 0.25, 1) both;
+}
+@keyframes hiw-word {
+  from {
+    opacity: 0;
+    translate: 0 0.45em;
+    filter: blur(6px);
+  }
+}
+.hiw-word {
+  animation: hiw-word 0.55s cubic-bezier(0.2, 0.65, 0.25, 1) var(--d, 0s) both;
+}
+/* Stage background: drifting dot grid and floating glows */
+@keyframes hiw-dots {
+  to {
+    background-position: 22px 22px;
+  }
+}
+.hiw-dots {
+  background-image: radial-gradient(rgb(255 255 255 / 0.13) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+  animation: hiw-dots 4s linear infinite;
+}
+@keyframes hiw-orb {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 24px -16px;
+  }
+}
+.hiw-orb {
+  animation: hiw-orb 7s ease-in-out infinite;
+}
+
 .hiw-glow {
   background:
     radial-gradient(circle at 30% 20%, rgb(255 255 255 / 0.14), transparent 55%),

@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState, type CSSProperties } from "react";
-import type { HowFlow, HowIcon } from "@/content/howItWorks";
+import type { HowFlow } from "@/content/howItWorks";
 import { site } from "@/content/site";
+import { Scene } from "./HowScenes";
 
 /** Seconds each slide stays up while playing. The progress bar's animation drives the timing. */
 const STEP_SECONDS = 6.5;
@@ -24,6 +25,8 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [slide, setSlide] = useState(0);
   const [playing, setPlaying] = useState(false);
+  // 1 when moving forward, -1 when going back: slides enter from that side
+  const [dir, setDir] = useState(1);
   const titleId = useId();
   const n = flow.steps.length;
   const last = n + 1; // 0 = intro, 1..n = steps, n + 1 = finale
@@ -31,6 +34,7 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
 
   const open = () => {
     setSlide(0);
+    setDir(1);
     setPlaying(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
     dialogRef.current?.showModal();
   };
@@ -38,10 +42,12 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
 
   const go = useCallback(
     (to: number, manual = true) => {
-      setSlide(Math.max(0, Math.min(last, to)));
+      const next = Math.max(0, Math.min(last, to));
+      setDir(next >= slide ? 1 : -1);
+      setSlide(next);
       if (manual) setPlaying(false);
     },
-    [last],
+    [last, slide],
   );
 
   // Arrow keys step through while the dialog is open
@@ -142,8 +148,11 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
           {/* Slide */}
           <div key={slide} className="grid flex-1 gap-0 p-4 sm:p-7 md:grid-cols-[5fr_6fr] md:gap-8">
             {/* Stage */}
-            <div className="hiw-stage relative isolate flex min-h-[160px] items-center justify-center overflow-hidden rounded-xl bg-blue sm:min-h-[300px]">
+            <div className="hiw-stage relative isolate flex min-h-[190px] items-center justify-center overflow-hidden rounded-xl bg-blue px-4 py-5 sm:min-h-[320px]">
               <span aria-hidden className="hiw-glow absolute inset-0 -z-10" />
+              <span aria-hidden className="hiw-dots absolute inset-0 -z-10" />
+              <span aria-hidden className="hiw-orb absolute -left-10 -top-10 -z-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
+              <span aria-hidden className="hiw-orb absolute -bottom-12 -right-8 -z-10 h-44 w-44 rounded-full bg-red/30 blur-2xl" style={{ animationDelay: "-3s" }} />
               {slide === 0 && <LogoMark />}
               {step && (
                 <>
@@ -153,21 +162,23 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
                   >
                     0{stepIndex + 1}
                   </span>
-                  <Icon name={step.icon} />
+                  <div className="hiw-enter relative w-full" style={{ "--dx": `${dir * 48}px` } as CSSProperties}>
+                    <Scene name={step.icon} />
+                  </div>
                 </>
               )}
               {slide === last && <Finale />}
             </div>
 
             {/* Text */}
-            <div className="flex flex-col justify-center px-1 pt-4 sm:pt-6 md:pt-0" aria-live="polite">
+            <div className="flex flex-col justify-center px-1 pt-4 sm:pt-6 md:pt-0" aria-live="polite" aria-atomic="true">
               {slide === 0 && (
                 <>
                   <p className="hiw-rise text-sm font-medium text-red" style={{ "--d": ".35s" } as CSSProperties}>
                     {site.brokerage.team}
                   </p>
-                  <h2 className="hiw-rise mt-3 text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl" style={{ "--d": ".45s" } as CSSProperties}>
-                    {flow.introTitle}
+                  <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl">
+                    <Words text={flow.introTitle} start={0.45} />
                   </h2>
                   <p className="hiw-rise mt-4 text-lg leading-relaxed" style={{ "--d": ".6s" } as CSSProperties}>
                     {flow.introBody}
@@ -188,8 +199,8 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
                   <p className="hiw-rise text-sm font-medium text-red" style={{ "--d": ".1s" } as CSSProperties}>
                     Step {stepIndex + 1} of {n}
                   </p>
-                  <h2 className="hiw-rise mt-2 text-2xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl" style={{ "--d": ".2s" } as CSSProperties}>
-                    {step.title}
+                  <h2 className="mt-2 text-2xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl">
+                    <Words text={step.title} start={0.15} />
                   </h2>
                   <p className="hiw-rise mt-3 text-base leading-relaxed sm:mt-4 sm:text-lg" style={{ "--d": ".35s" } as CSSProperties}>
                     {step.body}
@@ -210,8 +221,8 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
               )}
               {slide === last && (
                 <>
-                  <h2 className="hiw-rise text-4xl font-semibold leading-tight tracking-[-0.02em] sm:text-5xl" style={{ "--d": ".5s" } as CSSProperties}>
-                    {flow.finaleTitle}
+                  <h2 className="text-4xl font-semibold leading-tight tracking-[-0.02em] sm:text-5xl">
+                    <Words text={flow.finaleTitle} start={0.5} />
                   </h2>
                   <p className="hiw-rise mt-4 text-lg leading-relaxed" style={{ "--d": ".65s" } as CSSProperties}>
                     {flow.finaleBody}
@@ -385,23 +396,19 @@ function Road({ steps, active, done, onPick }: { steps: string[]; active: number
   );
 }
 
-/** Step icons, drawn line by line. Each path has pathLength=1 so the draw animation works for any shape. */
-function Icon({ name }: { name: HowIcon }) {
-  const paths: Record<HowIcon, string[]> = {
-    approval: ["M18 8h22l10 10v38H18z", "M40 8v10h10", "M24 28h18", "M24 36h12", "M36 50a8 8 0 1 0 16 0a8 8 0 1 0 -16 0", "M40 50l3 3 6-6"],
-    wishlist: ["M32 58s-17-15.5-17-29a17 17 0 0 1 34 0c0 13.5-17 29-17 29z", "M32 36l-6-6a4 4 0 0 1 6-5.3 4 4 0 0 1 6 5.3z"],
-    tour: ["M8 31L32 11l24 20", "M15 26v30h34V26", "M27 56V41h10v15", "M19 33h6v6h-6z", "M39 33h6v6h-6z"],
-    offer: ["M12 8h28v48H12z", "M18 18h16", "M18 26h16", "M18 34h9", "M36 50l17-17 4.5 4.5-17 17-7 2.5z", "M48 38l4.5 4.5"],
-    inspect: ["M16 12h32v46H16z", "M25 7h14v9H25z", "M22 30l3.5 3.5 6-6", "M36 31h7", "M22 44l3.5 3.5 6-6", "M36 45h7"],
-    keys: ["M8 32a11 11 0 1 0 22 0a11 11 0 1 0 -22 0", "M14 32a5 5 0 1 0 10 0a5 5 0 1 0 -10 0", "M30 32h26", "M47 32v8", "M54 32v6"],
-  };
+/** Reveals a heading word by word. Screen readers get the whole heading at once. */
+function Words({ text, start }: { text: string; start: number }) {
   return (
-    <svg viewBox="0 0 64 64" aria-hidden fill="none" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="hiw-float relative h-24 w-24 sm:h-40 sm:w-40">
-      {paths[name].map((d, i) => (
-        <path key={d} d={d} pathLength={1} className="hiw-draw" style={{ "--d": `${0.15 + i * 0.22}s` } as CSSProperties} />
-      ))}
-      {/* A red accent dot settles once the icon is drawn */}
-      <circle cx="52" cy="12" r="3.5" fill="var(--color-red-light)" stroke="none" className="hiw-pop" style={{ "--d": `${0.3 + paths[name].length * 0.22}s` } as CSSProperties} />
-    </svg>
+    <>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden>
+        {text.split(" ").map((w, i) => (
+          <span key={i} className="hiw-word inline-block" style={{ "--d": `${start + i * 0.07}s` } as CSSProperties}>
+            {w}
+            {"\u00a0"}
+          </span>
+        ))}
+      </span>
+    </>
   );
 }
