@@ -8,7 +8,7 @@ import { Container, Section } from "./ui";
  * Homepage inquiry block over a darkened photo. On large screens the section is
  * one screen tall and only the form scrolls, inside its own panel.
  */
-export function InquirySection({ defaultType }: { defaultType?: InquiryType }) {
+export function InquirySection({ defaultType, defaultNotes }: { defaultType?: InquiryType; defaultNotes?: string }) {
   return (
     <Section id="contact" className="relative isolate overflow-hidden bg-blue">
       {site.images.contact && (
@@ -37,7 +37,7 @@ export function InquirySection({ defaultType }: { defaultType?: InquiryType }) {
           <ContactDetails inverse className="mt-10" />
         </div>
         <div className="rounded-md lg:max-h-[max(480px,calc(100dvh-280px))] lg:overflow-y-auto lg:overscroll-contain lg:[scrollbar-width:thin]">
-          <InquiryForm defaultType={defaultType} />
+          <InquiryForm defaultType={defaultType} defaultNotes={defaultNotes} />
         </div>
       </Container>
     </Section>

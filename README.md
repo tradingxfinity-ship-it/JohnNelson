@@ -49,6 +49,14 @@ hero: {
 
 Until a photo is set, a neutral line-drawing placeholder holds its place.
 
+## Listings and home search
+
+- `/listings` shows the team's own current listings, `/homes` searches homes for sale, and `/homes/<key>` shows one home.
+- All three read from `src/lib/listings.ts`, which uses RESO field names (the standard behind LERA MLS's Web API).
+- **Before the feed is connected:** the pages show the team's own listings from `site.listings` in `src/content/site.ts`, and the footer keeps its link to the team's other search site.
+- **To connect LERA:** after John's broker signs LERA's data agreement, set `LERA_RESO_URL`, `LERA_RESO_TOKEN`, and `LERA_OFFICE_MLS_ID` (see `.env.example`). The feed is re-read hourly, inside LERA's 12-hour limit. Expired and withdrawn listings, and listings whose sellers opted out of internet display, are left out. Pages showing LERA data carry LERA's required source, disclaimer, and copyright notices (`src/components/ListingNotice.tsx`). The full rules are in `docs/WEBSITE-PLAN.md`.
+- The feed's exact base URL and field support should be checked against LERA's documentation when access is granted.
+
 ## Sales map
 
 The homepage map (`src/components/SalesMap.tsx`) reads its pins from `src/content/sales.ts`: the 82 sales with locations on the Zillow profile map (its most recent 100) and the 3 current listings, with coordinates rounded to about 1 km so past clients' homes aren't pinpointed. Zillow's own map can't be embedded, so add new sales to that file (keep the rounding). For the full sales history, export it from the MLS and add the rows the same way.

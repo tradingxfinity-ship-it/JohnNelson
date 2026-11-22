@@ -23,7 +23,7 @@ export function Header() {
         toggleRef.current?.focus();
       }
     };
-    const onResize = () => window.innerWidth >= 768 && setOpen(false);
+    const onResize = () => window.innerWidth >= 1024 && setOpen(false);
     document.addEventListener("keydown", onKey);
     window.addEventListener("resize", onResize);
     return () => {
@@ -45,8 +45,8 @@ export function Header() {
       <Container className="flex h-[72px] items-center justify-between gap-6">
         <Logo />
 
-        <nav aria-label="Main" className="hidden md:block">
-          <ul className="flex items-center gap-9">
+        <nav aria-label="Main" className="hidden lg:block">
+          <ul className="flex items-center gap-7">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -72,7 +72,7 @@ export function Header() {
           <button
             ref={toggleRef}
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-blue md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-blue lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((o) => !o)}
@@ -85,7 +85,7 @@ export function Header() {
         </div>
       </Container>
 
-      <div id="mobile-menu" hidden={!open} className="border-t border-line bg-white md:hidden">
+      <div id="mobile-menu" hidden={!open} className="border-t border-line bg-white lg:hidden">
         <Container className="py-3">
           <nav aria-label="Mobile">
             <ul>

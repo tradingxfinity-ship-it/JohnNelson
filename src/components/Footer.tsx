@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { navLinks, site } from "@/content/site";
+import { navLinks, serviceLinks, site } from "@/content/site";
+import { feedConfigured } from "@/lib/listings";
 import { Logo } from "./Logo";
 import { Container } from "./ui";
 
@@ -31,6 +32,15 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-white hover:underline underline-offset-4">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              {/* Until LERA's feed is connected, full MLS search lives on the team's other site */}
+              {!feedConfigured() && (
               <li>
                 <a
                   href={site.brokerage.searchUrl}
@@ -42,6 +52,7 @@ export function Footer() {
                   <span className="sr-only">(opens in a new tab)</span>
                 </a>
               </li>
+              )}
             </ul>
           </nav>
 

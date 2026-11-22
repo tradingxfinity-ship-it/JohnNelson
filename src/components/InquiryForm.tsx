@@ -20,11 +20,12 @@ type Status = "idle" | "submitting" | "success" | "error";
 const inputClass =
   "block w-full min-h-12 rounded-md border bg-white px-3.5 py-2.5 text-base text-blue placeholder:text-slate/60 transition-colors focus:border-blue focus:outline-2 focus:outline-offset-0 focus:outline-blue/15 aria-[invalid=true]:border-error";
 
-export function InquiryForm({ defaultType }: { defaultType?: InquiryType }) {
+/** `defaultNotes` starts the notes field with text, e.g. the home a visitor is asking about. */
+export function InquiryForm({ defaultType, defaultNotes }: { defaultType?: InquiryType; defaultNotes?: string }) {
   const uid = useId();
   const id = (name: string) => `${uid}-${name}`;
 
-  const [values, setValues] = useState<InquiryValues>({ inquiryType: defaultType ?? "" });
+  const [values, setValues] = useState<InquiryValues>({ inquiryType: defaultType ?? "", ...(defaultNotes ? { notes: defaultNotes } : {}) });
   const [errors, setErrors] = useState<InquiryErrors>({});
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<Status>("idle");

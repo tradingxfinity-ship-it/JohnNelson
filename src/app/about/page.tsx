@@ -9,9 +9,9 @@ import { portfolio } from "@/content/portfolio";
 import { CONTACT_HREF, site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "About Irma and John Nelson",
+  title: "About The Nelson Team",
   description:
-    "Meet Irma and John Nelson, the broker/owner team behind Get It Sold Realty. 19 years, 290+ homes sold, and $100M+ in sales across San Antonio and the Hill Country.",
+    "Meet John and Irma Nelson of Get It Sold Realty: a veteran-owned, husband-and-wife real estate team serving San Antonio with practical property experience and personal guidance.",
   alternates: { canonical: "/about" },
 };
 
@@ -67,14 +67,17 @@ export default function AboutPage() {
       <section className="pb-16 pt-10 lg:pb-24 lg:pt-16">
         <Container className="grid items-center gap-10 lg:grid-cols-[6fr_5fr] lg:gap-16">
           <div>
-            <Eyebrow>About Get It Sold Realty</Eyebrow>
+            <Eyebrow>The Nelson Team · Get It Sold Realty</Eyebrow>
             <h1 className="text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl lg:text-[4.5rem]">
-              Meet Irma and John Nelson.
+              Meet John &amp; Irma Nelson.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl sm:leading-relaxed">
-              A San Antonio real estate couple who have spent 19 years helping people buy, sell, and rent homes,
-              townhomes, and apartments, with honest communication and hands-on guidance at every step.
+              Buying or selling a home is more than a transaction. It’s a major life decision: a new beginning, an
+              important investment, or the close of a meaningful chapter. We’re a husband-and-wife team serving San
+              Antonio and the surrounding communities, and we treat every client with the care and respect they
+              deserve.
             </p>
+            <p className="mt-4 max-w-xl text-lg font-medium text-blue">Our philosophy is simple: your goals come first.</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ButtonLink href={CONTACT_HREF}>Talk to Irma and John</ButtonLink>
               <ButtonLink href="/portfolio" variant="secondary">
@@ -82,7 +85,7 @@ export default function AboutPage() {
               </ButtonLink>
             </div>
             <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm">
-              {["Broker/owner team", `Se habla español`, "San Antonio, Texas"].map((t) => (
+              {["Veteran-owned", "Se habla español", "San Antonio, Texas"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-red" />
                   {t}
@@ -124,8 +127,50 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* How we work */}
+      {/* John and Irma */}
       <Section>
+        <Container>
+          <div className="max-w-2xl">
+            <Eyebrow>Who you’ll work with</Eyebrow>
+            <h2 className="text-[1.75rem] font-medium leading-tight sm:text-4xl">
+              Practical experience, personal attention.
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-px overflow-hidden rounded-lg border border-line bg-line lg:grid-cols-2">
+            <article className="bg-white p-7 sm:p-10">
+              <p className="text-sm font-medium text-red">John Nelson</p>
+              <h3 className="mt-3 text-2xl font-medium">Experience beyond the real estate contract</h3>
+              <p className="mt-4 leading-relaxed">
+                John is a United States Marine Corps veteran and an experienced real estate investor, homebuilder, and
+                renovation professional, which gives him a perspective that goes well beyond traditional real estate
+                sales.
+              </p>
+              <p className="mt-4 leading-relaxed">
+                He understands what goes into building a home, evaluating a property’s condition, managing
+                renovations, and analyzing investments: decisions that can shape a family’s financial future. That
+                hands-on experience helps clients see both the opportunities and the potential challenges of a
+                property.
+              </p>
+            </article>
+            <article className="bg-white p-7 sm:p-10">
+              <p className="text-sm font-medium text-red">Irma Nelson</p>
+              <h3 className="mt-3 text-2xl font-medium">A personal touch that makes a difference</h3>
+              <p className="mt-4 leading-relaxed">
+                Irma brings a relationship-focused approach built on personal attention and clear communication, helping
+                clients feel comfortable throughout buying or selling.
+              </p>
+              <p className="mt-4 leading-relaxed">
+                Every client’s needs are different. Some are buying their first home; others are selling one they’ve
+                owned for decades. Some are relocating, downsizing, investing, or helping aging parents with difficult
+                decisions. Whatever brings you here, you deserve honest answers and a team that listens.
+              </p>
+            </article>
+          </div>
+        </Container>
+      </Section>
+
+      {/* How we work */}
+      <Section className="border-t border-line">
         <Container className="grid gap-12 lg:grid-cols-[4fr_7fr] lg:gap-20">
           <div className="flex flex-col rounded-lg border-2 border-red bg-blue p-7 sm:p-9">
             <p className="mb-4 flex items-center gap-3 text-sm font-medium text-white/80">
@@ -136,7 +181,8 @@ export default function AboutPage() {
               What working with us looks like.
             </h2>
             <p className="mt-5 max-w-sm leading-relaxed text-white/80">
-              Through Get It Sold Realty, John is the broker and owner, and clients work with Irma and John themselves.
+              You work with Irma and John themselves, with honest answers and thoughtful guidance from the first
+              conversation to closing.
             </p>
             <div className="mt-8 lg:mt-auto lg:pt-10">
               <ButtonLink href={CONTACT_HREF} variant="inverse" className="w-full sm:w-auto">
@@ -174,8 +220,34 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Military families */}
-      <Section className="bg-cloud">
+      {/* Life transitions */}
+      <Section className="border-t border-line">
+        <Container className="grid gap-10 lg:grid-cols-[5fr_6fr] lg:gap-20">
+          <div>
+            <Eyebrow>Life transitions</Eyebrow>
+            <h2 className="text-[1.75rem] font-medium leading-tight sm:text-4xl">
+              Helping families navigate life’s transitions.
+            </h2>
+          </div>
+          <div>
+            <p className="text-lg leading-relaxed">
+              Some of the most important real estate decisions happen during life’s biggest changes. Whether you’re
+              preparing to retire, considering a smaller home, managing an inherited property, or helping a parent move
+              to a new living arrangement, these decisions are emotional as well as financial.
+            </p>
+            <p className="mt-4 leading-relaxed">
+              Our goal is to simplify the process, explain your options, and help you make informed decisions without
+              unnecessary pressure.
+            </p>
+            <ArrowLink href="/senior-transitions" className="mt-6 text-[15px]">
+              Senior living &amp; life transitions
+            </ArrowLink>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Rooted in service */}
+      <Section id="service" className="bg-cloud">
         <Container className="grid gap-12 lg:grid-cols-[5fr_6fr] lg:items-center lg:gap-16">
           <Photo
             image={militaryImage}
@@ -187,15 +259,22 @@ export default function AboutPage() {
             className="aspect-[4/3] w-full"
           />
           <div>
-            <Eyebrow>Military families and veterans</Eyebrow>
+            <Eyebrow>Rooted in service</Eyebrow>
             <h2 className="text-[1.75rem] font-medium leading-tight sm:text-3xl">
-              Helping military families make their next move.
+              Rooted in service. Committed to our community.
             </h2>
             <p className="mt-4 leading-relaxed">
-              Irma and John work with service members, veterans, and their families moving to, from, and within the San
-              Antonio area, whether they’re buying, selling, or renting.
+              Service has always been part of our lives. John’s years as a United States Marine, and his community
+              outreach and recovery ministry, reinforced integrity, accountability, compassion, and helping others
+              through difficult seasons. Those same values guide how we work.
             </p>
-            <ul className="mt-6 divide-y divide-line border-y border-line">
+            <p className="mt-4 leading-relaxed">
+              We believe relationships matter more than transactions, our word should mean something, and doing what’s
+              right for our clients is always good business. That includes service members, veterans, and their
+              families moving to, from, and within the San Antonio area.
+            </p>
+            <h3 className="mt-6 text-sm font-medium text-blue">For military families</h3>
+            <ul className="mt-3 divide-y divide-line border-y border-line">
               {military.map((m) => (
                 <li key={m.title} className="grid gap-1 py-4 sm:grid-cols-[180px_1fr] sm:gap-6">
                   <h3 className="text-base font-medium">{m.title}</h3>
@@ -282,13 +361,18 @@ export default function AboutPage() {
         <div aria-hidden className="absolute inset-0 -z-10 bg-blue/80" />
         <Container className="flex flex-col items-start gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
-            <h2 className="text-3xl font-medium text-white sm:text-4xl">Ready to talk about your move?</h2>
+            <h2 className="text-3xl font-medium text-white sm:text-4xl">Let’s talk about your next chapter.</h2>
             <p className="mt-4 text-lg leading-relaxed text-white/80">
-              Share a few details and Irma and John will follow up personally, or call{" "}
+              Whether you’re buying, selling, building, investing, or simply exploring your options, we’d welcome the
+              chance to help. Share a few details, or call{" "}
               <a href={site.contact.phoneHref} className="font-medium text-white underline underline-offset-4">
                 {site.contact.phoneDisplay}
               </a>
               .
+            </p>
+            <p className="mt-6 text-white">
+              <span className="font-medium">John &amp; Irma Nelson</span>
+              <span className="block text-sm text-white/70">The Nelson Team · A Legacy of Service</span>
             </p>
           </div>
           <ButtonLink href={CONTACT_HREF} variant="inverse" className="w-full sm:w-auto">

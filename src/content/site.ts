@@ -23,8 +23,9 @@ export const site = {
   logo: null as SiteImage,
 
   hero: {
-    heading: "San Antonio’s #1 Real Estate Couple",
-    body: "Buy, sell, or rent with Irma and John Nelson. Get local guidance from a team with 19 years of experience helping people make their next move in San Antonio.",
+    eyebrow: "The Nelson Team · A Legacy of Service",
+    heading: "Your Home. Your Future. Our Commitment.",
+    body: "Helping San Antonio families buy, sell, build, and move forward with confidence.",
   },
 
   stats: [
@@ -189,6 +190,13 @@ export const site = {
       width: 1536,
       height: 1080,
     } as SiteImage,
+    /** Photo beside the homepage life-transitions section and on the Senior Transitions page. */
+    transitions: {
+      src: "/images/sold/san-antonio-78213/01.webp",
+      alt: "Single-story brick home under a large oak tree, sold by the team",
+      width: 1152,
+      height: 864,
+    } as SiteImage,
     /** Darkened background photo behind the homepage contact form. */
     contact: {
       src: "/images/sold/san-antonio-78248/01.webp",
@@ -226,11 +234,20 @@ export const site = {
 };
 
 export const navLinks = [
+  { href: "/homes", label: "Search homes" },
   { href: "/buy", label: "Buy" },
   { href: "/sell", label: "Sell" },
   { href: "/rent", label: "Rent" },
+  { href: "/listings", label: "Our listings" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/about", label: "About" },
+];
+
+/** Service pages linked from the footer and the homepage services list. */
+export const serviceLinks = [
+  { href: "/senior-transitions", label: "Senior living & life transitions" },
+  { href: "/building-investing", label: "Building & remodeling" },
+  { href: "/building-investing#investing", label: "Real estate investing" },
 ];
 
 export const CONTACT_HREF = "/#contact";

@@ -57,32 +57,32 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | Proposal | Site now | Status |
 |---|---|---|
 | Name "Get It SOLD Realty" with bold red SOLD | "Get It Sold Realty"; placeholder "GIS" logo | ⏸ need the real logo file |
-| Team identity "The Nelson Team" | Footer only | ❌ |
-| Brand line "A Legacy of Service" | Not used | ❌ |
+| Team identity "The Nelson Team" | Homepage, About, footer | ✅ |
+| Brand line "A Legacy of Service" | Homepage eyebrow, About sign-off | ✅ |
 | Promise "Real Experience. Personal Guidance. Results That Matter." | Not used | ❌ |
 | Professional photos of John and Irma, real properties | One portrait (800px); real listing and sold photos | 🟡 need more and larger photos |
 | Simple mobile navigation, fast, accessible | Yes | ✅ |
-| Prominent valuation and consultation actions | Valuation form on Sell page; no "What's My Home Worth?" or "Schedule a Consultation" in the hero or header | 🟡 |
+| Prominent valuation and consultation actions | Hero and service pages: "What's my home worth?" and "Schedule a consultation" (consultation goes to the contact form; no booking calendar yet) | 🟡 |
 
 ### Service pillars
 | Pillar | Site now | Status |
 |---|---|---|
 | 1. Buy & Sell With Confidence | Buy and Sell pages | ✅ |
-| 2. Senior Living & Life Transitions | Nothing | ❌ |
-| 3. Building, Remodeling & Property Potential | Nothing; Reino Builders not mentioned | ❌ ⏸ affiliate disclosure |
-| 4. Real Estate Investing | Nothing | ❌ |
-| 5. Community, Service & Relationships (veteran-owned) | Section for military families, but it doesn't say John is a Marine veteran or that the business is veteran-owned | 🟡 |
+| 2. Senior Living & Life Transitions | Homepage section and `/senior-transitions` | ✅ |
+| 3. Building, Remodeling & Property Potential | `/building-investing`; Reino Builders not named yet | 🟡 ⏸ affiliate disclosure |
+| 4. Real Estate Investing | `/building-investing#investing` | ✅ |
+| 5. Community, Service & Relationships (veteran-owned) | Veteran-owned and Marine service on the homepage and About ("Rooted in service") | ✅ |
 
 ### Homepage
 | Proposal | Site now | Status |
 |---|---|---|
-| Hero "Your Home. Your Future. Our Commitment." | "San Antonio's #1 Real Estate Couple". The "#1" claim is unverifiable and should be replaced. | ❌ |
-| Actions "What's My Home Worth?" and "Schedule a Consultation" | "I'm buying / selling / renting" and a search box | ❌ |
+| Hero "Your Home. Your Future. Our Commitment." | Done; the "#1" claim is gone | ✅ |
+| Actions "What's My Home Worth?" and "Schedule a Consultation" | Done, below the hero search box | ✅ |
 | Service choices | "How can we help you move?" | ✅ |
 | Meet John and Irma | Yes | ✅ |
-| Featured listings and property search | 3 current listings; search waits on IDX | 🟡 ⏸ |
-| Why construction and investor experience matter | Nothing | ❌ |
-| Senior transitions | Nothing | ❌ |
+| Featured listings and property search | Our listings section, `/listings`, and `/homes` search; full MLS results wait on the LERA feed | 🟡 ⏸ |
+| Why construction and investor experience matter | "Experience beyond the real estate contract" section | ✅ |
+| Senior transitions | Homepage section | ✅ |
 | Verified client reviews | Zillow rating, breakdown, and recent reviews with links | ✅ |
 | Helpful videos | Nothing | ⏸ need a YouTube channel |
 | Local resources | Nothing | ❌ |
@@ -91,22 +91,22 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 ### About page
 | Proposal section | Site now | Status |
 |---|---|---|
-| "Real Estate Is About More Than Property. It's About People." | Different intro | ❌ |
-| Experience Beyond the Contract (broker/owner, USMC veteran, investor, builder, Reino Builders) | Not covered | ❌ ⏸ brokerage wording |
-| A Personal Touch (Irma) | Not covered | ❌ ⏸ Irma's title |
-| Helping Families Navigate Life's Transitions | Not covered | ❌ |
-| Rooted in Service (Marine service, outreach, recovery ministry) | Not covered | ❌ |
-| Let's Talk About Your Next Chapter (sign-off) | Generic call to action | 🟡 |
+| "Real Estate Is About More Than Property. It's About People." | Intro and homepage Meet section | ✅ |
+| Experience Beyond the Contract (broker/owner, USMC veteran, investor, builder, Reino Builders) | Done without "Broker/Owner" and Reino Builders | 🟡 ⏸ brokerage wording, Reino disclosure |
+| A Personal Touch (Irma) | Done, no title | 🟡 ⏸ Irma's title |
+| Helping Families Navigate Life's Transitions | Done | ✅ |
+| Rooted in Service (Marine service, outreach, recovery ministry) | Done | ✅ |
+| Let's Talk About Your Next Chapter (sign-off) | Done | ✅ |
 
 ### Navigation
 | Proposal | Site now | Status |
 |---|---|---|
 | Home, About The Nelson Team, Sell Your Home, Contact | Home, About, Sell, Contact us | ✅ |
-| Buy a Home / Property Search | Buy page; no search | 🟡 ⏸ IDX |
-| Our listings (our decision) | Homepage section only | ❌ |
+| Buy a Home / Property Search | Buy page and `/homes` search | 🟡 ⏸ LERA feed |
+| Our listings (our decision) | `/listings` | ✅ |
 | Portfolio (our decision) | Yes | ✅ |
-| Senior Transitions | No page | ❌ |
-| Building & Investing | No page | ❌ |
+| Senior Transitions | `/senior-transitions` | ✅ |
+| Building & Investing | `/building-investing` | ✅ |
 | Client Reviews | Section on Home and About; no page of its own | 🟡 |
 | Videos & Resources | No page | ⏸ |
 | Rent (on our site, not in the proposal) | Rent page | ⏸ confirm they still want rentals |
@@ -117,7 +117,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | Helpful local pages (no keyword stuffing) | None | ❌ |
 | Articles: downsizing a parent's home, as-is vs. remodel, home condition, investing basics | None | ❌ |
 | YouTube videos linked to service pages | None | ⏸ |
-| IDX search | Planned (LERA) | ⏸ |
+| IDX search | Built on the RESO format; connect with `LERA_RESO_URL`, `LERA_RESO_TOKEN`, `LERA_OFFICE_MLS_ID` | ⏸ LERA access |
 | Home valuation inquiry | Sell form | ✅ |
 | Consultation scheduling | None (contact form only) | ❌ |
 | CRM-connected contact workflow | Email only | ❌ ⏸ which CRM (Lofty?) |
@@ -143,10 +143,14 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | YouTube channel, if any | ⏸ |
 
 ## Can be built now, without John
-1. Rewrite the About page from the proposal copy, leaving the brokerage and Irma's title wording until John confirms them.
-2. New homepage hero and actions ("What's My Home Worth?", "Schedule a Consultation"), replacing the "#1" claim.
-3. Service pillars on the homepage, with pages for Senior Transitions and Building & Investing.
-4. An "Our listings" page.
-5. The "Search homes" pages and listing pages, built against the RESO data format and ready for LERA's feed.
-6. Veteran-owned and "A Legacy of Service" messaging.
+Done on November 22, 2026:
+1. ✅ About page rewritten from the proposal copy (brokerage title and Irma's title left out until John confirms).
+2. ✅ New homepage hero and actions; "#1" claim removed.
+3. ✅ Five service pillars on the homepage; `/senior-transitions` and `/building-investing` pages.
+4. ✅ `/listings` (Our listings).
+5. ✅ `/homes` search and `/homes/<key>` listing pages on a RESO data layer (`src/lib/listings.ts`), ready for LERA's feed, with LERA's notices built in.
+6. ✅ Veteran-owned and "A Legacy of Service" messaging.
+
+Still to do:
 7. Local resource and article pages, once topics are approved.
+8. A Client Reviews page, a booking calendar for consultations, analytics, and a CRM connection.
