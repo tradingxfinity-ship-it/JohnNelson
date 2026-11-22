@@ -32,7 +32,7 @@ Form options (budget ranges, timelines, property types) are in `src/lib/inquiry.
 | --- | --- |
 | Larger portrait of Irma and John (1200px+ wide) | `irma-john-portrait.jpg` (set as `images.team`) is 800px wide, so it can look slightly soft on large high-resolution screens |
 | Zillow testimonials (optional) | `zillow.testimonials`. Use only exact quotes the client supplies |
-| Logo file (optional) | `logo`. A text wordmark is used until then |
+| Logo with a transparent background, or SVG (optional) | `logo` uses `public/images/logo.png`, cropped from the supplied PNG. It has a white background, so the footer shows it on a white plate; a transparent version would sit directly on the blue |
 
 Images in use: `images.team` (the portrait of Irma and John, on Home and About), `images.contact` (behind the contact form), and `images.buy` / `sell` / `rent`. The other photos in `public/images` are available to swap in.
 
