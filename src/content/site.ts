@@ -160,19 +160,23 @@ export const site = {
     addressLines: ["14439 NW Military Hwy, Suite 108-478", "San Antonio, TX 78231"],
   },
 
-  /** Brokerage and license details, from realestateintx.com. Shown in the footer. */
+  /**
+   * Brokerage and license details, shown in the footer and on listing pages.
+   * John left Real Broker (November 2026); Get It Sold Realty is the brokerage
+   * and John its broker/owner. License 600636 is John's own license; if the
+   * brokerage firm has a separate TREC license number, add it as firmLicense.
+   */
   brokerage: {
     team: "The Nelson Team",
-    name: "Real Broker, LLC",
+    name: "Get It Sold Realty",
     agent: "John Nelson",
-    agentTitle: "Broker Associate",
+    agentTitle: "Broker/Owner",
     license: "600636",
-    /** The team's MLS home search site */
-    searchUrl: "https://www.realestateintx.com/",
+    firmLicense: null as string | null,
     /**
      * Notices Texas (TREC) requires agent websites to link in the footer.
-     * Replace the brokerage services link with the brokerage's filled-in IABS
-     * form (a PDF from Real Broker) once you have it, e.g. /docs/iabs.pdf.
+     * Replace the brokerage services link with Get It Sold Realty's filled-in
+     * IABS form once you have it, e.g. /docs/iabs.pdf.
      */
     trecNotices: [
       { label: "Texas Real Estate Commission Information About Brokerage Services", short: "Information About Brokerage Services", href: "https://www.trec.texas.gov/forms/information-about-brokerage-services" },

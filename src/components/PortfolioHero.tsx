@@ -113,7 +113,7 @@ export function PortfolioHero() {
                 className="flex flex-col-reverse justify-end rounded-md border border-white/25 bg-blue/40 px-4 py-3 backdrop-blur-sm"
               >
                 <dt className="mt-1 text-xs leading-snug text-white/75">{s.label}</dt>
-                <dd className="text-2xl font-medium tracking-[-0.03em] text-red-light sm:text-[1.75rem]">{s.value}</dd>
+                <dd className="text-2xl font-medium tracking-[-0.03em] text-white sm:text-[1.75rem]">{s.value}</dd>
               </div>
             ))}
           </dl>

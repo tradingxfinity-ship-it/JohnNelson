@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { specialties } from "@/content/services";
 import { footerExtraLinks, navLinks, site } from "@/content/site";
-import { feedConfigured } from "@/lib/listings";
 import { Logo } from "./Logo";
 import { Container } from "./ui";
 
@@ -17,6 +16,7 @@ export function Footer() {
             </p>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/60">
               {site.brokerage.team} · {site.brokerage.name}
+              {site.brokerage.firmLicense && ` · TX License #${site.brokerage.firmLicense}`}
               <br />
               {site.brokerage.agent}, {site.brokerage.agentTitle} ·{" "}
               <span className="whitespace-nowrap">TX License #{site.brokerage.license}</span>
@@ -33,20 +33,6 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-              {/* Until LERA's feed is connected, full MLS search lives on the team's other site */}
-              {!feedConfigured() && (
-              <li>
-                <a
-                  href={site.brokerage.searchUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white hover:underline underline-offset-4"
-                >
-                  Search all MLS listings <span aria-hidden>↗</span>
-                  <span className="sr-only">(opens in a new tab)</span>
-                </a>
-              </li>
-              )}
             </ul>
           </nav>
 

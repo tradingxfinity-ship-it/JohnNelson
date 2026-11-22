@@ -120,7 +120,7 @@ export default function AboutPage() {
                 } ${i >= 2 ? "border-t lg:border-t-0" : ""} ${i === 2 ? "lg:border-l lg:pl-10" : ""}`}
               >
                 <dt className="text-[15px] text-white/70">{s.label}</dt>
-                <dd className="text-4xl font-medium tracking-[-0.03em] text-red-light lg:text-5xl">{s.value}</dd>
+                <dd className="text-4xl font-medium tracking-[-0.03em] text-white lg:text-5xl">{s.value}</dd>
               </div>
             ))}
           </dl>
@@ -141,9 +141,9 @@ export default function AboutPage() {
               <p className="text-sm font-medium text-red">John Nelson</p>
               <h3 className="mt-3 text-2xl font-medium">Experience beyond the real estate contract</h3>
               <p className="mt-4 leading-relaxed">
-                John is a United States Marine Corps veteran and an experienced real estate investor, homebuilder, and
-                renovation professional, which gives him a perspective that goes well beyond traditional real estate
-                sales.
+                John is the broker/owner of Get It Sold Realty, a United States Marine Corps veteran, and an experienced
+                real estate investor, homebuilder, and renovation professional, which gives him a perspective that goes
+                well beyond traditional real estate sales.
               </p>
               <p className="mt-4 leading-relaxed">
                 He understands what goes into building a home, evaluating a property’s condition, managing
@@ -308,7 +308,7 @@ export default function AboutPage() {
                 // Column-reverse keeps the number above its label; justify-end pins both to the top
                 <div key={s.label} className="flex flex-col-reverse justify-end rounded-md bg-blue px-3 py-4 sm:px-5 sm:py-5">
                   <dt className="mt-1 text-xs leading-snug text-white/75 sm:text-[13px]">{s.label}</dt>
-                  <dd className="text-2xl font-medium leading-none tracking-[-0.03em] text-red-light sm:text-3xl">{s.value}</dd>
+                  <dd className="text-2xl font-medium leading-none tracking-[-0.03em] text-white sm:text-3xl">{s.value}</dd>
                 </div>
               ))}
             </dl>

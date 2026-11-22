@@ -12,7 +12,7 @@ Last updated November 22, 2026. This file records what has been decided for the 
 
 ### Everything lives on this site
 - Home search, listings, and the portfolio all live on this site. Nothing sends visitors to another site to search.
-- The footer's "Search all MLS listings" link to realestateintx.com stays only until the site's own search is live, then it is removed.
+- The footer's link to realestateintx.com was removed in November 2026: that site is branded "The Nelson Team – Real Broker, LLC", and John has left Real Broker.
 
 ### Focus and specialty pages (from John, November 2026)
 - Focus on homes, land, and luxury. Rentals stay part of the business but are low priority: the Rent page stays, linked from the footer and services list, not the main menu.
@@ -50,7 +50,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 - Tell LERA the site displays IDX listings and give LERA access to check it.
 
 ### Legal and disclosures
-- **John supplies all legal details:** brokerage name and disclosures, licenses, the filled-in TREC "Information About Brokerage Services" form, and the LERA agreements.
+- **John supplies all legal details:** brokerage name (now Get It Sold Realty; he left Real Broker in November 2026) and disclosures, licenses, the filled-in TREC "Information About Brokerage Services" form, and the LERA agreements.
 - Homes are labeled by **city and ZIP only**, never street address. Raw Zillow data with addresses stays in the git-ignored `.portfolio-cache/`.
 - Client review text is not copied from Zillow. The site shows ratings and review details, and links to Zillow.
 
@@ -97,7 +97,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | Proposal section | Site now | Status |
 |---|---|---|
 | "Real Estate Is About More Than Property. It's About People." | Intro and homepage Meet section | ✅ |
-| Experience Beyond the Contract (broker/owner, USMC veteran, investor, builder, Reino Builders) | Done without "Broker/Owner" and Reino Builders | 🟡 ⏸ brokerage wording, Reino disclosure |
+| Experience Beyond the Contract (broker/owner, USMC veteran, investor, builder, Reino Builders) | Done, including broker/owner; Reino Builders not named yet | 🟡 ⏸ Reino disclosure |
 | A Personal Touch (Irma) | Done, no title | 🟡 ⏸ Irma's title |
 | Helping Families Navigate Life's Transitions | Done | ✅ |
 | Rooted in Service (Marine service, outreach, recovery ministry) | Done | ✅ |
@@ -132,7 +132,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 ### To confirm before publishing (from John)
 | Item | Status |
 |---|---|
-| Brokerage: Get It Sold Realty or Real Broker, LLC? The footer says Real Broker / Broker Associate, but About says John is the broker and owner. | ⏸ conflict to resolve |
+| Brokerage: John has left Real Broker. The site now shows Get It Sold Realty as the brokerage and John as Broker/Owner (license 600636). Confirm the title, and whether the firm has its own TREC license number (`brokerage.firmLicense`). | 🟡 confirm firm license |
 | Broker disclosure wording; filled-in TREC brokerage services form | ⏸ |
 | Irma's title and license | ⏸ |
 | Stats: 290+ homes, $100M+, 19 years | ⏸ |
@@ -142,7 +142,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | Service-area list (11 areas on the site) | ⏸ |
 | Reino Builders affiliation disclosure | ⏸ |
 | Final website domain (needed for the LERA agreement) | ⏸ |
-| Which broker signs the LERA data agreement; IDX vendor or direct feed | ⏸ |
+| LERA data agreement: John signs as Get It Sold Realty's broker; IDX vendor or direct feed still to choose | ⏸ |
 | OK to keep using his listing photos on the Portfolio page | ⏸ |
 | Whether rentals stay | ✅ Keep, low priority |
 | YouTube channel: John makes process videos; get the channel link | ⏸ |
