@@ -82,6 +82,174 @@
   }
 }
 
+/* "How it works" walkthrough (src/components/HowItWorks.tsx). The global
+   reduced-motion rule above shortens all of these to an instant finish. */
+@keyframes hiw-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.hiw-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hiw-draw 0.85s cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0s) forwards;
+}
+@keyframes hiw-rise {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+}
+.hiw-rise {
+  animation: hiw-rise 0.6s cubic-bezier(0.2, 0.65, 0.25, 1) var(--d, 0s) both;
+}
+@keyframes hiw-fill {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+.hiw-fill {
+  transform-origin: left;
+  animation: hiw-fill var(--dur, 6s) linear both;
+}
+@keyframes hiw-logo {
+  0% {
+    opacity: 0;
+    scale: 0.55;
+    rotate: -8deg;
+  }
+  60% {
+    opacity: 1;
+    scale: 1.06;
+    rotate: 1.5deg;
+  }
+  100% {
+    scale: 1;
+    rotate: 0deg;
+  }
+}
+.hiw-logo {
+  animation: hiw-logo 0.95s cubic-bezier(0.2, 0.65, 0.25, 1) both;
+}
+@keyframes hiw-shine {
+  from {
+    translate: -130% 0;
+  }
+  to {
+    translate: 130% 0;
+  }
+}
+.hiw-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.85) 50%, transparent 70%);
+  animation: hiw-shine 1.3s ease-in-out 0.75s both;
+  pointer-events: none;
+}
+@keyframes hiw-ring {
+  from {
+    opacity: 0.9;
+    scale: 0.85;
+  }
+  to {
+    opacity: 0;
+    scale: 1.6;
+  }
+}
+.hiw-ring {
+  animation: hiw-ring 2.2s cubic-bezier(0.2, 0.65, 0.25, 1) 0.5s infinite both;
+}
+@keyframes hiw-num {
+  from {
+    opacity: 0;
+    translate: -24px 0;
+  }
+  to {
+    opacity: 0.1;
+    translate: 0 0;
+  }
+}
+.hiw-num {
+  animation: hiw-num 0.8s cubic-bezier(0.2, 0.65, 0.25, 1) both;
+}
+@keyframes hiw-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -7px;
+  }
+}
+.hiw-float {
+  animation: hiw-float 4s ease-in-out 1.6s infinite;
+}
+@keyframes hiw-pop {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+  70% {
+    opacity: 1;
+    scale: 1.4;
+  }
+  100% {
+    scale: 1;
+  }
+}
+.hiw-pop {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hiw-pop 0.5s cubic-bezier(0.2, 0.65, 0.25, 1) var(--d, 0s) both;
+}
+@keyframes hiw-bob {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -2px;
+  }
+}
+.hiw-bob {
+  animation: hiw-bob 1.6s ease-in-out infinite;
+}
+@keyframes hiw-swing {
+  0%,
+  100% {
+    rotate: -6deg;
+  }
+  50% {
+    rotate: 6deg;
+  }
+}
+.hiw-swing {
+  transform-origin: 20% 50%;
+  animation: hiw-swing 2.4s ease-in-out 1.4s infinite;
+}
+@keyframes hiw-pulse {
+  from {
+    opacity: 0.7;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    scale: 1.7;
+  }
+}
+.hiw-pulse {
+  animation: hiw-pulse 2s ease-out infinite;
+}
+.hiw-glow {
+  background:
+    radial-gradient(circle at 30% 20%, rgb(255 255 255 / 0.14), transparent 55%),
+    radial-gradient(circle at 85% 90%, rgb(200 0 0 / 0.35), transparent 50%);
+}
+
 .select-chevron {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23002868' stroke-width='1.5'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");

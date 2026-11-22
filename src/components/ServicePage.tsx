@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { HOW_IT_WORKS } from "@/content/howItWorks";
 import { SERVICE_PAGES } from "@/content/servicePages";
 import { site } from "@/content/site";
 import type { InquiryType } from "@/lib/inquiry";
+import { HowItWorks } from "./HowItWorks";
 import { ContactDetails } from "./InquirySection";
 import { InquiryForm } from "./InquiryForm";
 import { Photo } from "./Photo";
@@ -35,6 +37,7 @@ export function ServicePage({ type }: { type: InquiryType }) {
               {copy.headline}
             </h1>
             <p className="mt-6 max-w-md text-lg leading-relaxed">{copy.intro}</p>
+            {current === "buy" && <HowItWorks flow={HOW_IT_WORKS.buy} />}
             {copy.image && (
               <Photo
                 key={current}
