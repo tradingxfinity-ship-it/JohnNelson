@@ -113,3 +113,80 @@ export const buildingInvesting = {
     },
   ] satisfies Topic[],
 };
+
+/** The specialty pages in the header's "Who we help" menu and the footer. */
+export const specialties = [
+  { href: "/senior-transitions", label: "Seniors & downsizing", blurb: "Downsizing, inherited homes, and helping parents move" },
+  { href: "/veterans", label: "Veterans & military", blurb: "PCS moves, VA loans, and selling or renting when you get orders" },
+  { href: "/land", label: "Land & acreage", blurb: "Hill Country lots, acreage, and building on your land" },
+  { href: "/luxury", label: "Luxury homes", blurb: "Higher-value homes, marketed and negotiated with care" },
+  { href: "/building-investing", label: "Building & investing", blurb: "Construction insight, remodeling, and investment property" },
+];
+
+export const veterans = {
+  topics: [
+    {
+      title: "PCS moves to and from San Antonio",
+      body: "Orders to Joint Base San Antonio, or leaving it? We plan your search or sale around report dates and moving windows, including when you’re still out of state.",
+    },
+    {
+      title: "Buying with a VA loan",
+      body: "We work alongside your VA-approved lender so your offer, inspection, and appraisal steps stay on track, and we explain what sellers need to know about VA offers.",
+    },
+    {
+      title: "Selling when you get orders",
+      body: "Pricing, preparing, and timing a sale around a departure date, with Irma and John handling showings while you’re busy with the move.",
+    },
+    {
+      title: "Keeping your home as a rental",
+      body: "If you’d rather hold on to your home, we’ll help you think through renting it out while you’re stationed elsewhere.",
+    },
+  ] satisfies Topic[],
+  steps: [
+    { title: "Tell us your timeline", body: "Report date, orders, or separation date: we start from the date that matters." },
+    { title: "Plan from anywhere", body: "Video walkthroughs and clear updates when you can’t be here in person." },
+    { title: "Move with confidence", body: "Closing and keys lined up with your move, not the other way around." },
+  ] satisfies Topic[],
+};
+
+export const land = {
+  topics: [
+    {
+      title: "Buying land",
+      body: "Access, utilities, well and septic, surveys, deed restrictions, and flood zones checked before you commit, so the land fits what you plan to do with it.",
+    },
+    {
+      title: "Selling land",
+      body: "Pricing raw land and lots realistically, and presenting what a buyer or builder can do with them.",
+    },
+    {
+      title: "Building on your land",
+      body: "John’s homebuilding experience helps you think through site work, layout, and costs before you buy or build.",
+    },
+    {
+      title: "Hill Country and lake lots",
+      body: "From Canyon Lake lots to acreage outside the city, we know the communities and what makes each one different.",
+    },
+  ] satisfies Topic[],
+};
+
+export const luxury = {
+  topics: [
+    {
+      title: "Presentation",
+      body: "Professional photography and thoughtful preparation so a higher-value home shows at its best online and in person.",
+    },
+    {
+      title: "Privacy and discretion",
+      body: "Showings arranged with care and qualified buyers, for sellers who value their privacy.",
+    },
+    {
+      title: "Quality and condition",
+      body: "A builder’s eye on construction quality, finishes, and upkeep, for buyers and sellers alike.",
+    },
+    {
+      title: "Negotiation",
+      body: "Pricing and negotiation grounded in the local market, so the numbers hold up at appraisal and closing.",
+    },
+  ] satisfies Topic[],
+};

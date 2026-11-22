@@ -282,8 +282,8 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
-            <ArrowLink href={CONTACT_HREF} className="mt-6 text-[15px]">
-              Tell us about your move
+            <ArrowLink href="/veterans" className="mt-6 text-[15px]">
+              Veterans &amp; military families
             </ArrowLink>
           </div>
         </Container>

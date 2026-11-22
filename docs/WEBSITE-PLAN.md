@@ -14,6 +14,11 @@ Last updated November 22, 2026. This file records what has been decided for the 
 - Home search, listings, and the portfolio all live on this site. Nothing sends visitors to another site to search.
 - The footer's "Search all MLS listings" link to realestateintx.com stays only until the site's own search is live, then it is removed.
 
+### Focus and specialty pages (from John, November 2026)
+- Focus on homes, land, and luxury. Rentals stay part of the business but are low priority: the Rent page stays, linked from the footer and services list, not the main menu.
+- Niche pages, each with material focused on its audience, under a **Who we help** dropdown in the main menu: Seniors & downsizing (`/senior-transitions`), Veterans & military (`/veterans`), Land & acreage (`/land`), Luxury homes (`/luxury`), Building & investing (`/building-investing`). The list lives in `specialties` in `src/content/services.ts`.
+- Later, for SEO: blog posts in each niche and links to John's YouTube videos explaining the process.
+
 ### Listings: three separate areas
 | Page | What's on it | Data source |
 |---|---|---|
@@ -109,7 +114,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | Building & Investing | `/building-investing` | ✅ |
 | Client Reviews | Section on Home and About; no page of its own | 🟡 |
 | Videos & Resources | No page | ⏸ |
-| Rent (on our site, not in the proposal) | Rent page | ⏸ confirm they still want rentals |
+| Rent (on our site, not in the proposal) | Rent page, footer only (John: rentals are low priority) | ✅ |
 
 ### SEO, content, and leads
 | Proposal | Site now | Status |
@@ -139,8 +144,8 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | Final website domain (needed for the LERA agreement) | ⏸ |
 | Which broker signs the LERA data agreement; IDX vendor or direct feed | ⏸ |
 | OK to keep using his listing photos on the Portfolio page | ⏸ |
-| Whether rentals stay | ⏸ |
-| YouTube channel, if any | ⏸ |
+| Whether rentals stay | ✅ Keep, low priority |
+| YouTube channel: John makes process videos; get the channel link | ⏸ |
 
 ## Can be built now, without John
 Done on November 22, 2026:

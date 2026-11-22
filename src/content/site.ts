@@ -1,3 +1,4 @@
+import { specialties } from "./services";
 /**
  * Editable site content for Get It Sold Realty.
  *
@@ -233,21 +234,21 @@ export const site = {
   },
 };
 
-export const navLinks = [
+export type NavLink = { href: string; label: string };
+export type NavGroup = { label: string; children: (NavLink & { blurb?: string })[] };
+
+/** Main menu. "Who we help" opens a dropdown of the specialty pages. */
+export const navLinks: (NavLink | NavGroup)[] = [
   { href: "/homes", label: "Search homes" },
   { href: "/buy", label: "Buy" },
   { href: "/sell", label: "Sell" },
-  { href: "/rent", label: "Rent" },
+  { label: "Who we help", children: specialties },
   { href: "/listings", label: "Our listings" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/about", label: "About" },
 ];
 
-/** Service pages linked from the footer and the homepage services list. */
-export const serviceLinks = [
-  { href: "/senior-transitions", label: "Senior living & life transitions" },
-  { href: "/building-investing", label: "Building & remodeling" },
-  { href: "/building-investing#investing", label: "Real estate investing" },
-];
+/** Footer links that aren't in the main menu. */
+export const footerExtraLinks: NavLink[] = [{ href: "/rent", label: "Rentals" }];
 
 export const CONTACT_HREF = "/#contact";

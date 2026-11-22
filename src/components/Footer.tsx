@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { navLinks, serviceLinks, site } from "@/content/site";
+import { specialties } from "@/content/services";
+import { footerExtraLinks, navLinks, site } from "@/content/site";
 import { feedConfigured } from "@/lib/listings";
 import { Logo } from "./Logo";
 import { Container } from "./ui";
@@ -8,7 +9,7 @@ export function Footer() {
   return (
     <footer className="bg-blue text-white/75">
       <Container className="py-16 lg:py-20">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1.4fr]">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.3fr]">
           <div>
             <Logo inverse />
             <p className="mt-5 max-w-xs text-[15px] leading-relaxed">
@@ -25,14 +26,7 @@ export function Footer() {
           <nav aria-label="Footer">
             <h2 className="text-sm font-medium text-white">Explore</h2>
             <ul className="mt-4 space-y-3 text-[15px]">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="hover:text-white hover:underline underline-offset-4">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              {serviceLinks.map((link) => (
+              {[...navLinks.filter((l) => "href" in l), ...footerExtraLinks].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="hover:text-white hover:underline underline-offset-4">
                     {link.label}
@@ -53,6 +47,19 @@ export function Footer() {
                 </a>
               </li>
               )}
+            </ul>
+          </nav>
+
+          <nav aria-label="Who we help">
+            <h2 className="text-sm font-medium text-white">Who we help</h2>
+            <ul className="mt-4 space-y-3 text-[15px]">
+              {specialties.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-white hover:underline underline-offset-4">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 

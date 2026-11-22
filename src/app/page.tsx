@@ -247,8 +247,8 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <ArrowLink href={CONTACT_HREF} className="mt-6 text-[15px]">
-              Tell us about your move
+            <ArrowLink href="/veterans" className="mt-6 text-[15px]">
+              How we help veterans and military families
             </ArrowLink>
           </div>
           <Photo
