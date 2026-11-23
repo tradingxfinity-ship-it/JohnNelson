@@ -7,9 +7,11 @@
 export type HowIcon = "approval" | "wishlist" | "tour" | "offer" | "inspect" | "keys";
 
 export type HowStep = {
+  /** "tip" slides come before the numbered steps and are labeled as tips, not steps */
+  kind?: "tip";
   title: string;
   body: string;
-  /** A short practical tip under the step */
+  /** A short practical note under the slide */
   tip: string;
   icon: HowIcon;
 };
@@ -29,12 +31,13 @@ export const HOW_IT_WORKS: Record<"buy", HowFlow> = {
   buy: {
     label: "How buying works",
     introTitle: "Buying a home, step by step.",
-    introBody: "Six steps from your first conversation to the keys in your hand, with Irma and John beside you the whole way.",
+    introBody: "One tip before you start, then five steps from your first conversation to the keys in your hand, with Irma and John beside you the whole way.",
     steps: [
       {
-        title: "Get preapproved",
-        body: "Talk with a lender first so you know your budget and can make a strong offer when you find the right home.",
-        tip: "Using a VA loan? Ask your lender about your Certificate of Eligibility early.",
+        kind: "tip",
+        title: "Get preapproved by a lender",
+        body: "Before you shop, have a lender confirm how much you can borrow, so you know your budget and sellers take your offer seriously. We can suggest local lenders.",
+        tip: "Paying cash? You’ll show proof of funds instead of a preapproval letter.",
         icon: "approval",
       },
       {

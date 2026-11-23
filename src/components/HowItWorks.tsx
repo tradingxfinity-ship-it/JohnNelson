@@ -71,6 +71,10 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
   };
 
   const step = stepIndex >= 0 && stepIndex < n ? flow.steps[stepIndex] : null;
+  // Tip slides aren't numbered: steps count from the first non-tip slide
+  const isTip = step?.kind === "tip";
+  const numbered = flow.steps.filter((s) => s.kind !== "tip").length;
+  const stepNumber = step ? flow.steps.slice(0, stepIndex + 1).filter((s) => s.kind !== "tip").length : 0;
 
   return (
     <>
@@ -148,18 +152,24 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
           {/* Slide */}
           <div key={slide} className="grid flex-1 gap-0 p-4 sm:p-7 md:grid-cols-[5fr_6fr] md:gap-8">
             {/* Stage */}
-            <div className="hiw-stage relative isolate flex min-h-[200px] items-center justify-center overflow-hidden rounded-xl bg-white px-3 py-4 shadow-[0_20px_50px_-20px_rgb(0_0_0/0.5)] sm:min-h-[330px]">
+            <div className="hiw-stage relative isolate flex min-h-[186px] items-center justify-center overflow-hidden rounded-xl bg-white px-3 py-3 sm:py-4 shadow-[0_20px_50px_-20px_rgb(0_0_0/0.5)] sm:min-h-[330px]">
               <span aria-hidden className="hiw-dots absolute inset-0 -z-10" />
               <span aria-hidden className="hiw-orb absolute -left-12 -top-12 -z-10 h-44 w-44 rounded-full bg-[#DCE6F4] blur-2xl" />
               <span aria-hidden className="hiw-orb absolute -bottom-14 -right-10 -z-10 h-48 w-48 rounded-full bg-[#E8EEF8] blur-2xl" style={{ animationDelay: "-3s" }} />
               {slide === 0 && <LogoMark />}
               {step && (
                 <>
+                  {isTip ? (
+                    <span className="hiw-rise absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-blue px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.1em] text-white shadow-md" style={{ "--d": ".2s" } as CSSProperties}>
+                      <Bulb className="h-3.5 w-3.5" />
+                      Tip
+                    </span>
+                  ) : null}
                   <span
                     aria-hidden
                     className="hiw-num absolute left-4 top-2 text-[3.5rem] font-semibold leading-none tracking-[-0.06em] text-blue sm:text-[6rem]"
                   >
-                    0{stepIndex + 1}
+                    {isTip ? <Bulb className="h-14 w-14 sm:h-24 sm:w-24" /> : `0${stepNumber}`}
                   </span>
                   <div className="hiw-enter relative w-full" style={{ "--dx": `${dir * 48}px` } as CSSProperties}>
                     <Scene name={step.icon} />
@@ -196,7 +206,13 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
               {step && (
                 <>
                   <p className="hiw-rise text-sm font-medium text-[#A9C1E8]" style={{ "--d": ".1s" } as CSSProperties}>
-                    Step {stepIndex + 1} of {n}
+                    {isTip ? (
+                      <span className="inline-flex items-center gap-1.5">
+                        <Bulb className="h-4 w-4" /> Tip · Before you start
+                      </span>
+                    ) : (
+                      `Step ${stepNumber} of ${numbered}`
+                    )}
                   </p>
                   <h2 className="mt-2 text-2xl font-semibold leading-tight tracking-[-0.02em] text-white sm:text-4xl">
                     <Words text={step.title} start={0.15} />
@@ -212,7 +228,7 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
                       <path d="M10 2.5a5.5 5.5 0 0 0-3 10.1V15h6v-2.4a5.5 5.5 0 0 0-3-10.1zM8 17.5h4" />
                     </svg>
                     <span>
-                      <span className="font-medium">Tip: </span>
+                      <span className="font-medium">{isTip ? "Good to know: " : "Tip: "}</span>
                       {step.tip}
                     </span>
                   </p>
@@ -251,7 +267,7 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
 
           {/* The road: the logo travels from step to step */}
           <div className="px-5 pb-2 sm:px-7">
-            <Road steps={flow.steps.map((s) => s.title)} active={stepIndex} done={slide === last} onPick={(i) => go(i + 1)} />
+            <Road steps={flow.steps} active={stepIndex} done={slide === last} onPick={(i) => go(i + 1)} />
           </div>
 
           {/* Controls */}
@@ -348,7 +364,7 @@ function Finale() {
 }
 
 /** Road along the bottom: a dot per step, filled up to the current one, with the logo mark riding along. */
-function Road({ steps, active, done, onPick }: { steps: string[]; active: number; done: boolean; onPick: (i: number) => void }) {
+function Road({ steps, active, done, onPick }: { steps: HowFlow["steps"]; active: number; done: boolean; onPick: (i: number) => void }) {
   const n = steps.length;
   const pos = done ? 1 : Math.max(0, active) / (n - 1);
   return (
@@ -360,22 +376,34 @@ function Road({ steps, active, done, onPick }: { steps: string[]; active: number
         style={{ width: active < 0 && !done ? "0%" : `${pos * 100}%` }}
       />
       <ol className="absolute inset-x-0 top-8">
-        {steps.map((title, i) => {
+        {steps.map(({ title, kind }, i) => {
           const reached = done || i <= active;
+          const tip = kind === "tip";
+          const num = steps.slice(0, i + 1).filter((s) => s.kind !== "tip").length;
           return (
             <li key={title} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: `${(i / (n - 1)) * 100}%` }}>
               <button
                 type="button"
                 onClick={() => onPick(i)}
-                aria-label={`Step ${i + 1}: ${title}`}
+                aria-label={tip ? `Tip: ${title}` : `Step ${num}: ${title}`}
                 aria-current={i === active ? "step" : undefined}
                 className="flex h-8 w-8 items-center justify-center"
               >
-                <span
-                  className={`block h-3 w-3 rounded-full border-2 transition-colors duration-500 ${
-                    reached ? "border-white bg-white" : "border-white/35 bg-blue"
-                  }`}
-                />
+                {tip ? (
+                  <span
+                    className={`flex h-6 w-6 items-center justify-center rounded-full border-2 transition-colors duration-500 ${
+                      reached ? "border-white bg-white text-blue" : "border-white/35 bg-blue text-white/70"
+                    }`}
+                  >
+                    <Bulb className="h-3.5 w-3.5" />
+                  </span>
+                ) : (
+                  <span
+                    className={`block h-3 w-3 rounded-full border-2 transition-colors duration-500 ${
+                      reached ? "border-white bg-white" : "border-white/35 bg-blue"
+                    }`}
+                  />
+                )}
               </button>
             </li>
           );
@@ -409,5 +437,14 @@ function Words({ text, start }: { text: string; start: number }) {
         ))}
       </span>
     </>
+  );
+}
+
+/** Lightbulb icon marking tips. */
+function Bulb({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="M10 2.5a5.5 5.5 0 0 0-3 10.1V15h6v-2.4a5.5 5.5 0 0 0-3-10.1zM8 17.5h4" />
+    </svg>
   );
 }
