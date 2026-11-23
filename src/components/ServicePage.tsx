@@ -37,7 +37,7 @@ export function ServicePage({ type }: { type: InquiryType }) {
               {copy.headline}
             </h1>
             <p className="mt-6 max-w-md text-lg leading-relaxed">{copy.intro}</p>
-            {current === "buy" && <HowItWorks flow={HOW_IT_WORKS.buy} />}
+            {HOW_IT_WORKS[current] && <HowItWorks flow={HOW_IT_WORKS[current]} />}
             {copy.image && (
               <Photo
                 key={current}
