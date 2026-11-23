@@ -20,7 +20,8 @@ const INTRO_SECONDS = 3.2;
  * steps through it themselves; visitors who prefer reduced motion get no
  * autoplay or movement.
  */
-export function HowItWorks({ flow }: { flow: HowFlow }) {
+/** `className` sets the trigger button's spacing (defaults to a top margin under page intro text). */
+export function HowItWorks({ flow, className = "mt-8" }: { flow: HowFlow; className?: string }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const [slide, setSlide] = useState(0);
@@ -83,7 +84,7 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
         type="button"
         onClick={open}
         aria-haspopup="dialog"
-        className="group mt-8 inline-flex items-center gap-3 rounded-full border border-line bg-white py-2 pl-2 pr-5 text-[15px] font-medium text-blue shadow-sm transition-colors hover:border-blue"
+        className={`group ${className} inline-flex items-center gap-3 rounded-full border border-line bg-white py-2 pl-2 pr-5 text-[15px] font-medium text-blue shadow-sm transition-colors hover:border-blue`}
       >
         <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-blue text-white transition-colors group-hover:bg-red">
           <span aria-hidden className="hiw-pulse absolute inset-0 rounded-full bg-blue/40" />

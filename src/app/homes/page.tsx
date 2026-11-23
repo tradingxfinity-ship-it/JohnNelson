@@ -54,15 +54,13 @@ export default async function HomesPage({ searchParams }: { searchParams: Promis
   };
 
   return (
-    <Section className="pt-10! lg:pt-16!">
+    <Section className="pt-8! lg:pt-10!">
       <Container>
         <Eyebrow>Search homes</Eyebrow>
-        <div className="flex flex-col gap-x-8 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-x-8 sm:flex-row sm:items-center sm:justify-between">
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-5xl">Find your next home.</h1>
           {HOW_IT_WORKS.search && (
-            <div className="-mt-2 sm:-mb-1">
-              <HowItWorks flow={HOW_IT_WORKS.search} />
-            </div>
+            <HowItWorks flow={HOW_IT_WORKS.search} className="mt-5 self-start sm:mt-0 sm:self-auto" />
           )}
         </div>
 
