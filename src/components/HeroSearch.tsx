@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation";
 import { useId, useState, type FormEvent } from "react";
 
 /**
- * Hero search: a visitor types an area and picks Buy or Rent, and lands on that
- * page with the area already filled into the inquiry form (see InquiryForm).
+ * Hero search: a visitor types an area and picks Buy or Rent, and lands on the
+ * Search homes page with those filters applied (Rent filters to rentals).
  */
 export function HeroSearch() {
   const router = useRouter();
@@ -16,7 +16,11 @@ export function HeroSearch() {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const q = area.trim();
-    router.push(`/${intent}${q ? `?area=${encodeURIComponent(q)}` : ""}#contact`);
+    const params = new URLSearchParams();
+    if (q) params.set("area", q.slice(0, 60));
+    if (intent === "rent") params.set("type", "Residential Lease");
+    const query = params.toString();
+    router.push(`/homes${query ? `?${query}` : ""}`);
   };
 
   return (
