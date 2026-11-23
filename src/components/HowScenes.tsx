@@ -467,14 +467,14 @@ function Keys() {
       {/* Light spilling onto the floor once the door opens */}
       <div
         className="hiw-spill absolute bottom-0 left-[33%] h-[18%] w-[40%]"
-        style={d(2.9, { background: `linear-gradient(${LIGHT}, transparent)`, clipPath: "polygon(8% 0, 78% 0, 100% 100%, 0 100%)" })}
+        style={d(2.9, { background: "linear-gradient(white, transparent)", clipPath: "polygon(8% 0, 78% 0, 100% 100%, 0 100%)" })}
       />
 
       {/* Door assembly, turned a little so the key and the swing read in 3D */}
       <div className="absolute left-[33%] top-[8%] h-[75%] w-[30%]" style={{ transformStyle: "preserve-3d", transform: "rotateY(-22deg)" }}>
         {/* Frame and the warm room behind */}
         <div className="absolute -inset-[7px] rounded-t-md" style={{ background: B }} />
-        <div className="absolute inset-0 overflow-hidden" style={{ background: `radial-gradient(circle at 50% 40%, ${LIGHT_SOFT}, ${LIGHT} 75%)` }}>
+        <div className="absolute inset-0 overflow-hidden" style={{ background: `radial-gradient(circle at 50% 40%, white 55%, ${B5})` }}>
           {/* The logo rises in the doorway */}
           <div className="hiw-emerge-up absolute inset-x-[10%] top-[30%] rounded-md bg-white p-1 shadow-md" style={d(3.15)}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
