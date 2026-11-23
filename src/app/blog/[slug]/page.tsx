@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Markdown } from "@/components/Markdown";
@@ -20,7 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: { type: "article", title: post.title, description: post.description, publishedTime: post.date },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.description,
+      publishedTime: post.date,
+      ...(post.cover ? { images: [{ url: post.cover.src, alt: post.cover.alt }] } : {}),
+    },
   };
 }
 
@@ -40,6 +47,7 @@ export default async function PostPage({ params }: Props) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    ...(post.cover ? { image: post.cover.src } : {}),
     author: { "@type": "Organization", name: `${site.brokerage.team}, ${site.name}` },
     publisher: { "@type": "Organization", name: site.name },
   };
@@ -62,6 +70,12 @@ export default async function PostPage({ params }: Props) {
             <p className="mt-6 border-b border-line pb-6 text-sm">
               {post.author} · {formatDate(post.date)} · {post.minutes} min read
             </p>
+
+            {post.cover && (
+              <figure className="relative mt-8 aspect-[16/9] overflow-hidden rounded-lg bg-cloud sm:-mx-6 lg:-mx-16">
+                <Image src={post.cover.src} alt={post.cover.alt} fill priority sizes="(min-width: 1024px) 860px, 100vw" className="object-cover" />
+              </figure>
+            )}
 
             {post.youtube && (
               <div className="mt-8 aspect-video overflow-hidden rounded-lg bg-blue">

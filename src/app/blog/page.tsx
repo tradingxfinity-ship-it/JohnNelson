@@ -59,7 +59,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
         {lead ? (
           <>
             <div className="mt-10">
-              <PostCard post={lead} large />
+              <PostCard post={lead} large priority />
             </div>
             {rest.length > 0 && (
               <ul className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

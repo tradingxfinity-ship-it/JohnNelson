@@ -11,6 +11,8 @@ import path from "node:path";
  *   description: One or two sentences for search results and the post list
  *   date: 2026-11-22
  *   category: seniors            (one of the keys in CATEGORIES below)
+ *   cover: /images/photo.webp    (optional: cover photo from /public)
+ *   coverAlt: What the photo shows
  *   youtube: dQw4w9WgXcQ         (optional: a YouTube video ID to embed)
  *   draft: true                  (optional: hides the post)
  *   ---
@@ -42,6 +44,8 @@ export type Post = {
   date: string;
   category: Category;
   youtube?: string;
+  /** Cover photo path in /public, with its description */
+  cover?: { src: string; alt: string };
   author: string;
   blocks: Block[];
   minutes: number;
@@ -67,6 +71,7 @@ function parse(slug: string, raw: string): (Post & { draft: boolean }) | null {
     date: meta.date,
     category: meta.category as Category,
     youtube: meta.youtube || undefined,
+    cover: meta.cover ? { src: meta.cover, alt: meta.coverAlt ?? "" } : undefined,
     author: meta.author || "The Nelson Team",
     blocks,
     minutes: Math.max(1, Math.round(words / 220)),

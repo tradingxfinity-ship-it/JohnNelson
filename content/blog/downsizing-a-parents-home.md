@@ -2,6 +2,8 @@
 title: Downsizing a parent's home: where to start
 description: Helping a parent move to a smaller home or a new living arrangement is emotional and practical at once. Here's how to take it one step at a time.
 date: 2026-11-22
+cover: /images/ranch-home-front-porch.webp
+coverAlt: Single-story ranch home with a covered front porch and rocking chairs
 category: seniors
 ---
 

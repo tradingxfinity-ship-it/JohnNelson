@@ -2,6 +2,8 @@
 title: Before you buy land in the Hill Country: what to check
 description: A great price per acre means little if you can't build what you want. Here's what to look into before you make an offer on land.
 date: 2026-11-20
+cover: /images/whispering-hills-lot.webp
+coverAlt: Wooded Hill Country lot with cedar trees and tall grass
 category: land
 ---
 

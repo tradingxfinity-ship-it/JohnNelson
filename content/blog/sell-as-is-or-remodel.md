@@ -2,6 +2,8 @@
 title: Should you sell as-is or remodel first?
 description: Updating before you sell can raise your price, or just eat into your profit. Here's how to decide which projects are worth it.
 date: 2026-11-21
+cover: /images/bathroom-vanity.webp
+coverAlt: Freshly updated bathroom with a granite vanity
 category: building-investing
 ---
 

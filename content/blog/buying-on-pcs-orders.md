@@ -2,6 +2,8 @@
 title: Buying a home in San Antonio on PCS orders
 description: Orders to Joint Base San Antonio? Here's how to plan a home purchase around your report date, including how VA loans work alongside the process.
 date: 2026-11-19
+cover: /images/two-story-home-porch.webp
+coverAlt: Two-story home with a front porch and an American flag
 category: veterans
 ---
 

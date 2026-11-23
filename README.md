@@ -66,12 +66,15 @@ Posts are Markdown files in `content/blog/`. To add one, copy an existing file, 
 title: Post title
 description: One or two sentences for search results and the post list
 date: 2026-11-22
+cover: /images/ranch-home-front-porch.webp
+coverAlt: Single-story ranch home with a front porch
 category: seniors
 youtube: VIDEO_ID
 ---
 ```
 
 - `category` is one of `seniors`, `veterans`, `land`, `luxury`, `building-investing`, `buying`, `selling` (see `src/lib/blog.ts`). Each specialty page shows its latest posts under "From our blog".
+- `cover` is optional: a photo from `public/images/` (e.g. `/images/ranch-home-front-porch.webp`), with `coverAlt` describing it. It shows on the post card, at the top of the post, and in link previews.
 - `youtube` is optional: the video ID from a YouTube link (the part after `v=`). It embeds above the post using YouTube's privacy-enhanced player.
 - Add `draft: true` to hide a post.
 - The body supports `##` and `###` headings, paragraphs, `-` and `1.` lists, `>` quotes, `**bold**`, `*italic*`, and `[links](/path)`.
