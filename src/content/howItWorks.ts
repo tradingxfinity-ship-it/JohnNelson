@@ -1,7 +1,7 @@
 /**
  * "How it works" walkthroughs, shown in an animated pop-up on the service
- * pages (src/components/HowItWorks.tsx). Buying and selling are written;
- * Renting and Search homes can be added with the same shape.
+ * pages (src/components/HowItWorks.tsx): buying, selling, renting, and
+ * using Search homes.
  */
 
 export type HowIcon =
@@ -16,7 +16,15 @@ export type HowIcon =
   | "prepare"
   | "market"
   | "offers"
-  | "sold";
+  | "sold"
+  | "renterdocs"
+  | "apply"
+  | "lease"
+  | "movein"
+  | "alerts"
+  | "search"
+  | "listing"
+  | "ask";
 
 export type HowStep = {
   /** "tip" slides come before the numbered steps and are labeled as tips, not steps */
@@ -39,7 +47,7 @@ export type HowFlow = {
   actions: { label: string; href: string }[];
 };
 
-export const HOW_IT_WORKS: Partial<Record<"buy" | "sell" | "rent", HowFlow>> = {
+export const HOW_IT_WORKS: Partial<Record<"buy" | "sell" | "rent" | "search", HowFlow>> = {
   buy: {
     label: "How buying works",
     introTitle: "Buying a home, step by step.",
@@ -144,6 +152,106 @@ export const HOW_IT_WORKS: Partial<Record<"buy" | "sell" | "rent", HowFlow>> = {
     actions: [
       { label: "What’s my home worth?", href: "#contact" },
       { label: "See homes we’ve sold", href: "/portfolio" },
+    ],
+  },
+  rent: {
+    label: "How renting works",
+    introTitle: "Renting a home, step by step.",
+    introBody: "One tip before you start, then five steps from telling us what you need to moving in.",
+    steps: [
+      {
+        kind: "tip",
+        title: "Have your documents ready",
+        body: "Landlords usually ask for ID, proof of income like pay stubs, rental references, and details about pets. Having them ready helps you apply fast.",
+        tip: "Good rentals can go quickly, so it pays to be ready.",
+        icon: "renterdocs",
+      },
+      {
+        title: "Tell us what you need",
+        body: "Share the areas you like, your monthly budget, the size of home, and your move-in date.",
+        tip: "Think about your commute and how long you plan to stay.",
+        icon: "wishlist",
+      },
+      {
+        title: "Tour rentals",
+        body: "We help you narrow the options and see the places that fit, in person or by video.",
+        tip: "Ask what utilities and fees are included in the rent.",
+        icon: "tour",
+      },
+      {
+        title: "Apply",
+        body: "Submit an application for the one you want. The landlord reviews income, rental history, and credit.",
+        tip: "Most applications include a fee, so apply for the place you really want.",
+        icon: "apply",
+      },
+      {
+        title: "Sign the lease",
+        body: "Review the lease terms, sign, and pay the deposit and first month’s rent. Your move-in date is set.",
+        tip: "Read the rules on pets, repairs, and ending the lease early.",
+        icon: "lease",
+      },
+      {
+        title: "Move in",
+        body: "Pick up your keys, do a move-in walkthrough, and make yourself at home.",
+        tip: "Photograph the condition on move-in day to protect your deposit.",
+        icon: "movein",
+      },
+    ],
+    finaleTitle: "Ready to find your rental?",
+    finaleBody: "Tell us what you need and Irma and John will help you find the right place.",
+    actions: [
+      { label: "Tell us what you need", href: "#contact" },
+      { label: "Search homes", href: "/homes" },
+    ],
+  },
+  search: {
+    label: "How search works",
+    introTitle: "Finding your next home, step by step.",
+    introBody: "One tip before you start, then five steps from your first search to your offer.",
+    steps: [
+      {
+        kind: "tip",
+        title: "We’ll watch for you",
+        body: "Tell us what you’re looking for and Irma and John will let you know when matching homes come up, so you don’t have to keep checking.",
+        tip: "Some homes sell fast. A heads-up from us can make the difference.",
+        icon: "alerts",
+      },
+      {
+        title: "Search & filter",
+        body: "Search by city or ZIP code, then narrow by price, bedrooms, bathrooms, and type.",
+        tip: "Homes listed by Irma and John are marked “Our listing.”",
+        icon: "search",
+      },
+      {
+        title: "Open a home",
+        body: "See the photos, price, and facts for each home in one place.",
+        tip: "Tap any photo to see the full gallery.",
+        icon: "listing",
+      },
+      {
+        title: "Ask about it",
+        body: "Press “Ask about this home” and your message goes straight to Irma and John, with the home already noted.",
+        tip: "Ask about HOA fees, taxes, and how long it’s been on the market.",
+        icon: "ask",
+      },
+      {
+        title: "Tour it with us",
+        body: "We set up a showing, in person or by video, and give you an honest read on the home.",
+        tip: "Bring your list of must-haves to every showing.",
+        icon: "tour",
+      },
+      {
+        title: "Make it yours",
+        body: "When you find the one, we price your offer and negotiate the terms with you.",
+        tip: "Being preapproved makes your offer much stronger.",
+        icon: "offer",
+      },
+    ],
+    finaleTitle: "Ready to start looking?",
+    finaleBody: "Start a search, or tell us what you want and we’ll send you matches.",
+    actions: [
+      { label: "Start searching", href: "#search" },
+      { label: "Tell us what you want", href: "/buy#contact" },
     ],
   },
 };

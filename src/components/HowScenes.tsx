@@ -36,6 +36,14 @@ export function Scene({ name }: { name: HowIcon }) {
     market: Market,
     offers: Offers,
     sold: Sold,
+    renterdocs: RenterDocs,
+    apply: Apply,
+    lease: Lease,
+    movein: MoveIn,
+    alerts: Alerts,
+    search: Search,
+    listing: ListingScene,
+    ask: Ask,
   } as const;
   const S = scenes[name];
   return (
@@ -462,14 +470,9 @@ function Inspect({ motion }: SceneProps) {
 /* Selling scenes                                                      */
 /* ================================================================== */
 
-/** Tip: a folder opens and the documents a seller needs fan out and check off. */
-function Paperwork() {
-  const docs = [
-    { label: "PAYOFF", x: 78, r: -10 },
-    { label: "SURVEY", x: 128, r: -3 },
-    { label: "HOA", x: 178, r: 4 },
-    { label: "WARRANTY", x: 228, r: 11 },
-  ];
+/** Tip: a folder opens and the documents fan out and check off. */
+function Paperwork({ labels = ["PAYOFF", "SURVEY", "HOA", "WARRANTY"] }: { labels?: string[] }) {
+  const docs = labels.map((label, i) => ({ label, x: 78 + i * 50, r: [-10, -3, 4, 11][i] }));
   return (
     <>
       <ellipse cx="160" cy="200" rx="110" ry="8" fill={B5} className="hiw-fade" style={d(0.1)} />
@@ -837,6 +840,424 @@ function Sold() {
       </g>
       <Sparkle x={196} y={40} delay={1.5} />
       <Sparkle x={46} y={96} delay={1.7} small />
+    </>
+  );
+}
+
+/* ================================================================== */
+/* Renting scenes                                                      */
+/* ================================================================== */
+
+function RenterDocs() {
+  return <Paperwork labels={["ID", "PAY STUBS", "REFERENCES", "PETS"]} />;
+}
+
+/** 3. An application fills in and is sent; the review checks off and it's approved. */
+function Apply() {
+  const rows = ["Income", "Rental history", "Credit"];
+  return (
+    <>
+      {/* Application form */}
+      <g className="hiw-rise" style={d(0.1)}>
+        <rect x="16" y="24" width="138" height="172" rx="12" fill="white" stroke={B4} strokeWidth="2" />
+        <text x="30" y="46" fill={B} fontSize="10" fontWeight="800">
+          Application
+        </text>
+        {[60, 92, 124].map((y, i) => (
+          <g key={y}>
+            <rect x="30" y={y} width="34" height="4" rx="2" fill={B3} />
+            <rect x="30" y={y + 9} width="110" height="16" rx="4" fill={B5} stroke={B4} strokeWidth="1.2" />
+            <rect x="36" y={y + 15} width={[64, 52, 72][i]} height="4.5" rx="2.2" fill={B} className="hiw-type" style={d(0.5 + i * 0.35)} />
+          </g>
+        ))}
+        <g className="hiw-press" style={d(1.75, { transformOrigin: "85px 175px" })}>
+          <rect x="30" y="162" width="110" height="24" rx="6" fill={B} />
+          <text x="85" y="177.5" textAnchor="middle" fill="white" fontSize="9.5" fontWeight="700">
+            Submit
+          </text>
+        </g>
+      </g>
+      {/* Paper plane flies to the review card */}
+      <g className="hiw-plane" style={d(2)}>
+        <path d="M128 170l22-8-6 16-5-6z" fill={B2} />
+        <path d="M139 172l5 6" stroke="white" strokeWidth="1" />
+      </g>
+      <path d="M150 158c30-40 60-60 92-74" stroke={B4} strokeWidth="2" strokeDasharray="3 5" className="hiw-fade" style={d(2.05)} />
+      {/* Review card */}
+      <g className="hiw-slide-r" style={d(0.35)}>
+        <rect x="176" y="40" width="132" height="140" rx="12" fill={B5} stroke={B4} strokeWidth="2" />
+        <text x="190" y="62" fill={B3} fontSize="7.5" fontWeight="700" letterSpacing=".6">
+          REVIEW
+        </text>
+        {rows.map((r, i) => (
+          <g key={r}>
+            <rect x="190" y={74 + i * 26} width="104" height="20" rx="6" fill="white" />
+            <text x="198" y={87 + i * 26} fill={B} fontSize="8.5" fontWeight="600">
+              {r}
+            </text>
+            <g className="hiw-pop" style={d(2.55 + i * 0.3)}>
+              <circle cx="282" cy={84 + i * 26} r="6.5" fill={B2} />
+              <path d={`M279 ${84 + i * 26}l2 2 4-4.4`} stroke="white" strokeWidth="1.8" />
+            </g>
+          </g>
+        ))}
+      </g>
+      <g className="hiw-bubble-big" style={d(3.5, { transformOrigin: "242px 166px" })}>
+        <rect x="200" y="154" width="84" height="24" rx="12" fill={B} />
+        <text x="242" y="170" textAnchor="middle" fill="white" fontSize="9.5" fontWeight="800">
+          Approved!
+        </text>
+      </g>
+      <Sparkle x={296} y={148} delay={3.7} small />
+    </>
+  );
+}
+
+/** 4. The lease is signed, the move-in date is circled, and the key drops on. */
+function Lease({ motion }: SceneProps) {
+  const sig = "M44 164c5-12 10 5 15-2s7-11 11-1 8 3 12-3 6-2 9 2";
+  return (
+    <>
+      <g className="hiw-paper" style={d(0.1)}>
+        <rect x="34" y="28" width="134" height="168" rx="9" fill={B4} />
+        <rect x="28" y="22" width="134" height="168" rx="9" fill="white" stroke={B4} strokeWidth="2" />
+        <text x="44" y="46" fill={B} fontSize="11" fontWeight="900" letterSpacing="2">
+          LEASE
+        </text>
+        {[58, 70, 82, 94, 106, 118].map((y, i) => (
+          <rect key={y} x="44" y={y} width={[100, 88, 96, 70, 92, 60][i]} height="4.5" rx="2.2" fill={B4} className="hiw-type" style={d(0.45 + i * 0.08)} />
+        ))}
+        <path d="M44 172h90" stroke={B4} strokeWidth="2" />
+        <path d={sig} stroke={B2} strokeWidth="2.4" pathLength={1} className="hiw-draw" style={d(1.1, { animationDuration: "1s" })} />
+      </g>
+      {motion && (
+        <g className="hiw-fade-io" style={d(0.95)}>
+          <g>
+            <animateMotion dur="1s" begin="1.1s" fill="freeze" path={sig} />
+            <g transform="rotate(-38) translate(0 -26)">
+              <rect x="-3.5" y="0" width="7" height="24" rx="2" fill={B} />
+              <path d="M-3.5 24l3.5 6 3.5-6z" fill={B2} />
+            </g>
+          </g>
+        </g>
+      )}
+      {/* Calendar: move-in date circled */}
+      <g className="hiw-slide-r" style={d(0.5)}>
+        <rect x="184" y="30" width="122" height="112" rx="12" fill="white" stroke={B4} strokeWidth="2" />
+        <rect x="184" y="30" width="122" height="24" rx="12" fill={B} />
+        <rect x="184" y="42" width="122" height="12" fill={B} />
+        <text x="245" y="46" textAnchor="middle" fill="white" fontSize="8" fontWeight="700" letterSpacing=".8">
+          MOVE-IN
+        </text>
+        {Array.from({ length: 15 }).map((_, i) => (
+          <text key={i} x={198 + (i % 5) * 23} y={74 + Math.floor(i / 5) * 22} textAnchor="middle" fill={i === 8 ? B : B3} fontSize="9" fontWeight={i === 8 ? 800 : 500}>
+            {i + 1}
+          </text>
+        ))}
+        <ellipse cx="267" cy="93" rx="11" ry="9" stroke={B2} strokeWidth="2.5" pathLength={1} className="hiw-draw" style={d(2.2, { animationDuration: ".6s" })} />
+      </g>
+      {/* Key drops onto the lease */}
+      <g className="hiw-drop" style={d(2.8)}>
+        <g transform="translate(118 150) rotate(-20)">
+          <circle cx="0" cy="0" r="10" stroke={B} strokeWidth="4" fill="white" />
+          <path d="M10 0h26M28 0v6M34 0v5" stroke={B} strokeWidth="4" />
+        </g>
+      </g>
+      <ellipse cx="138" cy="166" rx="22" ry="3" fill={B} className="hiw-shadow" style={d(2.8)} />
+      <Sparkle x={196} y={164} delay={3.3} />
+    </>
+  );
+}
+
+/** 5. A moving truck with the logo drives up and boxes hop through the open door. */
+function MoveIn({ motion }: SceneProps) {
+  return (
+    <>
+      <path d="M8 192h304" stroke={B4} strokeWidth="3" pathLength={1} className="hiw-draw" style={d(0.05)} />
+      {/* House with an open door */}
+      <g className="hiw-grow-up" style={d(0.1, { transformOrigin: "250px 192px" })}>
+        <rect x="200" y="104" width="100" height="88" fill="white" stroke={B} strokeWidth="3" />
+        <rect x="236" y="140" width="28" height="52" fill={B5} />
+        <rect x="236" y="140" width="28" height="52" fill="none" stroke={B} strokeWidth="2.5" />
+        <rect x="210" y="118" width="18" height="16" rx="2" fill={B5} stroke={B} strokeWidth="2" />
+        <rect x="272" y="118" width="18" height="16" rx="2" fill={B5} stroke={B} strokeWidth="2" />
+      </g>
+      <path d="M188 114L250 66l62 48" stroke={B} strokeWidth="7" className="hiw-roof" style={d(0.35)} />
+      <g className="hiw-door2" style={d(0.9)}>
+        <rect x="236" y="140" width="28" height="52" fill={B2} />
+      </g>
+      {/* Truck drives in */}
+      <g className="hiw-truck" style={d(0.6)}>
+        <rect x="20" y="112" width="104" height="66" rx="6" fill="white" stroke={B} strokeWidth="3" />
+        <image href="/images/logo-mark.png" x="38" y="124" width="68" height="42" preserveAspectRatio="xMidYMid meet" />
+        <path d="M124 134h28l16 20v24h-44z" fill={B} />
+        <path d="M132 140h18l10 13h-28z" fill={B4} />
+        <rect x="160" y="168" width="10" height="6" rx="2" fill={B3} />
+        {[44, 146].map((cx) => (
+          <g key={cx} className={motion ? "hiw-wheel" : undefined} style={d(0.6, { transformOrigin: `${cx}px 180px` })}>
+            <circle cx={cx} cy="180" r="11" fill={B} />
+            <circle cx={cx} cy="180" r="4.5" fill={B4} />
+            <path d={`M${cx - 7} 180h14`} stroke={B4} strokeWidth="2" />
+          </g>
+        ))}
+      </g>
+      {/* Boxes hop from truck to door */}
+      {[0, 1, 2].map((i) => (
+        <g key={i} className="hiw-box-hop" style={d(2 + i * 0.45)}>
+          <rect x="166" y="160" width="20" height="18" rx="2" fill={[B3, B2, B4][i]} stroke={B} strokeWidth="1.5" />
+          <path d="M166 166h20" stroke={B} strokeWidth="1.2" />
+        </g>
+      ))}
+      <g className="hiw-pop" style={d(3.5)}>
+        <path d="M250 58l-7-7a5 5 0 0 1 7-7 5 5 0 0 1 7 7z" fill={B2} />
+      </g>
+      <Sparkle x={286} y={56} delay={3.6} small />
+    </>
+  );
+}
+
+/* ================================================================== */
+/* Search scenes                                                       */
+/* ================================================================== */
+
+/** Tip: messages from Irma and John about new matching homes arrive on a phone. */
+function Alerts() {
+  const notes = [
+    { who: "Irma", text: "2 new homes in Stone Oak", y: 64, t: 0.8 },
+    { who: "John", text: "This one just listed. Want to see it?", y: 106, t: 1.6 },
+    { who: "Irma", text: "Showing set for Saturday 10am", y: 148, t: 2.4 },
+  ];
+  return (
+    <>
+      <g className="hiw-phone-up" style={d(0.1)}>
+        <rect x="70" y="10" width="180" height="210" rx="22" fill={B} />
+        <rect x="78" y="22" width="164" height="198" rx="15" fill={B5} />
+        <rect x="140" y="28" width="40" height="6" rx="3" fill={B} />
+        <text x="160" y="52" textAnchor="middle" fill={B} fontSize="16" fontWeight="300">
+          9:41
+        </text>
+      </g>
+      {notes.map((n) => (
+        <g key={n.y} className="hiw-notif" style={d(n.t)}>
+          <rect x="86" y={n.y} width="148" height="34" rx="10" fill="white" stroke={B4} strokeWidth="1.2" />
+          <circle cx="102" cy={n.y + 17} r="9" fill={n.who === "Irma" ? B2 : B} />
+          <text x="102" y={n.y + 20.5} textAnchor="middle" fill="white" fontSize="8" fontWeight="800">
+            {n.who[0]}
+          </text>
+          <text x="116" y={n.y + 14} fill={B} fontSize="7.5" fontWeight="800">
+            {n.who} Nelson
+          </text>
+          <text x="116" y={n.y + 25} fill={B2} fontSize="6.8">
+            {n.text}
+          </text>
+        </g>
+      ))}
+      <g className="hiw-ring-svg" style={d(0.8, { transformOrigin: "262px 40px" })}>
+        <path d="M254 46h16l-2-3v-6a6 6 0 0 0-12 0v6z" fill={B2} />
+        <circle cx="262" cy="49" r="2.2" fill={B2} />
+      </g>
+      <Sparkle x={52} y={70} delay={3} small />
+    </>
+  );
+}
+
+/** 1. A ZIP code is typed, filters switch on, and results pop in. */
+function Search() {
+  const chips = ["3+ bd", "Under $400K", "Pool"];
+  return (
+    <>
+      <rect x="12" y="14" width="296" height="192" rx="14" fill={B5} className="hiw-fade" style={d(0)} />
+      {/* Search bar with typing */}
+      <g className="hiw-rise" style={d(0.1)}>
+        <rect x="24" y="24" width="272" height="30" rx="15" fill="white" stroke={B3} strokeWidth="1.5" />
+        <circle cx="42" cy="38" r="6" stroke={B} strokeWidth="2.2" />
+        <path d="M46.5 42.5l4 4" stroke={B} strokeWidth="2.2" />
+        <clipPath id="hiw-type-clip">
+          <rect x="58" y="28" width="60" height="22" className="hiw-typewrite" style={d(0.55)} />
+        </clipPath>
+        <text x="58" y="43" fill={B} fontSize="11" fontWeight="700" clipPath="url(#hiw-type-clip)">
+          78258
+        </text>
+        <rect x="58" y="31" width="1.6" height="15" fill={B2} className="hiw-caret" style={d(0.55)} />
+        <rect x="248" y="28" width="44" height="22" rx="11" fill={B} />
+        <text x="270" y="42" textAnchor="middle" fill="white" fontSize="8" fontWeight="700">
+          Search
+        </text>
+      </g>
+      {/* Filter chips switch on */}
+      {chips.map((c, i) => {
+        const x = 24 + [0, 50, 124][i];
+        const w = [44, 68, 38][i];
+        return (
+          <g key={c}>
+            <rect x={x} y="62" width={w} height="18" rx="9" fill="white" stroke={B4} strokeWidth="1.2" className="hiw-fade" style={d(0.4)} />
+            <rect x={x} y="62" width={w} height="18" rx="9" fill={B} className="hiw-pop" style={d(1.3 + i * 0.25)} />
+            <text x={x + w / 2} y="74" textAnchor="middle" fill={B} fontSize="7.5" fontWeight="600" className="hiw-fade" style={d(0.4)}>
+              {c}
+            </text>
+            <text x={x + w / 2} y="74" textAnchor="middle" fill="white" fontSize="7.5" fontWeight="700" className="hiw-pop" style={d(1.3 + i * 0.25)}>
+              {c}
+            </text>
+          </g>
+        );
+      })}
+      {/* Results */}
+      {[0, 1, 2, 3].map((i) => {
+        const x = 24 + i * 70;
+        return (
+          <g key={i} className="hiw-card-in" style={d(2.1 + i * 0.15)}>
+            <rect x={x} y="90" width="62" height="104" rx="8" fill="white" stroke={B4} strokeWidth="1.2" />
+            <rect x={x + 4} y="94" width="54" height="42" rx="5" fill={B4} />
+            <path d={`M${x + 18} 126v-12l13-9 13 9v12z`} fill="white" />
+            <rect x={x + 6} y="144" width="34" height="6" rx="3" fill={B} />
+            <rect x={x + 6} y="155" width="46" height="4" rx="2" fill={B4} />
+            <rect x={x + 6} y="163" width="38" height="4" rx="2" fill={B4} />
+            {i === 1 && (
+              <g className="hiw-pop" style={d(2.8)}>
+                <rect x={x + 6} y="98" width="40" height="11" rx="5.5" fill={B} />
+                <text x={x + 26} y="105.8" textAnchor="middle" fill="white" fontSize="5.5" fontWeight="800">
+                  OUR LISTING
+                </text>
+              </g>
+            )}
+          </g>
+        );
+      })}
+    </>
+  );
+}
+
+/** 2. A result card opens into the full listing, with a photo strip sliding through. */
+function ListingScene() {
+  return (
+    <>
+      <g className="hiw-expand" style={d(0.15, { transformOrigin: "60px 190px" })}>
+        <rect x="16" y="14" width="288" height="192" rx="14" fill="white" stroke={B4} strokeWidth="2" />
+        <clipPath id="hiw-photo-clip">
+          <rect x="26" y="24" width="168" height="112" rx="8" />
+        </clipPath>
+        <g clipPath="url(#hiw-photo-clip)">
+          <g className="hiw-strip" style={d(1.2)}>
+            {[0, 1, 2].map((i) => (
+              <g key={i} transform={`translate(${26 + i * 168} 24)`}>
+                <rect width="168" height="112" fill={[B4, "#CFDDF0", B5][i]} />
+                {i === 0 && <path d="M50 92V60l34-24 34 24v32z" fill="white" />}
+                {i === 0 && <rect x="76" y="70" width="16" height="22" fill={B2} />}
+                {i === 1 && <path d="M20 92h128M40 92V56h40v36M96 92V40h36v52" stroke={B2} strokeWidth="4" />}
+                {i === 2 && <circle cx="84" cy="56" r="20" fill={LIGHT_SOFT} />}
+                {i === 2 && <path d="M0 92c40-20 80-20 168-6v26H0z" fill={B3} />}
+              </g>
+            ))}
+          </g>
+        </g>
+        {[0, 1, 2].map((i) => (
+          <circle key={i} cx={98 + i * 10} cy="128" r="3" fill="white" className={i === 0 ? undefined : "hiw-dot-on"} style={d(1.2 + i * 1)} />
+        ))}
+        {/* Thumbnails */}
+        {[0, 1].map((i) => (
+          <rect key={i} x="204" y={24 + i * 58} width="90" height="52" rx="7" fill={[B5, "#E2ECF7"][i]} className="hiw-fade" style={d(0.6 + i * 0.1)} />
+        ))}
+        {/* Facts */}
+        <g className="hiw-rise" style={d(0.8)}>
+          <text x="26" y="160" fill={B} fontSize="16" fontWeight="800">
+            $349,000
+          </text>
+          <text x="26" y="176" fill={B2} fontSize="8" fontWeight="600">
+            San Antonio, TX 78258
+          </text>
+        </g>
+        {["3 bd", "2 ba", "1,820 sqft"].map((f, i) => (
+          <g key={f} className="hiw-pop" style={d(1 + i * 0.12)}>
+            <rect x={150 + i * 48} y="150" width="42" height="18" rx="9" fill={B5} stroke={B4} strokeWidth="1" />
+            <text x={171 + i * 48} y="162" textAnchor="middle" fill={B} fontSize="7.5" fontWeight="700">
+              {f}
+            </text>
+          </g>
+        ))}
+        <g className="hiw-heart" style={d(2.6, { transformOrigin: "278px 186px" })}>
+          <path d="M278 192l-7-7a5 5 0 0 1 7-7 5 5 0 0 1 7 7z" fill={B2} />
+        </g>
+      </g>
+    </>
+  );
+}
+
+/** 3. The cursor clicks "Ask about this home", the message goes to Irma and John, and they reply. */
+function Ask() {
+  return (
+    <>
+      {/* Listing card with the button */}
+      <g className="hiw-rise" style={d(0.1)}>
+        <rect x="14" y="30" width="134" height="160" rx="12" fill="white" stroke={B4} strokeWidth="2" />
+        <rect x="22" y="38" width="118" height="66" rx="7" fill={B4} />
+        <path d="M58 94V72l23-16 23 16v22z" fill="white" />
+        <text x="22" y="122" fill={B} fontSize="12" fontWeight="800">
+          $349,000
+        </text>
+        <rect x="22" y="130" width="84" height="5" rx="2.5" fill={B4} />
+      </g>
+      <g className="hiw-press" style={d(1.15, { transformOrigin: "81px 166px" })}>
+        <rect x="22" y="152" width="118" height="28" rx="7" fill={B} />
+        <text x="81" y="169.5" textAnchor="middle" fill="white" fontSize="8.5" fontWeight="700">
+          Ask about this home
+        </text>
+      </g>
+      {/* Cursor moves in and clicks */}
+      <g className="hiw-cursor" style={d(0.4)}>
+        <path d="M100 172l0-18 13 12-6 1 4 8-3 1.5-4-8z" fill="white" stroke={B} strokeWidth="1.6" />
+      </g>
+      <circle cx="102" cy="164" r="10" stroke={B2} strokeWidth="2" className="hiw-ripple" style={d(1.15, { animationIterationCount: 1 })} />
+      {/* Message flies over */}
+      <g className="hiw-msg-fly" style={d(1.45)}>
+        <rect x="150" y="150" width="30" height="20" rx="4" fill={B2} />
+        <path d="M150 152l15 10 15-10" stroke="white" strokeWidth="1.6" />
+      </g>
+      {/* Irma and John */}
+      <g className="hiw-slide-r" style={d(0.3)}>
+        <rect x="170" y="30" width="138" height="160" rx="12" fill={B5} stroke={B4} strokeWidth="2" />
+        <circle cx="194" cy="56" r="12" fill={B2} />
+        <circle cx="212" cy="56" r="12" fill={B} stroke={B5} strokeWidth="2" />
+        <text x="194" y="60" textAnchor="middle" fill="white" fontSize="9" fontWeight="800">
+          I
+        </text>
+        <text x="212" y="60" textAnchor="middle" fill="white" fontSize="9" fontWeight="800">
+          J
+        </text>
+        <text x="232" y="54" fill={B} fontSize="8" fontWeight="800">
+          Irma &amp; John
+        </text>
+        <text x="232" y="64" fill={B3} fontSize="6.5">
+          Get It Sold Realty
+        </text>
+      </g>
+      <g className="hiw-pop" style={d(2)}>
+        <circle cx="222" cy="44" r="6" fill={B2} stroke="white" strokeWidth="1.5" />
+        <text x="222" y="46.8" textAnchor="middle" fill="white" fontSize="7" fontWeight="800">
+          1
+        </text>
+      </g>
+      <g className="hiw-bubble" style={d(1.9, { transformOrigin: "296px 92px" })}>
+        <rect x="200" y="80" width="96" height="26" rx="13" fill={B4} />
+        <text x="248" y="96.5" textAnchor="middle" fill={B} fontSize="7.2" fontWeight="600">
+          Is it still available?
+        </text>
+      </g>
+      <g className="hiw-typing" style={d(2.4)}>
+        <rect x="182" y="116" width="40" height="22" rx="11" fill="white" />
+        {[0, 1, 2].map((i) => (
+          <circle key={i} cx={194 + i * 8} cy="127" r="2.5" fill={B3} className="hiw-dot" style={{ animationDelay: `${i * 0.15}s` }} />
+        ))}
+      </g>
+      <g className="hiw-bubble" style={d(3, { transformOrigin: "182px 132px" })}>
+        <rect x="182" y="116" width="116" height="34" rx="12" fill={B} />
+        <text x="190" y="130" fill="white" fontSize="7.2" fontWeight="600">
+          Yes! Want to see it
+        </text>
+        <text x="190" y="141" fill="white" fontSize="7.2" fontWeight="600">
+          this Saturday?
+        </text>
+      </g>
+      <Sparkle x={300} y={164} delay={3.4} small />
     </>
   );
 }

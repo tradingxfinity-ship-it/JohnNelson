@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HowItWorks } from "@/components/HowItWorks";
 import { ListingCard } from "@/components/ListingCard";
+import { HOW_IT_WORKS } from "@/content/howItWorks";
 import { ListingNotice } from "@/components/ListingNotice";
 import { ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
 import { PROPERTY_TYPES, searchListings, type ListingFilters } from "@/lib/listings";
@@ -55,9 +57,16 @@ export default async function HomesPage({ searchParams }: { searchParams: Promis
     <Section className="pt-10! lg:pt-16!">
       <Container>
         <Eyebrow>Search homes</Eyebrow>
-        <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-5xl">Find your next home.</h1>
+        <div className="flex flex-col gap-x-8 sm:flex-row sm:items-end sm:justify-between">
+          <h1 className="text-4xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-5xl">Find your next home.</h1>
+          {HOW_IT_WORKS.search && (
+            <div className="-mt-2 sm:-mb-1">
+              <HowItWorks flow={HOW_IT_WORKS.search} />
+            </div>
+          )}
+        </div>
 
-        <form action="/homes" role="search" className="mt-8 grid grid-cols-2 gap-3 rounded-lg bg-cloud p-4 sm:p-5 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_auto]">
+        <form id="search" action="/homes" role="search" className="mt-8 grid grid-cols-2 gap-3 rounded-lg bg-cloud p-4 sm:p-5 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr_auto]">
           <label className="col-span-2 lg:col-span-1">
             <span className="sr-only">City or ZIP code</span>
             <input

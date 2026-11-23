@@ -417,7 +417,9 @@ function Road({ steps, active, done, onPick }: { steps: HowFlow["steps"]; active
         }`}
         style={{ left: `${pos * 100}%`, top: "-6px" }}
       >
-        <Image src="/images/logo-mark.png" alt="" width={880} height={548} sizes="44px" className="hiw-bob h-auto w-10" />
+        {/* Plain img: next/image's responsive loading doesn't start inside the closed dialog */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/logo-mark.png" alt="" width={880} height={548} className="hiw-bob h-auto w-10" />
       </span>
     </div>
   );
