@@ -27,7 +27,7 @@ Last updated November 22, 2026. This file records what has been decided for the 
 | **Search homes** (to build) | Every home for sale in the area, from any agent | LERA MLS IDX feed |
 
 ### MLS data: LERA MLS via IDX
-- John's MLS is **LERA MLS**, the former San Antonio Board of Realtors MLS (renamed August 2025, leramls.com).
+- John's MLS is **LERA MLS** (✅ confirmed November 2026 that he is an active member), the former San Antonio Board of Realtors MLS (renamed August 2025, leramls.com).
 - **LERA supplies the IDX feed.** A broker must sign LERA's Participant Data Access Agreement, which lists a fee of $200 per quarter (confirm with LERA). If a developer receives the feed directly, the developer signs LERA's Third Party Processing Agreement.
 - The data agreement ties the listings to **one named website domain**. The site's final domain must be decided before it is signed.
 - Recommended approach: **our own search pages** built on LERA's web feed (RESO format), so listings match the site's design and get their own pages. The alternative is an IDX vendor's embedded search (Showcase IDX, Buying Buddy, iHomefinder, OSI IDX). **Final choice still to confirm.**
@@ -141,6 +141,8 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | Current professional photos | ⏸ |
 | Service-area list (11 areas on the site) | ⏸ |
 | Reino Builders affiliation disclosure | ⏸ |
+| LERA MLS membership | ✅ Confirmed active member |
+| Office MLS ID and agent MLS IDs (John, Irma) | ⏸ |
 | Final website domain (needed for the LERA agreement) | ⏸ |
 | LERA data agreement: John signs as Get It Sold Realty's broker; IDX vendor or direct feed still to choose | ⏸ |
 | OK to keep using his listing photos on the Portfolio page | ⏸ |
