@@ -8,7 +8,7 @@ import { site } from "@/content/site";
 import { Scene } from "./HowScenes";
 
 /** Seconds each slide stays up while playing. The progress bar's animation drives the timing. */
-const STEP_SECONDS = 6.5;
+const STEP_SECONDS = 8;
 const INTRO_SECONDS = 3.2;
 
 /**
@@ -98,19 +98,19 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
           triggerRef.current?.focus();
         }}
         onClick={(e) => e.target === dialogRef.current && close()}
-        className="m-auto w-[min(980px,calc(100vw-24px))] max-w-none overflow-hidden rounded-2xl bg-white p-0 text-slate shadow-2xl backdrop:bg-blue/70 backdrop:backdrop-blur-sm"
+        className="m-auto w-[min(1000px,calc(100vw-24px))] max-w-none overflow-hidden rounded-2xl bg-blue p-0 text-white shadow-2xl backdrop:bg-[#000d24]/75 backdrop:backdrop-blur-sm"
       >
         <div className="flex max-h-[calc(100dvh-24px)] flex-col overflow-y-auto">
           {/* Header */}
-          <div className="flex items-center justify-between gap-4 border-b border-line px-5 py-3 sm:px-7">
-            <p id={titleId} className="flex items-center gap-3 text-sm font-medium text-blue">
-              <span aria-hidden className="h-px w-6 bg-red" />
+          <div className="flex items-center justify-between gap-4 border-b border-white/15 px-5 py-3 sm:px-7">
+            <p id={titleId} className="flex items-center gap-3 text-sm font-medium text-white">
+              <span aria-hidden className="h-px w-6 bg-white/60" />
               {flow.label}
             </p>
             <button
               type="button"
               onClick={close}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-blue hover:bg-cloud"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white hover:bg-white/10"
             >
               <span className="sr-only">Close</span>
               <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -122,13 +122,13 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
           {/* Story-style progress: the active bar's fill animation advances the slides */}
           <div className="relative flex gap-1.5 px-5 pt-4 sm:px-7" aria-hidden>
             {flow.steps.map((s, i) => (
-              <span key={s.title} className="h-1 flex-1 overflow-hidden rounded-full bg-line">
+              <span key={s.title} className="h-1 flex-1 overflow-hidden rounded-full bg-white/20">
                 {i < stepIndex || slide === last ? (
-                  <span className="block h-full w-full bg-red" />
+                  <span className="block h-full w-full bg-white" />
                 ) : i === stepIndex ? (
                   <span
                     key={slide}
-                    className="hiw-fill block h-full w-full bg-red"
+                    className="hiw-fill block h-full w-full bg-white"
                     style={{ "--dur": `${STEP_SECONDS}s`, animationPlayState: playing ? "running" : "paused" } as CSSProperties}
                     onAnimationEnd={() => playing && go(slide + 1, false)}
                   />
@@ -148,17 +148,16 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
           {/* Slide */}
           <div key={slide} className="grid flex-1 gap-0 p-4 sm:p-7 md:grid-cols-[5fr_6fr] md:gap-8">
             {/* Stage */}
-            <div className="hiw-stage relative isolate flex min-h-[190px] items-center justify-center overflow-hidden rounded-xl bg-blue px-4 py-5 sm:min-h-[320px]">
-              <span aria-hidden className="hiw-glow absolute inset-0 -z-10" />
+            <div className="hiw-stage relative isolate flex min-h-[200px] items-center justify-center overflow-hidden rounded-xl bg-white px-3 py-4 shadow-[0_20px_50px_-20px_rgb(0_0_0/0.5)] sm:min-h-[330px]">
               <span aria-hidden className="hiw-dots absolute inset-0 -z-10" />
-              <span aria-hidden className="hiw-orb absolute -left-10 -top-10 -z-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
-              <span aria-hidden className="hiw-orb absolute -bottom-12 -right-8 -z-10 h-44 w-44 rounded-full bg-red/30 blur-2xl" style={{ animationDelay: "-3s" }} />
+              <span aria-hidden className="hiw-orb absolute -left-12 -top-12 -z-10 h-44 w-44 rounded-full bg-[#DCE6F4] blur-2xl" />
+              <span aria-hidden className="hiw-orb absolute -bottom-14 -right-10 -z-10 h-48 w-48 rounded-full bg-[#E8EEF8] blur-2xl" style={{ animationDelay: "-3s" }} />
               {slide === 0 && <LogoMark />}
               {step && (
                 <>
                   <span
                     aria-hidden
-                    className="hiw-num absolute left-5 top-3 text-[4rem] font-semibold leading-none tracking-[-0.06em] text-white sm:text-[7rem]"
+                    className="hiw-num absolute left-4 top-2 text-[3.5rem] font-semibold leading-none tracking-[-0.06em] text-blue sm:text-[6rem]"
                   >
                     0{stepIndex + 1}
                   </span>
@@ -174,20 +173,20 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
             <div className="flex flex-col justify-center px-1 pt-4 sm:pt-6 md:pt-0" aria-live="polite" aria-atomic="true">
               {slide === 0 && (
                 <>
-                  <p className="hiw-rise text-sm font-medium text-red" style={{ "--d": ".35s" } as CSSProperties}>
+                  <p className="hiw-rise text-sm font-medium text-[#A9C1E8]" style={{ "--d": ".35s" } as CSSProperties}>
                     {site.brokerage.team}
                   </p>
-                  <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl">
+                  <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-[-0.02em] text-white sm:text-4xl">
                     <Words text={flow.introTitle} start={0.45} />
                   </h2>
-                  <p className="hiw-rise mt-4 text-lg leading-relaxed" style={{ "--d": ".6s" } as CSSProperties}>
+                  <p className="hiw-rise mt-4 text-lg leading-relaxed text-white/80" style={{ "--d": ".6s" } as CSSProperties}>
                     {flow.introBody}
                   </p>
                   <div className="hiw-rise mt-7" style={{ "--d": ".75s" } as CSSProperties}>
                     <button
                       type="button"
                       onClick={() => go(1)}
-                      className="inline-flex min-h-12 items-center gap-2 rounded-md bg-blue px-6 font-medium text-white transition-colors hover:bg-red"
+                      className="inline-flex min-h-12 items-center gap-2 rounded-md bg-white px-6 font-medium text-blue transition-colors hover:bg-[#DCE6F4]"
                     >
                       Show me the steps <span aria-hidden>→</span>
                     </button>
@@ -196,20 +195,20 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
               )}
               {step && (
                 <>
-                  <p className="hiw-rise text-sm font-medium text-red" style={{ "--d": ".1s" } as CSSProperties}>
+                  <p className="hiw-rise text-sm font-medium text-[#A9C1E8]" style={{ "--d": ".1s" } as CSSProperties}>
                     Step {stepIndex + 1} of {n}
                   </p>
-                  <h2 className="mt-2 text-2xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl">
+                  <h2 className="mt-2 text-2xl font-semibold leading-tight tracking-[-0.02em] text-white sm:text-4xl">
                     <Words text={step.title} start={0.15} />
                   </h2>
-                  <p className="hiw-rise mt-3 text-base leading-relaxed sm:mt-4 sm:text-lg" style={{ "--d": ".35s" } as CSSProperties}>
+                  <p className="hiw-rise mt-3 text-base leading-relaxed text-white/80 sm:mt-4 sm:text-lg" style={{ "--d": ".35s" } as CSSProperties}>
                     {step.body}
                   </p>
                   <p
-                    className="hiw-rise mt-4 flex gap-3 rounded-lg bg-cloud p-3 text-sm leading-relaxed text-blue sm:mt-6 sm:p-4 sm:text-[15px]"
+                    className="hiw-rise mt-4 flex gap-3 rounded-lg bg-white/10 p-3 text-sm leading-relaxed text-white sm:mt-6 sm:p-4 sm:text-[15px]"
                     style={{ "--d": ".55s" } as CSSProperties}
                   >
-                    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.6" className="mt-0.5 shrink-0 text-red">
+                    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.6" className="mt-0.5 shrink-0 text-[#A9C1E8]">
                       <path d="M10 2.5a5.5 5.5 0 0 0-3 10.1V15h6v-2.4a5.5 5.5 0 0 0-3-10.1zM8 17.5h4" />
                     </svg>
                     <span>
@@ -221,10 +220,10 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
               )}
               {slide === last && (
                 <>
-                  <h2 className="text-4xl font-semibold leading-tight tracking-[-0.02em] sm:text-5xl">
+                  <h2 className="text-4xl font-semibold leading-tight tracking-[-0.02em] text-white sm:text-5xl">
                     <Words text={flow.finaleTitle} start={0.5} />
                   </h2>
-                  <p className="hiw-rise mt-4 text-lg leading-relaxed" style={{ "--d": ".65s" } as CSSProperties}>
+                  <p className="hiw-rise mt-4 text-lg leading-relaxed text-white/80" style={{ "--d": ".65s" } as CSSProperties}>
                     {flow.finaleBody}
                   </p>
                   <div className="hiw-rise mt-7 flex flex-col gap-3 sm:flex-row" style={{ "--d": ".8s" } as CSSProperties}>
@@ -256,12 +255,12 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
           </div>
 
           {/* Controls */}
-          <div className="flex items-center justify-between gap-3 border-t border-line px-5 py-3 sm:px-7">
+          <div className="flex items-center justify-between gap-3 border-t border-white/15 px-5 py-3 sm:px-7">
             <button
               type="button"
               onClick={() => go(slide - 1)}
               disabled={slide === 0}
-              className="inline-flex min-h-11 items-center gap-2 rounded-md px-3 text-[15px] font-medium text-blue hover:bg-cloud disabled:opacity-30 disabled:hover:bg-transparent"
+              className="inline-flex min-h-11 items-center gap-2 rounded-md px-3 text-[15px] font-medium text-white hover:bg-white/10 disabled:opacity-30 disabled:hover:bg-transparent"
             >
               <span aria-hidden>←</span> Back
             </button>
@@ -269,7 +268,7 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
               <button
                 type="button"
                 onClick={() => setPlaying((p) => !p)}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-blue hover:border-blue"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white hover:border-white"
               >
                 <span className="sr-only">{playing ? "Pause" : "Play"}</span>
                 {playing ? (
@@ -287,7 +286,7 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
               <button
                 type="button"
                 onClick={() => go(slide + 1)}
-                className="inline-flex min-h-11 items-center gap-2 rounded-md bg-blue px-5 text-[15px] font-medium text-white transition-colors hover:bg-red"
+                className="inline-flex min-h-11 items-center gap-2 rounded-md bg-white px-5 text-[15px] font-medium text-blue transition-colors hover:bg-[#DCE6F4]"
               >
                 {slide === n ? "Finish" : "Next"} <span aria-hidden>→</span>
               </button>
@@ -295,7 +294,7 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
               <button
                 type="button"
                 onClick={() => go(0)}
-                className="inline-flex min-h-11 items-center gap-2 rounded-md px-3 text-[15px] font-medium text-blue hover:bg-cloud"
+                className="inline-flex min-h-11 items-center gap-2 rounded-md px-3 text-[15px] font-medium text-white hover:bg-white/10"
               >
                 Watch again <span aria-hidden>↺</span>
               </button>
@@ -309,16 +308,16 @@ export function HowItWorks({ flow }: { flow: HowFlow }) {
 
 const actionClass = (i: number) =>
   i === 0
-    ? "inline-flex min-h-12 items-center justify-center rounded-md bg-blue px-6 font-medium text-white transition-colors hover:bg-red"
-    : "inline-flex min-h-12 items-center justify-center rounded-md border border-blue px-6 font-medium text-blue transition-colors hover:bg-blue hover:text-white";
+    ? "inline-flex min-h-12 items-center justify-center rounded-md bg-white px-6 font-medium text-blue transition-colors hover:bg-[#DCE6F4]"
+    : "inline-flex min-h-12 items-center justify-center rounded-md border border-white/60 px-6 font-medium text-white transition-colors hover:bg-white hover:text-blue";
 
 /** Intro: the logo's N-house mark scales in on a white tile, with a light sweep across it. */
 function LogoMark() {
   return (
     <div className="relative">
-      <span aria-hidden className="hiw-ring absolute inset-0 rounded-2xl border-2 border-white/60" />
-      <span aria-hidden className="hiw-ring absolute inset-0 rounded-2xl border-2 border-red-light/70" style={{ animationDelay: ".35s" }} />
-      <div className="hiw-logo hiw-shine relative overflow-hidden rounded-2xl bg-white p-5 shadow-xl sm:p-6">
+      <span aria-hidden className="hiw-ring absolute inset-0 rounded-2xl border-2 border-blue/30" />
+      <span aria-hidden className="hiw-ring absolute inset-0 rounded-2xl border-2 border-blue/15" style={{ animationDelay: ".35s" }} />
+      <div className="hiw-logo hiw-shine relative overflow-hidden rounded-2xl bg-white p-5 shadow-[0_18px_40px_-12px_rgb(0_40_104/0.35)] ring-1 ring-blue/10 sm:p-6">
         <Image src="/images/logo-mark.png" alt="" width={880} height={548} sizes="240px" className="h-auto w-[140px] sm:w-[220px]" priority />
       </div>
     </div>
@@ -329,18 +328,18 @@ function LogoMark() {
 function Finale() {
   return (
     <div className="relative flex flex-col items-center">
-      <span aria-hidden className="hiw-ring absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white/50" />
+      <span aria-hidden className="hiw-ring absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-blue/30" />
       <span
         aria-hidden
-        className="hiw-ring absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-red-light/70"
+        className="hiw-ring absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-blue/15"
         style={{ animationDelay: ".4s" }}
       />
-      <div className="hiw-logo hiw-shine relative overflow-hidden rounded-2xl bg-white p-4 shadow-xl">
+      <div className="hiw-logo hiw-shine relative overflow-hidden rounded-2xl bg-white p-4 shadow-[0_18px_40px_-12px_rgb(0_40_104/0.35)] ring-1 ring-blue/10">
         {site.logo && (
           <Image src={site.logo.src} alt="" width={site.logo.width} height={site.logo.height} sizes="220px" className="h-auto w-[130px] sm:w-[210px]" />
         )}
       </div>
-      <svg width="64" height="40" viewBox="0 0 64 40" aria-hidden fill="none" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="hiw-swing mt-4">
+      <svg width="64" height="40" viewBox="0 0 64 40" aria-hidden fill="none" stroke="var(--color-blue)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" className="hiw-swing mt-4">
         <path pathLength={1} className="hiw-draw" style={{ "--d": ".7s" } as CSSProperties} d="M6 20a10 10 0 1 0 20 0a10 10 0 1 0 -20 0" />
         <path pathLength={1} className="hiw-draw" style={{ "--d": "1s" } as CSSProperties} d="M26 20h32M50 20v8M57 20v6" />
       </svg>
@@ -354,10 +353,10 @@ function Road({ steps, active, done, onPick }: { steps: string[]; active: number
   const pos = done ? 1 : Math.max(0, active) / (n - 1);
   return (
     <div className="relative mx-4 h-16 sm:mx-8">
-      <span aria-hidden className="absolute inset-x-0 top-8 h-0.5 rounded-full bg-line" />
+      <span aria-hidden className="absolute inset-x-0 top-8 h-0.5 rounded-full bg-white/20" />
       <span
         aria-hidden
-        className="absolute left-0 top-8 h-0.5 origin-left rounded-full bg-red transition-[width] duration-700 ease-[cubic-bezier(.65,0,.35,1)] motion-reduce:transition-none"
+        className="absolute left-0 top-8 h-0.5 origin-left rounded-full bg-white transition-[width] duration-700 ease-[cubic-bezier(.65,0,.35,1)] motion-reduce:transition-none"
         style={{ width: active < 0 && !done ? "0%" : `${pos * 100}%` }}
       />
       <ol className="absolute inset-x-0 top-8">
@@ -374,7 +373,7 @@ function Road({ steps, active, done, onPick }: { steps: string[]; active: number
               >
                 <span
                   className={`block h-3 w-3 rounded-full border-2 transition-colors duration-500 ${
-                    reached ? "border-red bg-red" : "border-line bg-white"
+                    reached ? "border-white bg-white" : "border-white/35 bg-blue"
                   }`}
                 />
               </button>
@@ -385,7 +384,7 @@ function Road({ steps, active, done, onPick }: { steps: string[]; active: number
       {/* The traveler: the logo's N-house mark */}
       <span
         aria-hidden
-        className={`absolute top-0 flex h-9 w-12 -translate-x-1/2 items-center justify-center rounded-lg bg-white shadow-md ring-1 ring-line transition-[left,opacity] duration-700 ease-[cubic-bezier(.65,0,.35,1)] motion-reduce:transition-none ${
+        className={`absolute top-0 flex h-9 w-12 -translate-x-1/2 items-center justify-center rounded-lg bg-white shadow-md transition-[left,opacity] duration-700 ease-[cubic-bezier(.65,0,.35,1)] motion-reduce:transition-none ${
           active < 0 && !done ? "opacity-0" : "opacity-100"
         }`}
         style={{ left: `${pos * 100}%`, top: "-6px" }}
