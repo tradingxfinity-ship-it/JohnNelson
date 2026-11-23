@@ -32,6 +32,12 @@ Last updated November 22, 2026. This file records what has been decided for the 
   - **connectMLS framable search:** set up in MLS under Set-up, at **no additional charge**. John has started this.
   - **Broker IDX data feed** (RETS or Web API) for our own search: John signs LERA's IDX Data Feed Agreement, naming the website's domain and URLs. The agreement itself lists **no dollar amount**; MLS Rules Section 18.4 says IDX fees are set annually by LERA. The only published figure is **$200 per quarter plus tax**, in the Participant Data Access Agreement fee exhibit bundled with LERA's VOW agreement. **Ask LERA for the current IDX feed fee** (idx@leramls.com, 210-593-1206).
   - **Through an IDX vendor:** the vendor signs LERA's Third Party Processing Agreement and pays LERA's data fees. Showcase IDX and Zenlist list the broker's share of LERA's fee as $10 per month, on top of the vendor's own subscription.
+  - **Vendors checked (November 2026), prices from vendor sites, to confirm:**
+    - **Buying Buddy:** covers LERA; LERA plan listed at $49/month; embeds in Next.js/React sites; includes its own CRM and lead capture. Best embedded option for this site.
+    - **Repliers:** listings API covering SABOR/LERA, from $199/month; keeps our own search pages and design. Only worth it if LERA's direct feed is unavailable.
+    - **IDX Broker:** works on any site, from $60/month; LERA coverage not confirmed.
+    - **OSI IDX:** approved LERA vendor, $25/month, but it is bundled with their own website, so it doesn't fit.
+    - **Showcase IDX:** WordPress plugin, so it doesn't fit.
 - The data agreement ties the listings to **one named website domain**. The site's final domain must be decided before it is signed.
 - Recommended approach: **our own search pages** built on LERA's web feed (RESO format), so listings match the site's design and get their own pages. The alternative is an IDX vendor's embedded search (Showcase IDX, Buying Buddy, iHomefinder, OSI IDX). **Final choice still to confirm.**
 
