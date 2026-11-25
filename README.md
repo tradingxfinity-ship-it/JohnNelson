@@ -117,7 +117,7 @@ Environment variables (server-side only; never commit `.env.local`):
 | `SMTP_SECURE` | no | default `true` on port 465 |
 | `SMTP_USER` | yes | SMTP login |
 | `SMTP_PASS` | yes | SMTP password or app password |
-| `INQUIRY_TO_EMAIL` | no | delivery address; default `getitsoldsa@gmail.com` |
+| `INQUIRY_TO_EMAIL` | no | delivery address, or several separated by commas; default `getitsoldsa@gmail.com`. Keep personal addresses here, not in the code: the repository is public |
 | `INQUIRY_FROM_EMAIL` | no | From address; default `SMTP_USER` |
 | `NEXT_PUBLIC_SITE_URL` | no | the live URL, used for canonical links, the sitemap, and share previews. Defaults to the project's production domain on Vercel |
 | `EMAIL_TRANSPORT=log` | dev only | prints emails to the terminal instead of sending. Ignored in production |

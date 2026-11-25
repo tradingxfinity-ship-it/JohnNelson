@@ -12,6 +12,12 @@ export type OutgoingEmail = {
 
 export class EmailNotConfiguredError extends Error {}
 
+/** One or more inboxes, separated by commas in INQUIRY_TO_EMAIL. */
+function recipients(): string[] {
+  const list = (process.env.INQUIRY_TO_EMAIL ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+  return list.length > 0 ? list : [DEFAULT_RECIPIENT];
+}
+
 /**
  * Sends an email using SMTP settings from the environment. Resolves once the
  * provider accepts the message and rejects otherwise.
@@ -20,10 +26,10 @@ export class EmailNotConfiguredError extends Error {}
  * sending it. It is for local development only and is ignored in production.
  */
 export async function sendEmail(email: OutgoingEmail): Promise<void> {
-  const to = process.env.INQUIRY_TO_EMAIL || DEFAULT_RECIPIENT;
+  const to = recipients();
 
   if (process.env.EMAIL_TRANSPORT === "log" && process.env.NODE_ENV !== "production") {
-    console.info(`[inquiry email] to=${to} replyTo=${email.replyTo}\nSubject: ${email.subject}\n\n${email.text}`);
+    console.info(`[inquiry email] to=${to.join(", ")} replyTo=${email.replyTo}\nSubject: ${email.subject}\n\n${email.text}`);
     return;
   }
 
@@ -53,7 +59,11 @@ export async function sendEmail(email: OutgoingEmail): Promise<void> {
     html: email.html,
   });
 
-  if (info.rejected.length > 0 || info.accepted.length === 0) {
+  if (info.accepted.length === 0) {
     throw new Error("Email provider did not accept the message.");
+  }
+  // One inbox got it, so the inquiry isn't lost. Don't ask the visitor to send it again.
+  if (info.rejected.length > 0) {
+    console.error(`[inquiry email] ${info.rejected.length} of ${to.length} recipients rejected`);
   }
 }
