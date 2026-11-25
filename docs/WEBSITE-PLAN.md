@@ -1,6 +1,6 @@
 # Website plan: decisions and gaps
 
-Last updated November 22, 2026. This file records what has been decided for the Get It Sold Realty site, what the brand rebuild proposal (November 2026) asks for, and what is still missing.
+Last updated November 25, 2026. This file records what has been decided for the Get It Sold Realty site, what the brand rebuild proposal (November 2026) asks for, and what is still missing.
 
 ## Decisions (locked in)
 
@@ -26,20 +26,41 @@ Last updated November 22, 2026. This file records what has been decided for the 
 | **Portfolio** (built) | Homes they've sold, with photo albums | Their own past sales and listing photos (`src/content/portfolio.ts`) |
 | **Search homes** (built, waiting on MLS data) | Every home for sale in the area, from any agent | LERA MLS IDX feed |
 
+### Priority: Google search (decided November 25, 2026)
+SEO is the top priority. The free connectMLS frame is **ruled out**: its listings live on connectMLS's address, so they add nothing for Google to index here.
+
+MLS route, in order:
+1. **LERA's own data feed** into our search pages. Every listing is a server-rendered page on this domain, and the LERA rules (18.2.2) don't require blocking search engines from indexing IDX listings.
+2. **Repliers** (listings API) if LERA's feed isn't practical. Same result, at a higher price.
+
+Ruled out for SEO: **Buying Buddy**. Its SEO page says server pre-rendering covers WordPress and PHP sites only, and this site is Next.js.
+
+SEO work on the site:
+- ✅ Real canonical address, sitemap, robots file, share images (November 25, 2026)
+- ❌ Custom domain (a vercel.app address is a weak base), then Google Search Console
+- ❌ Business structured data (blog posts are the only pages with any)
+- ❌ San Antonio or Hill Country missing from the titles of the land, luxury, veterans, senior, building, listings, and search pages
+- ❌ A page for each main service area. `/homes?area=…` results all count as `/homes`, so they can't rank by area
+- ❌ Fuller service pages: Buy, Sell, and Rent have about 170 to 190 words each
+- ❌ Analytics
+- ⏸ Regular blog posts, reviewed by John and Irma
+- ⏸ Google Business Profile (John's account)
+- ❌ When the MLS feed is live: city pages with live listings, and listings in the sitemap
+
 ### MLS data: LERA MLS via IDX
 - John's MLS is **LERA MLS** (✅ confirmed November 2026 that he is an active member), the former San Antonio Board of Realtors MLS (renamed August 2025, leramls.com).
 - **LERA supplies the IDX feed.** Options and fees, checked against leramls.com/idx-feeds-and-technical-services (November 2026):
-  - **connectMLS framable search:** set up in MLS under Set-up, at **no additional charge**. John has started this.
+  - **connectMLS framable search:** set up in MLS under Set-up, at **no additional charge**. Ruled out for SEO (see above).
   - **Broker IDX data feed** (RETS or Web API) for our own search: John signs LERA's IDX Data Feed Agreement, naming the website's domain and URLs. The agreement itself lists **no dollar amount**; MLS Rules Section 18.4 says IDX fees are set annually by LERA. The only published figure is **$200 per quarter plus tax**, in the Participant Data Access Agreement fee exhibit bundled with LERA's VOW agreement. **Ask LERA for the current IDX feed fee** (idx@leramls.com, 210-593-1206).
   - **Through an IDX vendor:** the vendor signs LERA's Third Party Processing Agreement and pays LERA's data fees. Showcase IDX and Zenlist list the broker's share of LERA's fee as $10 per month, on top of the vendor's own subscription.
   - **Vendors checked (November 2026), prices from vendor sites, to confirm:**
-    - **Buying Buddy:** covers LERA; LERA plan listed at $49/month; embeds in Next.js/React sites; includes its own CRM and lead capture. Best embedded option for this site.
-    - **Repliers:** listings API covering SABOR/LERA, from $199/month; keeps our own search pages and design. Only worth it if LERA's direct feed is unavailable.
+    - **Buying Buddy:** covers LERA; $49/month for one user, $77/month for two; includes its own CRM. Ruled out: its Google-indexable pages are for WordPress and PHP sites only.
+    - **Repliers:** listings API covering SABOR/LERA, from $199/month; keeps our own search pages and design. Fallback if LERA's direct feed isn't practical.
     - **IDX Broker:** works on any site, from $60/month; LERA coverage not confirmed.
     - **OSI IDX:** approved LERA vendor, $25/month, but it is bundled with their own website, so it doesn't fit.
     - **Showcase IDX:** sold as a plugin, mainly for WordPress; whether it works on this site was not checked.
 - The data agreement ties the listings to **one named website domain**. The site's final domain must be decided before it is signed.
-- Recommended approach: **our own search pages** built on LERA's web feed (RESO format), so listings match the site's design and get their own pages. The alternative is an IDX vendor's embedded search (Showcase IDX, Buying Buddy, iHomefinder, OSI IDX). **Final choice still to confirm.**
+- **Chosen approach: our own search pages** on LERA's web feed (RESO format), so listings match the site's design and each gets its own page on this domain.
 
 ### LERA IDX display rules the site must follow
 From the MLS Rules (Section 18, September 2024 version) and LERA's data agreement (October 2025). Ask LERA for the current rules when access is requested.
@@ -153,7 +174,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | LERA MLS membership | ✅ Confirmed active member |
 | Office MLS ID and agent MLS IDs (John, Irma) | ⏸ |
 | Final website domain (needed for the LERA agreement) | ⏸ |
-| LERA data agreement: John signs as Get It Sold Realty's broker; IDX vendor or direct feed still to choose | ⏸ |
+| LERA data agreement: John signs as Get It Sold Realty's broker for the direct feed, once LERA confirms the fee | ⏸ |
 | OK to keep using his listing photos on the Portfolio page | ⏸ |
 | Whether rentals stay | ✅ Keep, low priority |
 | YouTube channel: John makes process videos; get the channel link | ⏸ |
