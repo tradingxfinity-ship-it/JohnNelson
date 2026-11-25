@@ -19,11 +19,6 @@ export default function AreasPage() {
 
   return (
     <>
-      {!publishedAreas.length && (
-        <p className="bg-cloud px-5 py-3 text-center text-sm font-medium text-blue">
-          Drafts for Irma and John to review. These pages aren’t linked on the site or shown to Google yet.
-        </p>
-      )}
       <Section className="pt-10! lg:pt-16!">
         <Container>
           <div className="max-w-2xl">

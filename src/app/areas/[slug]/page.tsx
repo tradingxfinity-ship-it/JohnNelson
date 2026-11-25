@@ -49,13 +49,7 @@ export default async function AreaPage({ params }: Props) {
 
   return (
     <>
-      {area.published ? (
-        <JsonLd data={breadcrumbs(crumbs)} />
-      ) : (
-        <p className="bg-cloud px-5 py-3 text-center text-sm font-medium text-blue">
-          Draft for Irma and John to review. This page isn’t linked on the site or shown to Google yet.
-        </p>
-      )}
+      {area.published && <JsonLd data={breadcrumbs(crumbs)} />}
 
       <Container className="pt-6">
         <nav aria-label="Breadcrumb">
