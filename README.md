@@ -119,7 +119,7 @@ Environment variables (server-side only; never commit `.env.local`):
 | `SMTP_PASS` | yes | SMTP password or app password |
 | `INQUIRY_TO_EMAIL` | no | delivery address, or several separated by commas; default `getitsoldsa@gmail.com`. Keep personal addresses here, not in the code: the repository is public |
 | `INQUIRY_FROM_EMAIL` | no | From address; default `SMTP_USER` |
-| `NEXT_PUBLIC_SITE_URL` | no | the live URL, used for canonical links, the sitemap, and share previews. Defaults to the project's production domain on Vercel |
+| `NEXT_PUBLIC_SITE_URL` | once the custom domain is live | the live URL, used for canonical links, the sitemap, and share previews. Defaults to https://johnnelson.vercel.app |
 | `EMAIL_TRANSPORT=log` | dev only | prints emails to the terminal instead of sending. Ignored in production |
 
 **Using the Gmail account (getitsoldsa@gmail.com):**
