@@ -22,9 +22,9 @@ Last updated November 22, 2026. This file records what has been decided for the 
 ### Listings: three separate areas
 | Page | What's on it | Data source |
 |---|---|---|
-| **Our listings** (to build) | Homes Irma and John are selling now | Their own listings. Today these are in `site.listings`; later, the IDX feed filtered to John's office. |
+| **Our listings** (built) | Homes Irma and John are selling now | Their own listings. Today these are in `site.listings`; later, the IDX feed filtered to John's office. |
 | **Portfolio** (built) | Homes they've sold, with photo albums | Their own past sales and listing photos (`src/content/portfolio.ts`) |
-| **Search homes** (to build) | Every home for sale in the area, from any agent | LERA MLS IDX feed |
+| **Search homes** (built, waiting on MLS data) | Every home for sale in the area, from any agent | LERA MLS IDX feed |
 
 ### MLS data: LERA MLS via IDX
 - John's MLS is **LERA MLS** (✅ confirmed November 2026 that he is an active member), the former San Antonio Board of Realtors MLS (renamed August 2025, leramls.com).
@@ -37,7 +37,7 @@ Last updated November 22, 2026. This file records what has been decided for the 
     - **Repliers:** listings API covering SABOR/LERA, from $199/month; keeps our own search pages and design. Only worth it if LERA's direct feed is unavailable.
     - **IDX Broker:** works on any site, from $60/month; LERA coverage not confirmed.
     - **OSI IDX:** approved LERA vendor, $25/month, but it is bundled with their own website, so it doesn't fit.
-    - **Showcase IDX:** WordPress plugin, so it doesn't fit.
+    - **Showcase IDX:** sold as a plugin, mainly for WordPress; whether it works on this site was not checked.
 - The data agreement ties the listings to **one named website domain**. The site's final domain must be decided before it is signed.
 - Recommended approach: **our own search pages** built on LERA's web feed (RESO format), so listings match the site's design and get their own pages. The alternative is an IDX vendor's embedded search (Showcase IDX, Buying Buddy, iHomefinder, OSI IDX). **Final choice still to confirm.**
 
