@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { site } from "@/content/site";
+import { SITE_URL } from "@/lib/siteUrl";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -14,7 +15,7 @@ const instrumentSans = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: `${site.name} | San Antonio Real Estate with Irma and John Nelson`,
     template: `%s | ${site.name}`,
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
   description:
     "Buy, sell, or rent in San Antonio with Irma and John Nelson of Get It Sold Realty. 19 years of local experience, 290+ homes sold.",
   openGraph: { siteName: site.name, locale: "en_US", type: "website" },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = { themeColor: "#002868" };

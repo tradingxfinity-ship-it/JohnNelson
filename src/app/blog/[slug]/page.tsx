@@ -7,6 +7,7 @@ import { PostCard } from "@/components/PostCard";
 import { ArrowLink, ButtonLink, Container, Section } from "@/components/ui";
 import { CONTACT_HREF, site } from "@/content/site";
 import { CATEGORIES, formatDate, getPost, getPosts } from "@/lib/blog";
+import { SITE_URL } from "@/lib/siteUrl";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -22,6 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
+      siteName: site.name,
+      locale: "en_US",
       type: "article",
       title: post.title,
       description: post.description,
@@ -47,7 +50,7 @@ export default async function PostPage({ params }: Props) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    ...(post.cover ? { image: post.cover.src } : {}),
+    ...(post.cover ? { image: `${SITE_URL}${post.cover.src}` } : {}),
     author: { "@type": "Organization", name: `${site.brokerage.team}, ${site.name}` },
     publisher: { "@type": "Organization", name: site.name },
   };

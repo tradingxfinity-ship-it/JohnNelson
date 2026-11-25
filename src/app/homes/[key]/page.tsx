@@ -13,10 +13,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const found = await getListing(decodeURIComponent((await params).key));
   if (!found) return { title: "Home not found" };
   const l = found.listing;
+  const title = `${listingTitle(l)}, ${listingPlace(l)}`;
+  const description = `${formatPrice(l.ListPrice)} · ${listingFacts(l).join(" · ")} · ${listingPlace(l)}`;
+  const photo = l.Media[0];
   return {
-    title: `${listingTitle(l)}, ${listingPlace(l)}`,
-    description: `${formatPrice(l.ListPrice)} · ${listingFacts(l).join(" · ")} · ${listingPlace(l)}`,
+    title,
+    description,
     alternates: { canonical: `/homes/${encodeURIComponent(l.ListingKey)}` },
+    // Share the home's own photo; without one, the site's share image is used
+    ...(photo
+      ? { openGraph: { siteName: site.name, locale: "en_US", type: "website", title, description, images: [{ url: photo.url, alt: title }] } }
+      : {}),
   };
 }
 
