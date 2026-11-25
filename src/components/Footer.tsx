@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { publishedAreas } from "@/content/areas";
 import { specialties } from "@/content/services";
 import { footerExtraLinks, navLinks, site } from "@/content/site";
 import { Logo } from "./Logo";
@@ -75,6 +76,21 @@ export function Footer() {
             </ul>
           </div>
         </div>
+
+        {publishedAreas.length > 0 && (
+          <nav aria-label="Areas we serve" className="mt-14">
+            <h2 className="text-sm font-medium text-white">Areas we serve</h2>
+            <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-[15px]">
+              {publishedAreas.map((a) => (
+                <li key={a.slug}>
+                  <Link href={`/areas/${a.slug}`} className="hover:text-white hover:underline underline-offset-4">
+                    {a.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
 
         <div className="mt-14 flex flex-col gap-2 border-t border-white/15 pt-6 text-sm text-white/60 sm:flex-row sm:justify-between">
           <p>

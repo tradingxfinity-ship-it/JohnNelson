@@ -6,7 +6,7 @@ import { ArrowLink, Container } from "@/components/ui";
 import { land } from "@/content/services";
 
 export const metadata: Metadata = {
-  title: "Land & Acreage",
+  title: "Hill Country & San Antonio Land",
   description:
     "Buy or sell land, lots, and acreage around San Antonio, Canyon Lake, and the Hill Country with John and Irma Nelson, with a homebuilder's eye on what you can build.",
   alternates: { canonical: "/land" },

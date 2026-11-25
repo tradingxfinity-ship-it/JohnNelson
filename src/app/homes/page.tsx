@@ -8,7 +8,7 @@ import { ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
 import { PROPERTY_TYPES, searchListings, type ListingFilters } from "@/lib/listings";
 
 export const metadata: Metadata = {
-  title: "Search Homes for Sale",
+  title: "San Antonio Homes for Sale",
   description: "Search homes, land, and rentals for sale across San Antonio and the Hill Country with The Nelson Team.",
   alternates: { canonical: "/homes" },
 };

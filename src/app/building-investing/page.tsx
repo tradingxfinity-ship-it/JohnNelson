@@ -5,7 +5,7 @@ import { TopicGrid, TopicHero } from "@/components/TopicPage";
 import { buildingInvesting } from "@/content/services";
 
 export const metadata: Metadata = {
-  title: "Building, Remodeling & Real Estate Investing",
+  title: "San Antonio Remodeling & Investing",
   description:
     "Construction insight, renovation planning, property condition, and investment property analysis in San Antonio from John and Irma Nelson.",
   alternates: { canonical: "/building-investing" },

@@ -5,7 +5,7 @@ import { Container, Eyebrow, Section } from "@/components/ui";
 import { CATEGORIES, getPosts, type Category } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog: Real Estate Guides for San Antonio",
+  title: "San Antonio Real Estate Blog",
   description:
     "Guides from The Nelson Team on downsizing, military moves, buying land, selling, remodeling, and investing in San Antonio and the Hill Country.",
   alternates: { canonical: "/blog" },

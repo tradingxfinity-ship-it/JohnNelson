@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { JsonLd } from "@/components/JsonLd";
 import { Markdown } from "@/components/Markdown";
 import { PostCard } from "@/components/PostCard";
 import { ArrowLink, ButtonLink, Container, Section } from "@/components/ui";
 import { CONTACT_HREF, site } from "@/content/site";
 import { CATEGORIES, formatDate, getPost, getPosts } from "@/lib/blog";
 import { SITE_URL } from "@/lib/siteUrl";
+import { BUSINESS_ID } from "@/lib/structuredData";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -52,7 +54,7 @@ export default async function PostPage({ params }: Props) {
     datePublished: post.date,
     ...(post.cover ? { image: `${SITE_URL}${post.cover.src}` } : {}),
     author: { "@type": "Organization", name: `${site.brokerage.team}, ${site.name}` },
-    publisher: { "@type": "Organization", name: site.name },
+    publisher: { "@id": BUSINESS_ID },
   };
 
   return (
@@ -134,7 +136,7 @@ export default async function PostPage({ params }: Props) {
         </Section>
       )}
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <JsonLd data={jsonLd} />
     </>
   );
 }

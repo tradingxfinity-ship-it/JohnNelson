@@ -8,8 +8,10 @@ import type { InquiryType } from "@/lib/inquiry";
 import { HowItWorks } from "./HowItWorks";
 import { ContactDetails } from "./InquirySection";
 import { InquiryForm } from "./InquiryForm";
+import { Faqs } from "./Faqs";
 import { Photo } from "./Photo";
-import { Container, Eyebrow, Section } from "./ui";
+import { TopicGrid } from "./TopicPage";
+import { ArrowLink, Container, Eyebrow, Section } from "./ui";
 
 /**
  * Shared layout for the Buy, Sell, and Rent pages: intro beside the inquiry
@@ -68,6 +70,29 @@ export function ServicePage({ type }: { type: InquiryType }) {
           </ol>
         </Container>
       </Section>
+
+      {copy.guide && (
+        <>
+          <TopicGrid eyebrow={copy.eyebrow} headline={copy.guide.headline} topics={copy.guide.topics} />
+          <Container className="-mt-8 flex flex-wrap gap-x-8 gap-y-4 pb-20">
+            {copy.guide.links.map((l) => (
+              <ArrowLink key={l.href} href={l.href}>
+                {l.label}
+              </ArrowLink>
+            ))}
+          </Container>
+        </>
+      )}
+
+      {copy.faqs && (
+        <Faqs
+          key={current}
+          className="border-t border-line bg-cloud"
+          headline={`${copy.eyebrow}, answered.`}
+          faqs={copy.faqs}
+          note="General information, not legal, tax, or lending advice. Your situation may be different."
+        />
+      )}
     </>
   );
 }

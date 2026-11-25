@@ -6,7 +6,7 @@ import { seniorTransitions } from "@/content/services";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Senior Living & Life Transitions",
+  title: "Downsizing & Senior Moves, San Antonio",
   description:
     "Downsizing, aging in place, inherited homes, and helping a parent move in San Antonio. John and Irma Nelson explain your options and help you decide without pressure.",
   alternates: { canonical: "/senior-transitions" },

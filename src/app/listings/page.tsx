@@ -6,7 +6,7 @@ import { CONTACT_HREF, site } from "@/content/site";
 import { ourListings } from "@/lib/listings";
 
 export const metadata: Metadata = {
-  title: "Our Listings",
+  title: "San Antonio & Hill Country Listings",
   description: "Homes and land for sale with John and Irma Nelson of Get It Sold Realty in San Antonio and the Hill Country.",
   alternates: { canonical: "/listings" },
 };

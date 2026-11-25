@@ -12,6 +12,7 @@ export function TopicHero({
   children,
   image,
   imageAlt,
+  caption,
   primary,
 }: {
   eyebrow: string;
@@ -19,6 +20,7 @@ export function TopicHero({
   children: ReactNode;
   image: SiteImage;
   imageAlt: string;
+  caption?: string;
   primary: { href: string; label: string };
 }) {
   return (
@@ -40,6 +42,7 @@ export function TopicHero({
         <Photo
           image={image}
           fallbackAlt={imageAlt}
+          caption={caption}
           shape="archRight"
           priority
           sizes="(min-width: 1248px) 520px, (min-width: 1024px) 42vw, 100vw"

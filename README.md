@@ -148,3 +148,7 @@ src/
   lib/inquiry.ts       form fields and validation shared by client and server
   lib/email.ts         SMTP sending
 ```
+
+## Area pages
+
+Pages at `/areas/<slug>` live in `src/content/areas.ts`. New ones start with `published: false`, which keeps them out of Google, the sitemap, the footer, and the About page while still viewable at their address. Set `published: true` once they're approved. Keep them to facts about places and property: never describe who lives in an area or who it suits, and don't rate schools or safety (fair housing).

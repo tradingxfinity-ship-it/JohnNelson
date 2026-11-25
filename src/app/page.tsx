@@ -13,7 +13,7 @@ import { pillars, seniorTransitions } from "@/content/services";
 import { CONTACT_HREF, site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: { absolute: `${site.name} | San Antonio Real Estate with Irma and John Nelson` },
+  title: { absolute: `San Antonio Real Estate Agents | ${site.name}` },
   description:
     "The Nelson Team at Get It Sold Realty: Irma and John Nelson help San Antonio families buy, sell, build, invest, and move through life's transitions with confidence.",
   alternates: { canonical: "/" },

@@ -5,7 +5,7 @@ import { ButtonLink, Container, Section } from "@/components/ui";
 import { CONTACT_HREF } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Portfolio of Homes Sold",
+  title: "Homes Sold in San Antonio & Canyon Lake",
   description:
     "Browse homes Irma and John Nelson have sold across San Antonio, Canyon Lake, Schertz, New Braunfels, and the Hill Country.",
   alternates: { canonical: "/portfolio" },

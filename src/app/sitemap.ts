@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { publishedAreas } from "@/content/areas";
 import { getPosts } from "@/lib/blog";
 import { ourListings } from "@/lib/listings";
 import { SITE_URL } from "@/lib/siteUrl";
@@ -31,6 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...PAGES.map((path) => ({ url: `${SITE_URL}${path}` })),
+    ...(publishedAreas.length ? ["/areas", ...publishedAreas.map((a) => `/areas/${a.slug}`)] : []).map((path) => ({ url: `${SITE_URL}${path}` })),
     ...getPosts().map((p) => ({ url: `${SITE_URL}/blog/${p.slug}`, lastModified: p.date })),
     ...listings.map((l) => ({ url: `${SITE_URL}/homes/${encodeURIComponent(l.ListingKey)}` })),
   ];

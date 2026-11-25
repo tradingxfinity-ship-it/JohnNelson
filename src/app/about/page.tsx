@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { AreaMap } from "@/components/AreaMap";
 import { Photo } from "@/components/Photo";
 import { Reviews } from "@/components/Reviews";
 import { SoldCarousel } from "@/components/SoldCarousel";
 import { ArrowLink, ButtonLink, Container, Eyebrow, Section } from "@/components/ui";
+import { publishedAreas } from "@/content/areas";
 import { portfolio } from "@/content/portfolio";
 import { CONTACT_HREF, site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "About The Nelson Team",
+  title: "About The Nelson Team, San Antonio",
   description:
     "Meet John and Irma Nelson of Get It Sold Realty: a veteran-owned, husband-and-wife real estate team serving San Antonio with practical property experience and personal guidance.",
   alternates: { canonical: "/about" },
@@ -47,6 +49,17 @@ const military = [
   { title: "Move-in timelines", body: "A search planned around report dates and moving windows." },
   { title: "The right part of town", body: "Neighborhoods compared for your commute, budget, and family." },
 ];
+
+/** Links to the area's own page once it's published */
+function AreaName({ name }: { name: string }) {
+  const page = publishedAreas.find((p) => p.name === name);
+  if (!page) return name;
+  return (
+    <Link href={`/areas/${page.slug}`} className="underline-offset-4 hover:underline">
+      {name}
+    </Link>
+  );
+}
 
 export default function AboutPage() {
   // Homes per community in the portfolio, most first
@@ -317,7 +330,7 @@ export default function AboutPage() {
             <ul className="mt-3 flex flex-wrap gap-1.5">
               {site.serviceAreas.map((a) => (
                 <li key={a} className="rounded-full bg-cloud px-3 py-1 text-[13px] text-blue">
-                  {a}
+                  <AreaName name={a} />
                 </li>
               ))}
             </ul>

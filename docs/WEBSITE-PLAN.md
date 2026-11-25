@@ -38,11 +38,11 @@ Ruled out for SEO: **Buying Buddy**. Its SEO page says server pre-rendering cove
 SEO work on the site:
 - ✅ Real canonical address, sitemap, robots file, share images (November 25, 2026)
 - ❌ Custom domain (a vercel.app address is a weak base), then Google Search Console
-- ❌ Business structured data (blog posts are the only pages with any)
-- ❌ San Antonio or Hill Country missing from the titles of the land, luxury, veterans, senior, building, listings, and search pages
-- ❌ A page for each main service area. `/homes?area=…` results all count as `/homes`, so they can't rank by area
-- ❌ Fuller service pages: Buy, Sell, and Rent have about 170 to 190 words each
-- ❌ Analytics
+- ✅ Business structured data on every page (no star ratings: Google doesn't accept a business marking up its own reviews)
+- ✅ San Antonio or Hill Country in every main page title
+- ⏸ Area pages built at `/areas`: Canyon Lake, Boerne, Helotes, Stone Oak, Alamo Heights, Schertz. Hidden from Google and the menus until John and Irma approve them; then set `published: true` in `src/content/areas.ts`
+- ✅ Buy and Sell pages expanded with guidance and common questions (about 700 and 660 words). Rent left short (low priority)
+- 🟡 Vercel Web Analytics code added; turn it on in the Vercel project's Analytics tab
 - ⏸ Regular blog posts, reviewed by John and Irma
 - ⏸ Google Business Profile (John's account)
 - ❌ When the MLS feed is live: city pages with live listings, and listings in the sitemap
@@ -149,7 +149,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 ### SEO, content, and leads
 | Proposal | Site now | Status |
 |---|---|---|
-| Helpful local pages (no keyword stuffing) | None | ❌ |
+| Helpful local pages (no keyword stuffing) | Six area pages built at `/areas` (hidden until approved) | ⏸ review |
 | Articles: downsizing a parent's home, as-is vs. remodel, home condition, investing basics | `/blog`: downsizing a parent's home, as-is vs. remodel, buying land, buying on PCS orders (drafts for review) | 🟡 ⏸ review |
 | YouTube videos linked to service pages | Posts can embed a video (`youtube:` in the post header) | ⏸ need video links |
 | IDX search | Built on the RESO format; connect with `LERA_RESO_URL`, `LERA_RESO_TOKEN`, `LERA_OFFICE_MLS_ID` | ⏸ LERA access |
@@ -157,7 +157,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 | Consultation scheduling | None (contact form only) | ❌ |
 | CRM-connected contact workflow | Email only | ❌ ⏸ which CRM (Lofty?) |
 | Verified testimonials with links to source | Zillow, linked | ✅ |
-| Tracking (inquiries, bookings, search visibility) | No analytics | ❌ |
+| Tracking (inquiries, bookings, search visibility) | Visitor analytics code added, not turned on; inquiries and bookings not tracked; no Search Console yet | 🟡 |
 
 ### To confirm before publishing (from John)
 | Item | Status |

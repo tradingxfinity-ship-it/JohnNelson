@@ -6,7 +6,7 @@ import { veterans } from "@/content/services";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Veterans & Military Families",
+  title: "San Antonio Military & PCS Moves",
   description:
     "Veteran-owned real estate help in San Antonio: PCS moves to and from Joint Base San Antonio, buying with a VA loan, and selling or renting when you get orders.",
   alternates: { canonical: "/veterans" },

@@ -5,7 +5,7 @@ import { TopicGrid, TopicHero } from "@/components/TopicPage";
 import { luxury } from "@/content/services";
 
 export const metadata: Metadata = {
-  title: "Luxury Homes",
+  title: "San Antonio Luxury Homes",
   description:
     "Buy or sell a higher-value home in San Antonio and the Hill Country with John and Irma Nelson: careful presentation, discretion, and a builder's eye on quality.",
   alternates: { canonical: "/luxury" },
