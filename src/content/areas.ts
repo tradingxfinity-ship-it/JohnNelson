@@ -38,7 +38,7 @@ export const areas: Area[] = [
   {
     slug: "canyon-lake",
     name: "Canyon Lake",
-    published: false,
+    published: true,
     title: "Canyon Lake Homes & Land",
     description:
       "Buying or selling a home, lot, or land at Canyon Lake, Texas? Irma and John Nelson have sold homes and land around the lake and know what to check before you buy.",
@@ -77,7 +77,7 @@ export const areas: Area[] = [
   {
     slug: "boerne",
     name: "Boerne",
-    published: false,
+    published: true,
     title: "Boerne Homes, Land & Acreage",
     description:
       "Buy or sell a home, lot, or acreage in Boerne and Kendall County, Texas with Irma and John Nelson of Get It Sold Realty. What to check before you buy.",
@@ -115,7 +115,7 @@ export const areas: Area[] = [
   {
     slug: "helotes",
     name: "Helotes",
-    published: false,
+    published: true,
     title: "Helotes Homes for Sale & Selling Help",
     description:
       "Buy or sell a home in Helotes, Texas with Irma and John Nelson of Get It Sold Realty. Local property details to check, and a direct line to the team.",
@@ -154,7 +154,7 @@ export const areas: Area[] = [
   {
     slug: "stone-oak",
     name: "Stone Oak",
-    published: false,
+    published: true,
     title: "Stone Oak Homes, San Antonio",
     description:
       "Buy or sell a home in Stone Oak and far north San Antonio with Irma and John Nelson of Get It Sold Realty. HOA, condition, and pricing help from a local team.",
@@ -193,7 +193,7 @@ export const areas: Area[] = [
   {
     slug: "alamo-heights",
     name: "Alamo Heights",
-    published: false,
+    published: true,
     title: "Alamo Heights Homes",
     description:
       "Buy or sell a home in Alamo Heights, Texas with Irma and John Nelson of Get It Sold Realty, with a builder’s eye on older homes, remodels, and condition.",
@@ -231,7 +231,7 @@ export const areas: Area[] = [
   {
     slug: "schertz",
     name: "Schertz",
-    published: false,
+    published: true,
     title: "Schertz Homes near JBSA-Randolph",
     description:
       "Buy or sell a home in Schertz, Texas, near Joint Base San Antonio-Randolph, with veteran-owned Get It Sold Realty. PCS timelines, VA loans, and local help.",

@@ -40,7 +40,7 @@ SEO work on the site:
 - ❌ Custom domain (a vercel.app address is a weak base), then Google Search Console
 - ✅ Business structured data on every page (no star ratings: Google doesn't accept a business marking up its own reviews)
 - ✅ San Antonio or Hill Country in every main page title
-- ⏸ Area pages built at `/areas`: Canyon Lake, Boerne, Helotes, Stone Oak, Alamo Heights, Schertz. Hidden from Google and the menus until John and Irma approve them; then set `published: true` in `src/content/areas.ts`
+- ✅ Area pages published November 26, 2026 at `/areas`: Canyon Lake, Boerne, Helotes, Stone Oak, Alamo Heights, Schertz. Linked from the footer and the About page's service areas. John is still reviewing the local details
 - ✅ Buy and Sell pages expanded with guidance and common questions (about 700 and 660 words). Rent left short (low priority)
 - 🟡 Vercel Web Analytics code added; turn it on in the Vercel project's Analytics tab
 - ⏸ Regular blog posts, reviewed by John and Irma
@@ -149,7 +149,7 @@ From the MLS Rules (Section 18, September 2024 version) and LERA's data agreemen
 ### SEO, content, and leads
 | Proposal | Site now | Status |
 |---|---|---|
-| Helpful local pages (no keyword stuffing) | Six area pages built at `/areas` (hidden until approved) | ⏸ review |
+| Helpful local pages (no keyword stuffing) | Six area pages at `/areas`, live | ✅ (John reviewing details) |
 | Articles: downsizing a parent's home, as-is vs. remodel, home condition, investing basics | `/blog`: downsizing a parent's home, as-is vs. remodel, buying land, buying on PCS orders (drafts for review) | 🟡 ⏸ review |
 | YouTube videos linked to service pages | Posts can embed a video (`youtube:` in the post header) | ⏸ need video links |
 | IDX search | Built on the RESO format; connect with `LERA_RESO_URL`, `LERA_RESO_TOKEN`, `LERA_OFFICE_MLS_ID` | ⏸ LERA access |
