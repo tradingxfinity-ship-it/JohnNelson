@@ -104,8 +104,8 @@ The homepage “Recently sold” section (`src/components/SoldGallery.tsx`) show
 
 The form posts to `/api/inquiry`, which validates on the server and sends one email per inquiry over SMTP:
 
-- **Subject:** `New Buy|Sell|Rent inquiry from <name>`
-- **Body:** every submitted field (plain text and HTML)
+- **Subject:** e.g. `New home valuation request from <name>`
+- **Body:** a branded HTML email (`src/lib/inquiryEmail.ts`) with Reply, Call, and Text buttons, every answer, and the visitor's message, plus a plain-text version. Preview: `docs/previews/inquiry-email.png`
 - **Reply-To:** the visitor's email, so hitting Reply answers them directly
 
 Environment variables (server-side only; never commit `.env.local`):

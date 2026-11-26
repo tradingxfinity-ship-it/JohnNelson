@@ -1,13 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { EmailNotConfiguredError, sendEmail } from "@/lib/email";
-import {
-  FIELD_LABELS,
-  INQUIRY_TYPE_LABELS,
-  inquiryFieldNames,
-  validateInquiry,
-  type InquiryType,
-  type InquiryValues,
-} from "@/lib/inquiry";
+import { SERVICE_FIELDS, validateInquiry, type InquiryType, type InquiryValues } from "@/lib/inquiry";
+import { buildInquiryEmail } from "@/lib/inquiryEmail";
+import { SITE_URL } from "@/lib/siteUrl";
 
 export const runtime = "nodejs";
 
@@ -27,8 +22,6 @@ function rateLimited(ip: string): boolean {
   return recent.length > RATE_LIMIT.max;
 }
 
-const escapeHtml = (s: string) =>
-  s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
 export async function POST(req: NextRequest) {
   const raw = await req.text();
@@ -68,33 +61,16 @@ export async function POST(req: NextRequest) {
   }
 
   const type = values.inquiryType as InquiryType;
-  const rows = inquiryFieldNames(type).map((name) => [FIELD_LABELS[name] ?? name, values[name] || "—"] as const);
-  const typeLabel = INQUIRY_TYPE_LABELS[type];
-  const submittedAt = new Date().toLocaleString("en-US", { timeZone: "America/Chicago", dateStyle: "medium", timeStyle: "short" });
-
-  const subject = `New ${typeLabel} inquiry from ${values.fullName}`.replace(/[\r\n]+/g, " ");
-  const text = [
-    `New ${typeLabel.toLowerCase()} inquiry from the Get It Sold Realty website.`,
-    "",
-    `Inquiry type: ${typeLabel}`,
-    ...rows.map(([label, value]) => `${label}: ${value}`),
-    "",
-    `Submitted: ${submittedAt} (San Antonio time)`,
-    "Reply to this email to respond directly to the visitor.",
-  ].join("\n");
-  const html = `<div style="font-family:Arial,sans-serif;color:#002868;max-width:600px">
-<h2 style="margin:0 0 16px">New ${typeLabel.toLowerCase()} inquiry</h2>
-<table cellpadding="8" style="border-collapse:collapse;width:100%;font-size:14px">
-<tr><td style="border-bottom:1px solid #E3E7ED;color:#4B5874;width:40%">Inquiry type</td><td style="border-bottom:1px solid #E3E7ED">${typeLabel}</td></tr>
-${rows
-  .map(
-    ([label, value]) =>
-      `<tr><td style="border-bottom:1px solid #E3E7ED;color:#4B5874;vertical-align:top">${escapeHtml(label)}</td><td style="border-bottom:1px solid #E3E7ED;white-space:pre-wrap">${escapeHtml(value)}</td></tr>`,
-  )
-  .join("\n")}
-</table>
-<p style="font-size:13px;color:#4B5874">Submitted ${submittedAt} (San Antonio time). Reply to this email to respond directly to the visitor.</p>
-</div>`;
+  const { subject, text, html } = buildInquiryEmail({
+    type,
+    name: values.fullName,
+    email: values.email,
+    phone: values.phone,
+    details: SERVICE_FIELDS[type].map((f) => [f.label, values[f.name] ?? ""]),
+    notes: values.notes,
+    submittedAt: new Date().toLocaleString("en-US", { timeZone: "America/Chicago", dateStyle: "medium", timeStyle: "short" }),
+    siteUrl: SITE_URL,
+  });
 
   try {
     await sendEmail({ subject, text, html, replyTo: values.email });
